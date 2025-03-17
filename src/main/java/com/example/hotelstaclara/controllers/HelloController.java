@@ -1,4 +1,4 @@
-package com.example.hotelstaclara;
+package com.example.hotelstaclara.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
