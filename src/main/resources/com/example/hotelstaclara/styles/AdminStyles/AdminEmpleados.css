@@ -1,0 +1,58 @@
+/* EStolo de la vista */
+.fondo {
+    -fx-background-color: #8986E3;
+}
+
+.barra {
+    -fx-background-color: #A8A3F2;
+}
+
+
+/* EStolo de la barra lateral */
+
+.boton-menu {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+}
+
+.boton-menu:hover {
+    -fx-background-color: #7a75d8;
+}
+
+/* Los votones  */
+.btn {
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+    -fx-background-radius: 15px;
+}
+
+
+.eliminar {
+    -fx-background-color: #f44336;
+}
+.eliminar:hover {
+    -fx-background-color: #da190b;
+}
+
+.editar {
+    -fx-background-color: #79AED3;
+}
+.editar:hover{
+ -fx-background-color: #0b7dda;
+}
+
+
+.Agregar {
+    -fx-background-color: #5A9507;
+}
+.Agregar:hover {
+    -fx-background-color: #46a049;
+}
+
+
+
+
+
+
+
