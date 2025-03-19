@@ -5,12 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a44bdff9-8517-448d-807a-b783690deef8" name="Changes" comment="pruebas de carpetas">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/USERpagos.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/hotelstaclara/views/USERpagos.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/database/connection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/HelloApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/loginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/loginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/hotelstaclara/img/logoStaClara-modified.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/database/prueba.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/database/loginDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/model/prueba.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/model/login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/hotelstaclara/views/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/hotelstaclara/views/login.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -28,6 +31,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -38,7 +42,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/17022004-klcv/hotelStaClara.git&quot;,
-    &quot;accountId&quot;: &quot;64c7aa1b-4851-4560-89ad-1f90c32d43f2&quot;
+    &quot;accountId&quot;: &quot;2489487a-7396-4a2c-99d4-add8450b0739&quot;
   }
 }</component>
   <component name="MavenImportPreferences">
@@ -57,13 +61,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.HelloApplication.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Brian/Documents/JAVA/mysql-connector-j-9.0.0/mysql-connector-j-9.0.0.jar",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.6563218",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -99,6 +110,17 @@
     </task>
     <option name="localTasksCounter" value="4" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="estructura de proyecto" />

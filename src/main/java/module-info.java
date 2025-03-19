@@ -1,6 +1,8 @@
 module com.example.hotelstaclara {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.sql;
+    requires java.desktop;
 
 
     opens com.example.hotelstaclara to javafx.fxml;
