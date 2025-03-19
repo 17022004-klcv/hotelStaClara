@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.9" prefHeight="587.0" prefWidth="450.0" style="-fx-background-color: #8986E3;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotelstaclara.controllers.formsAdminControllers.formPagoMembresiaController">
+   <children>
+      <ImageView fitHeight="76.0" fitWidth="46.0" layoutX="6.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+         <image>
+            <Image url="@../../img/back.png" />
+         </image>
+      </ImageView>
+      <Pane layoutX="81.0" layoutY="14.0" prefHeight="46.0" prefWidth="336.0" style="-fx-background-color: white; -fx-background-radius: 25px;">
+         <children>
+            <Text layoutX="92.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Realizar Pago de Membresia" />
+         </children>
+      </Pane>
+      <Text fill="WHITE" layoutX="52.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo de Membresia" />
+      <ComboBox fx:id="cb_tipo_membresia" layoutX="187.0" layoutY="109.0" onAction="#cb_tipo_membresia" prefHeight="46.0" prefWidth="230.0" promptText="Estandar" style="-fx-background-radius: 25px;">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ComboBox>
+      <Text fill="WHITE" layoutX="50.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cliente" />
+      <Text fill="WHITE" layoutX="50.0" layoutY="352.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Monto" />
+      <Text fill="WHITE" layoutX="52.0" layoutY="420.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Metodo de Pago" />
+      <Text fill="WHITE" layoutX="51.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DUI Cliente" />
+      <ComboBox fx:id="cb_tipo_pago" layoutX="187.0" layoutY="392.0" onAction="#cb_tipo_pago" prefHeight="46.0" prefWidth="229.0" promptText="Efectivo" style="-fx-background-radius: 25px;">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ComboBox>
+      <TextField fx:id="txt_cliente" layoutX="186.0" layoutY="189.0" onAction="#txt_cliente" prefHeight="46.0" prefWidth="230.0" promptText="Brian Josue Chavez Recinos" style="-fx-background-radius: 25px;" />
+      <TextField fx:id="txt_dui" layoutX="186.0" layoutY="259.0" onAction="#txt_dui" prefHeight="46.0" prefWidth="230.0" promptText="00000000-0" style="-fx-background-radius: 25px;" />
+      <TextField fx:id="txt_monto" editable="false" layoutX="186.0" layoutY="324.0" onAction="#txt_monto" prefHeight="46.0" prefWidth="230.0" promptText="\$00.00" style="-fx-background-radius: 25px;" />
+   </children>
+</AnchorPane>
