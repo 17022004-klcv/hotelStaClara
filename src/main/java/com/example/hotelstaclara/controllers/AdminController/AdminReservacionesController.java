@@ -10,40 +10,39 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class AdminPagosController {
+public class AdminReservacionesController {
 
     @FXML
-    private Button but_Cliente;
+    private Button but_Clientes;
 
     @FXML
-    private Button but_Empreados;
+    private Button but_Empleados;
 
     @FXML
     private Button but_Habitaciones;
 
     @FXML
-    private Button but_Reservaciones;
+    private Button but_Pagos;
 
     @FXML
-    void but_Cliente(ActionEvent event) {
-        pasarVista("AdminClientes");
+    void but_Clientes(ActionEvent event) {
+    pasarVista("AdminClientes");
     }
 
     @FXML
-    void but_Empreados(ActionEvent event) {
-        pasarVista("AdminEmpleados");
+    void but_Empleados(ActionEvent event) {
+    pasarVista("AdminEmpleados");
+    }
+
+    @FXML
+    void but_Pagos(ActionEvent event) {
+    pasarVista("AdminPagos");
     }
 
     @FXML
     void but_Habitaciones(ActionEvent event) {
-        pasarVista("AdminHabitaciones");
+     pasarVista("AdminHabitaciones");
     }
-
-    @FXML
-    void but_Reservaciones(ActionEvent event) {
-        pasarVista("AdminReservaciones");
-    }
-
 
     private void pasarVista(String ruta) {
         try {
@@ -51,7 +50,7 @@ public class AdminPagosController {
             Parent root = loader.load();
 
             // Cambiar la escena a la nueva vista
-            Stage stage = (Stage) but_Cliente.getScene().getWindow();
+            Stage stage = (Stage) but_Pagos.getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);
 
@@ -60,5 +59,6 @@ public class AdminPagosController {
             e.printStackTrace();
         }
     }
+
 
 }

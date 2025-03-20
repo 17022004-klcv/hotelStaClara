@@ -34,6 +34,8 @@ public class loginController {
 
         if (credencialesValidas) {
             JOptionPane.showMessageDialog(null,"!Bienvenido " + nombreUsuario);
+            pasarVista();
+
         } else {
             System.out.println("Error en el inicio de sesion");
         }
@@ -63,6 +65,25 @@ public class loginController {
             e.printStackTrace();
         }
     }
+
+
+
+    private void pasarVista() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/hotelstaclara/views/Admin/AdminPagos.fxml"));
+            Parent root = loader.load();
+
+            // Cambiar la escena a la nueva vista
+            Stage stage = (Stage) bt_entrar.getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }
 
