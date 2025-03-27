@@ -8,10 +8,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Button;
 
-public class formPagoMembresiaController {
-
-    @FXML
-    private ComboBox<?> cb_tipo_membresia;
+public class formPagoReservacionController {
 
     @FXML
     private ComboBox<?> cb_tipo_pago;
@@ -26,6 +23,9 @@ public class formPagoMembresiaController {
     private TextField txt_dui;
 
     @FXML
+    private TextField txt_id_reservacion;
+
+    @FXML
     private TextField txt_monto;
 
     @FXML
@@ -33,12 +33,6 @@ public class formPagoMembresiaController {
 
     @FXML
     void bt_pagar(ActionEvent event) {
-
-    }
-
-
-    @FXML
-    void cb_tipo_membresia(ActionEvent event) {
 
     }
 
@@ -63,8 +57,14 @@ public class formPagoMembresiaController {
     }
 
     @FXML
+    void txt_id_reservacion(ActionEvent event) {
+
+    }
+
+    @FXML
     void txt_monto(ActionEvent event) {
 
     }
+
 
 }

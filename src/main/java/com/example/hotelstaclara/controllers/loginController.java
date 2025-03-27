@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.scene.control.PasswordField;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -18,7 +19,7 @@ public class loginController {
     private Button bt_entrar;
 
     @FXML
-    private TextField txt_contra;
+    private PasswordField txt_contra;
 
     @FXML
     private TextField txt_usuario;
@@ -27,7 +28,7 @@ public class loginController {
     void bt_entrar(ActionEvent event) {
 
         String nombreUsuario = txt_usuario.getText();
-        String contrasena = txt_contra.getText();
+        String contrasena = String.valueOf(txt_contra.getText());
         loginDAO logindao=new loginDAO();
 
         boolean credencialesValidas = logindao.verificarCredenciales(nombreUsuario, contrasena);
