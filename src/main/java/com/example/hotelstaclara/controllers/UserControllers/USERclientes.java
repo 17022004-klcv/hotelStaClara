@@ -3,8 +3,12 @@ package com.example.hotelstaclara.controllers.UserControllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 
-public class USERpagos {
+public class USERclientes {
+
+    @FXML
+    private Button bnt_Buscar;
 
     @FXML
     private Button btn_Clientes;
@@ -19,13 +23,18 @@ public class USERpagos {
     private Button btn_Reservaciones;
 
     @FXML
+    private Button but_agregar;
+
+    @FXML
     private Button but_editar;
 
     @FXML
-    private Button but_menbrecia;
+    private TextField txt_Buscador;
 
     @FXML
-    private Button but_reservaciones;
+    void btn_Buscar(ActionEvent event) {
+
+    }
 
     @FXML
     void btn_Clientes(ActionEvent event) {
@@ -48,17 +57,17 @@ public class USERpagos {
     }
 
     @FXML
+    void but_agregar(ActionEvent event) {
+
+    }
+
+    @FXML
     void but_editar(ActionEvent event) {
 
     }
 
     @FXML
-    void but_menbrecia(ActionEvent event) {
-
-    }
-
-    @FXML
-    void but_reservaciones(ActionEvent event) {
+    void txt_Buscar(ActionEvent event) {
 
     }
 
