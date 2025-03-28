@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -9,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.9" prefHeight="587.0" prefWidth="450.0" style="-fx-background-color: #8986E3;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotelstaclara.controllers.formsAdminControllers.formPagoReservacionController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.9" prefHeight="587.0" prefWidth="450.0" stylesheets="@../../styles/UserStyles/formsStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotelstaclara.controllers.formsAdminControllers.formPagoMembresiaController">
    <children>
       <ImageView fx:id="imgBack" fitHeight="76.0" fitWidth="46.0" layoutX="6.0" layoutY="14.0" onDragDetected="#imgBack" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
          <image>
@@ -18,10 +20,15 @@
       </ImageView>
       <Pane layoutX="81.0" layoutY="14.0" prefHeight="46.0" prefWidth="336.0" style="-fx-background-color: white; -fx-background-radius: 25px;">
          <children>
-            <Text layoutX="92.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Realizar Pago de Reservacion" />
+            <Text layoutX="75.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Realizar Pago de Membresia" />
          </children>
       </Pane>
-      <Text fill="WHITE" layoutX="52.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID Reservacion" />
+      <Text fill="WHITE" layoutX="52.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo de Membresia" />
+      <ComboBox fx:id="cb_tipo_membresia" layoutX="187.0" layoutY="109.0" onAction="#cb_tipo_membresia" prefHeight="46.0" prefWidth="230.0" promptText="Estandar" style="-fx-background-radius: 25px;">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ComboBox>
       <Text fill="WHITE" layoutX="50.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cliente" />
       <Text fill="WHITE" layoutX="50.0" layoutY="352.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Monto" />
       <Text fill="WHITE" layoutX="52.0" layoutY="420.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Metodo de Pago" />
@@ -34,6 +41,10 @@
       <TextField fx:id="txt_cliente" layoutX="186.0" layoutY="189.0" onAction="#txt_cliente" prefHeight="46.0" prefWidth="230.0" promptText="Brian Josue Chavez Recinos" style="-fx-background-radius: 25px;" />
       <TextField fx:id="txt_dui" layoutX="186.0" layoutY="259.0" onAction="#txt_dui" prefHeight="46.0" prefWidth="230.0" promptText="00000000-0" style="-fx-background-radius: 25px;" />
       <TextField fx:id="txt_monto" editable="false" layoutX="186.0" layoutY="324.0" onAction="#txt_monto" prefHeight="46.0" prefWidth="230.0" promptText="\$00.00" style="-fx-background-radius: 25px;" />
-      <TextField fx:id="txt_id_reservacion" layoutX="186.0" layoutY="109.0" onAction="#txt_id_reservacion" prefHeight="46.0" prefWidth="230.0" promptText="000" style="-fx-background-radius: 25px;" />
+      <Button fx:id="bt_pagar" layoutX="188.0" layoutY="497.0" mnemonicParsing="false" onAction="#bt_pagar" prefHeight="54.0" prefWidth="121.0" text="Realizar Pago" />
    </children>
+   <styleClass>
+      <String fx:value="fondo" />
+      <String fx:value="texto" />
+   </styleClass>
 </AnchorPane>

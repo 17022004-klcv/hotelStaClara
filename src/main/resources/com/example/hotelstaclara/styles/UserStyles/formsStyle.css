@@ -1,0 +1,15 @@
+@font-face {
+    font-family: 'Jacques Francois';
+    src: url('src/main/resources/com/example/hotelstaclara/fonts/JacquesFrancois-Regular.ttf');
+}
+
+.fondo{
+    -fx-background-color: #BD9E6B;
+}
+
+.texto{
+        -fx-font-family: 'Jacques Francois';
+        -fx-font-size: 14px; /* Ajusta el tamaño según lo necesites */
+        -fx-font-weight: bold;
+
+}

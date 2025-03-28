@@ -12,4 +12,6 @@ module com.example.hotelstaclara {
     opens com.example.hotelstaclara.controllers to javafx.fxml;
     exports com.example.hotelstaclara.controllers.AdminController;
     opens com.example.hotelstaclara.controllers.AdminController to javafx.fxml;
+    exports com.example.hotelstaclara.controllers.UserControllers;
+    opens com.example.hotelstaclara.controllers.UserControllers to javafx.fxml;
 }
