@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,14 +13,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotelstaclara.controllers.UserControllers.USERclientes">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotelstaclara.controllers.UserControllers.USERhabitaciones">
    <children>
-      <ImageView fitHeight="735.0" fitWidth="1300.0" layoutX="-10.0" layoutY="-4.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <ImageView fitHeight="723.0" fitWidth="1280.0" layoutX="10.0" layoutY="8.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
             <Image url="@../../img/fondo-recepcionista.jpg" />
          </image>
       </ImageView>
-      <Pane layoutX="100.0" layoutY="80.0" prefHeight="608.0" prefWidth="266.0" styleClass="munu" stylesheets="@../../styles/UserStyles/formsStyle.css" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="50.0">
+      <Pane layoutX="142.0" layoutY="156.0" prefHeight="608.0" prefWidth="266.0" styleClass="munu" stylesheets="@../../styles/UserStyles/formsStyle.css" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="50.0">
          <children>
             <ImageView fitHeight="189.0" fitWidth="189.0" layoutX="40.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -103,57 +101,28 @@
             </VBox>
          </children>
       </Pane>
-      <Pane layoutX="365.0" layoutY="60.0" prefHeight="635.0" prefWidth="975.0" styleClass="munu" stylesheets="@../../styles/UserStyles/formsStyle.css" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="50.0">
+      <Pane layoutX="365.0" layoutY="60.0" prefHeight="623.0" prefWidth="902.0" styleClass="munu" stylesheets="@../../styles/UserStyles/formsStyle.css" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="50.0">
          <children>
-            <Label layoutX="372.0" layoutY="25.0" text="Clientes">
+            <Label layoutX="322.0" layoutY="25.0" text="Habitaciones">
                <font>
                   <Font name="Arial" size="45.0" />
                </font>
             </Label>
-            <TableView layoutX="2.0" layoutY="163.0" prefHeight="330.0" prefWidth="975.0" style="-fx-background-radius: 20;">
+            <TableView layoutX="74.0" layoutY="106.0" prefHeight="371.0" prefWidth="760.0" style="-fx-background-radius: 20;">
                <columns>
-                  <TableColumn prefWidth="103.0" text="Nombre" />
-                  <TableColumn prefWidth="176.0" text="Apellido" />
-                  <TableColumn prefWidth="148.0" text="Telefono" />
-                  <TableColumn prefWidth="192.800048828125" text="Direccion" />
-                  <TableColumn prefWidth="136.00006103515625" text="DUI" />
-                  <TableColumn prefWidth="144.0" text="Email" />
-                  <TableColumn prefWidth="75.0" text="Estado" />
+                  <TableColumn prefWidth="103.0" text="Numero" />
+                  <TableColumn prefWidth="176.0" text="Tipo" />
+                  <TableColumn prefWidth="148.0" text="Capacidad" />
+                  <TableColumn prefWidth="192.800048828125" text="Precio" />
+                  <TableColumn prefWidth="136.00006103515625" text="Estado" />
                </columns>
             </TableView>
-            <Button fx:id="but_editar" layoutX="248.0" layoutY="507.0" mnemonicParsing="false" onAction="#but_editar" prefHeight="67.0" prefWidth="176.0" style="-fx-background-color: #9ACBD0; -fx-background-radius: 20;" text="EDITAR" textFill="WHITE">
+            <Button fx:id="but_editar" layoutX="380.0" layoutY="512.0" mnemonicParsing="false" onAction="#but_editar" prefHeight="67.0" prefWidth="176.0" style="-fx-background-color: #9ACBD0; -fx-background-radius: 20;" text="EDITAR" textFill="WHITE">
                <padding>
                   <Insets bottom="25.0" left="60.0" right="50.0" top="25.0" />
                </padding>
                <font>
                   <Font name="Arial Black" size="12.0" />
-               </font>
-            </Button>
-            <Button fx:id="but_agregar" layoutX="465.0" layoutY="507.0" mnemonicParsing="false" onAction="#but_agregar" prefHeight="67.0" prefWidth="176.0" style="-fx-background-color: #5F8B4C; -fx-background-radius: 20;" text="AGREGAR" textFill="WHITE">
-               <padding>
-                  <Insets bottom="25.0" left="15.0" right="15.0" top="25.0" />
-               </padding>
-               <styleClass>
-                  <String fx:value="pagoReservacion" />
-                  <String fx:value="btn" />
-               </styleClass>
-               <font>
-                  <Font name="Arial Black" size="12.0" />
-               </font>
-            </Button>
-            <Pane layoutX="32.0" layoutY="109.0" prefHeight="38.0" prefWidth="702.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 20;">
-               <children>
-                  <ImageView fitHeight="26.0" fitWidth="30.0" layoutX="17.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../img/lupa.png" />
-                     </image>
-                  </ImageView>
-                  <TextField fx:id="txt_Buscador" layoutX="67.0" onAction="#txt_Buscar" prefHeight="38.0" prefWidth="635.0" style="-fx-background-radius: 20;" />
-               </children>
-            </Pane>
-            <Button fx:id="bnt_Buscar" layoutX="746.0" layoutY="110.0" mnemonicParsing="false" onAction="#btn_Buscar" prefHeight="39.0" prefWidth="111.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 20;" text="Buscar">
-               <font>
-                  <Font name="Arial" size="15.0" />
                </font>
             </Button>
          </children>
