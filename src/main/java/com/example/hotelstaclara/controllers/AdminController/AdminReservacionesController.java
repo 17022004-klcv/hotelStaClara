@@ -1,5 +1,6 @@
 package com.example.hotelstaclara.controllers.AdminController;
 
+import com.example.hotelstaclara.model.Rutas;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,41 +25,54 @@ public class AdminReservacionesController {
     @FXML
     private Button but_Pagos;
 
+
+    @FXML
+    private Button but_agregar;
+
+    @FXML
+    private Button but_editar;
+
+    @FXML
+    private Button but_eliminar;
+
+    Rutas ruta = new Rutas();
+
     @FXML
     void but_Clientes(ActionEvent event) {
-    pasarVista("AdminClientes");
+        ruta.pasarRutasAdmin("AdminClientes", but_Clientes);
     }
 
     @FXML
     void but_Empleados(ActionEvent event) {
-    pasarVista("AdminEmpleados");
+        ruta.pasarRutasAdmin("AdminEmpleados", but_Empleados);
     }
 
     @FXML
     void but_Pagos(ActionEvent event) {
-    pasarVista("AdminPagos");
+        ruta.pasarRutasAdmin("AdminPagos", but_Pagos);
     }
 
     @FXML
     void but_Habitaciones(ActionEvent event) {
-     pasarVista("AdminHabitaciones");
+        ruta.pasarRutasAdmin("AdminHabitaciones", but_Habitaciones);
     }
 
-    private void pasarVista(String ruta) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/hotelstaclara/views/Admin/"+ruta+".fxml"));
-            Parent root = loader.load();
+    //----------------------------
 
-            // Cambiar la escena a la nueva vista
-            Stage stage = (Stage) but_Pagos.getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
 
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    @FXML
+    void but_agregar(ActionEvent event) {
+    ruta.pasarRutasAdminFroms("formReservaciones", but_agregar);
     }
 
+    @FXML
+    void but_editar(ActionEvent event) {
+
+    }
+
+    @FXML
+    void but_eliminar(ActionEvent event) {
+
+    }
 
 }

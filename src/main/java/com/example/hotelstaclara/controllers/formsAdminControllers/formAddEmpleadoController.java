@@ -1,12 +1,13 @@
 package com.example.hotelstaclara.controllers.formsAdminControllers;
 
+import com.example.hotelstaclara.model.Rutas;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.control.ComboBox;
 
 public class formAddEmpleadoController {
 
@@ -14,13 +15,16 @@ public class formAddEmpleadoController {
     private Button bt_agregar;
 
     @FXML
+    private ComboBox<?> cb_cargo;
+
+    @FXML
     private ImageView imgBack;
 
     @FXML
-    private TextField txt_apellidos;
+    private TextField txtCelular;
 
     @FXML
-    private TextField txt_cel;
+    private TextField txt_apellidos;
 
     @FXML
     private TextField txt_direccion;
@@ -37,10 +41,13 @@ public class formAddEmpleadoController {
     @FXML
     private TextField txt_tel;
 
+    Rutas ruta = new Rutas();
+
 
     @FXML
-    private ComboBox<?> cb_cargo;
+    void bt_agregar(ActionEvent event) {
 
+    }
 
     @FXML
     void cb_cargo(ActionEvent event) {
@@ -48,12 +55,12 @@ public class formAddEmpleadoController {
     }
 
     @FXML
-    void br_agregar(ActionEvent event) {
-
+    void imgBack(MouseEvent event) {
+        ruta.cerrarVentana(bt_agregar);
     }
 
     @FXML
-    void imgBack(MouseEvent event) {
+    void txtCelular(ActionEvent event) {
 
     }
 
@@ -63,7 +70,7 @@ public class formAddEmpleadoController {
     }
 
     @FXML
-    void txt_cel(ActionEvent event) {
+    void txt_cel(MouseEvent event) {
 
     }
 
@@ -93,4 +100,3 @@ public class formAddEmpleadoController {
     }
 
 }
-

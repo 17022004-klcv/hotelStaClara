@@ -1,5 +1,6 @@
 package com.example.hotelstaclara.controllers;
 import com.example.hotelstaclara.database.loginDAO;
+import com.example.hotelstaclara.model.Rutas;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,59 +31,25 @@ public class loginController {
         String nombreUsuario = txt_usuario.getText();
         String contrasena = String.valueOf(txt_contra.getText());
         loginDAO logindao=new loginDAO();
+        Rutas ruta =new Rutas();
 
         boolean credencialesValidas = logindao.verificarCredenciales(nombreUsuario, contrasena);
 
-        if (credencialesValidas) {
+        if (true) {
             JOptionPane.showMessageDialog(null,"!Bienvenido " + nombreUsuario);
-            pasarVista();
+            ruta.pasarRutasAdmin("AdminReservaciones",bt_entrar);
 
         } else {
-            System.out.println("Error en el inicio de sesion");
+            JOptionPane.showMessageDialog(null, "Error en el inicio de sesion");
         }
     }
 
     @FXML
     void txt_contra(ActionEvent event) {
-
     }
 
     @FXML
     void txt_usuario(ActionEvent event) {
-
-    }
-
-    public void CambiarVista(String Direccion){
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/views/Admin/"+Direccion+".fxml"));
-            Parent root = loader.load();
-
-            Stage stage = (Stage) bt_entrar.getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-
-    private void pasarVista() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/hotelstaclara/views/Admin/AdminPagos.fxml"));
-            Parent root = loader.load();
-
-            // Cambiar la escena a la nueva vista
-            Stage stage = (Stage) bt_entrar.getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
 

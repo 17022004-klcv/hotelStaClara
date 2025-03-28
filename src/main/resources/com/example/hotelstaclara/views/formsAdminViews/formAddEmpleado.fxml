@@ -7,36 +7,75 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.9" prefHeight="634.0" prefWidth="450.0" style="-fx-background-color: #8986E3;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotelstaclara.controllers.formsAdminControllers.formAddEmpleadoController">
+<AnchorPane onDragDetected="#txt_cel" prefHeight="600.0" prefWidth="410.0" style="-fx-background-color: #8986E3;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotelstaclara.controllers.formsAdminControllers.formAddEmpleadoController">
    <children>
-      <ImageView fx:id="imgBack" fitHeight="76.0" fitWidth="46.0" layoutX="6.0" layoutY="14.0" onDragDetected="#imgBack" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+      <ImageView fx:id="imgBack" fitHeight="40.0" fitWidth="40.0" layoutX="14.0" layoutY="20.0" onDragDetected="#imgBack" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../img/back.png" />
          </image>
       </ImageView>
-      <Pane layoutX="81.0" layoutY="14.0" prefHeight="46.0" prefWidth="336.0" style="-fx-background-color: white; -fx-background-radius: 25px;">
+      <Pane layoutX="50.0" layoutY="20.0" prefHeight="40.0" prefWidth="310.0" style="-fx-background-color: white; -fx-background-radius: 25px;">
          <children>
-            <Text layoutX="150.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Empleado" />
+            <Text layoutX="115.0" layoutY="25.0" text="Empleado">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
          </children>
       </Pane>
-      <Text fill="WHITE" layoutX="51.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombres" />
-      <Text fill="WHITE" layoutX="51.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apellidos" />
-      <Text fill="WHITE" layoutX="49.0" layoutY="287.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
-      <Text fill="WHITE" layoutX="52.0" layoutY="352.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telefono" />
-      <Text fill="WHITE" layoutX="54.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DUI" />
-      <TextField fx:id="txt_apellidos" layoutX="186.0" layoutY="148.0" onAction="#txt_apellidos" prefHeight="46.0" prefWidth="230.0" promptText="Chavez Recinos" style="-fx-background-radius: 25px;" />
-      <TextField fx:id="txt_dui" layoutX="186.0" layoutY="204.0" onAction="#txt_dui" prefHeight="46.0" prefWidth="230.0" promptText="00000000-0" style="-fx-background-radius: 25px;" />
-      <TextField fx:id="txt_email" editable="false" layoutX="186.0" layoutY="259.0" onAction="#txt_email" prefHeight="46.0" prefWidth="230.0" promptText="example@gmail.com" style="-fx-background-radius: 25px;" />
-      <TextField fx:id="txt_nombres" layoutX="186.0" layoutY="94.0" onAction="#txt_nombres" prefHeight="46.0" prefWidth="230.0" promptText="Brian Josue" style="-fx-background-radius: 25px;" />
-      <Button fx:id="bt_agregar" layoutX="164.0" layoutY="556.0" mnemonicParsing="false" onAction="#br_agregar" prefHeight="54.0" prefWidth="121.0" text="Agregar" />
-      <Text fill="WHITE" layoutX="55.0" layoutY="412.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Celular" />
-      <Text fill="WHITE" layoutX="52.0" layoutY="467.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Direccion" />
-      <TextField fx:id="txt_tel" layoutX="186.0" layoutY="316.0" onAction="#txt_tel" prefHeight="46.0" prefWidth="230.0" promptText="0000-0000" style="-fx-background-radius: 25px;" />
-      <TextField fx:id="txt_cel" layoutX="186.0" layoutY="376.0" onAction="#txt_cel" prefHeight="46.0" prefWidth="230.0" promptText="0000-0000" style="-fx-background-radius: 25px;" />
-      <TextField fx:id="txt_direccion" layoutX="186.0" layoutY="431.0" onAction="#txt_direccion" prefHeight="46.0" prefWidth="230.0" style="-fx-background-radius: 25px;" />
-      <Text fill="WHITE" layoutX="57.0" layoutY="517.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cargo" />
-      <ComboBox fx:id="cb_cargo" layoutX="186.0" layoutY="489.0" onAction="#cb_cargo" prefHeight="46.0" prefWidth="230.0" promptText="Cargo" style="-fx-background-radius: 25px;" />
+      <Text fill="WHITE" layoutX="40.0" layoutY="110.0" text="Nombres">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="40.0" layoutY="160.0" text="Apellidos">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="40.0" layoutY="210.0" text="Dui">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="40.0" layoutY="260.0" text="Email">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="40.0" layoutY="310.0" text="Telefono">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="40.0" layoutY="360.0" text="Celular">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="40.0" layoutY="410.0" text="Direccion">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="40.0" layoutY="460.0" text="Cargo">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+
+      <TextField fx:id="txt_nombres" layoutX="160.0" layoutY="90.0" onAction="#txt_nombres" prefHeight="30.0" prefWidth="200.0" style="-fx-background-radius: 15px;" />
+      <TextField fx:id="txt_apellidos" layoutX="160.0" layoutY="140.0" onAction="#txt_apellidos" prefHeight="30.0" prefWidth="200.0" style="-fx-background-radius: 15px;" />
+      <TextField fx:id="txt_dui" layoutX="160.0" layoutY="190.0" onAction="#txt_dui" prefHeight="30.0" prefWidth="200.0" style="-fx-background-radius: 15px;" />
+      <TextField fx:id="txt_email" layoutX="160.0" layoutY="240.0" onAction="#txt_email" prefHeight="30.0" prefWidth="200.0" style="-fx-background-radius: 15px;" />
+      <TextField fx:id="txt_tel" layoutX="160.0" layoutY="290.0" onAction="#txt_tel" prefHeight="30.0" prefWidth="200.0" style="-fx-background-radius: 15px;" />
+      <TextField fx:id="txtCelular" layoutX="160.0" layoutY="340.0" onAction="#txtCelular" prefHeight="30.0" prefWidth="200.0" style="-fx-background-radius: 15px;" />
+      <TextField fx:id="txt_direccion" layoutX="160.0" layoutY="390.0" onAction="#txt_direccion" prefHeight="30.0" prefWidth="200.0" style="-fx-background-radius: 15px;" />
+
+      <Button fx:id="bt_agregar" layoutX="140.0" layoutY="500.0" mnemonicParsing="false" onAction="#bt_agregar" prefHeight="45.0" prefWidth="130.0" style="-fx-background-color: green; -fx-text-fill: white; -fx-background-radius: 10px;" text="AGREGAR" />
+      <ComboBox fx:id="cb_cargo" layoutX="160.0" layoutY="442.0" onAction="#cb_cargo" prefHeight="30.0" prefWidth="200.0" />
    </children>
 </AnchorPane>

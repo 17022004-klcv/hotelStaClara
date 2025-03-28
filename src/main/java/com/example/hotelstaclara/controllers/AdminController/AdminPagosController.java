@@ -1,5 +1,6 @@
 package com.example.hotelstaclara.controllers.AdminController;
 
+import com.example.hotelstaclara.model.Rutas;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,40 +26,60 @@ public class AdminPagosController {
     private Button but_Reservaciones;
 
     @FXML
+    private Button but_menbrecia;
+
+    @FXML
+    private Button but_reservaciones;
+
+    @FXML
+    private Button but_editar;
+
+    @FXML
+    private Button but_eliminar;
+
+    Rutas ruta = new Rutas();
+
+    @FXML
     void but_Cliente(ActionEvent event) {
-        pasarVista("AdminClientes");
+        ruta.pasarRutasAdmin("AdminClientes", but_Cliente);
     }
 
     @FXML
     void but_Empreados(ActionEvent event) {
-        pasarVista("AdminEmpleados");
+        ruta.pasarRutasAdmin("AdminEmpleados", but_Empreados);
     }
 
     @FXML
     void but_Habitaciones(ActionEvent event) {
-        pasarVista("AdminHabitaciones");
+        ruta.pasarRutasAdmin("AdminHabitaciones", but_Habitaciones);
     }
 
     @FXML
     void but_Reservaciones(ActionEvent event) {
-        pasarVista("AdminReservaciones");
+        ruta.pasarRutasAdmin("AdminReservaciones" , but_Reservaciones);
     }
 
 
-    private void pasarVista(String ruta) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/hotelstaclara/views/Admin/"+ruta+".fxml"));
-            Parent root = loader.load();
+    // ---------------------
 
-            // Cambiar la escena a la nueva vista
-            Stage stage = (Stage) but_Cliente.getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
+    @FXML
+    void but_editar(ActionEvent event) {
 
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
+    @FXML
+    void but_eliminar(ActionEvent event) {
+
+    }
+
+
+    @FXML
+    void but_menbrecia(ActionEvent event) {
+        ruta.pasarRutasAdminFroms("formPagoMembresia", but_menbrecia);
+    }
+
+    @FXML
+    void but_reservaciones(ActionEvent event) {
+    ruta.pasarRutasAdminFroms("formPagoReservacion", but_reservaciones);
+    }
 }

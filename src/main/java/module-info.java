@@ -6,6 +6,7 @@ module com.example.hotelstaclara {
 
 
     opens com.example.hotelstaclara to javafx.fxml;
+    opens com.example.hotelstaclara.controllers.formsAdminControllers to javafx.fxml;
     exports com.example.hotelstaclara;
     exports com.example.hotelstaclara.controllers;
     opens com.example.hotelstaclara.controllers to javafx.fxml;
