@@ -33,11 +33,20 @@ public class loginController {
         loginDAO logindao=new loginDAO();
         Rutas ruta =new Rutas();
 
-        boolean credencialesValidas = logindao.verificarCredenciales(nombreUsuario, contrasena);
+        String credencialesValidas = logindao.verificarCredenciales(nombreUsuario, contrasena);
 
-        if (true) {
-            JOptionPane.showMessageDialog(null,"!Bienvenido " + nombreUsuario);
-            ruta.pasarRutasAdmin("AdminReservaciones",bt_entrar);
+        if (credencialesValidas != null) {
+            switch (credencialesValidas) {
+                case "administrador":
+                    ruta.pasarRutasAdmin("AdminReservaciones",bt_entrar);
+                    break;
+                case "recepcionista":
+                    ruta.pasarRutasRecepcionista("USERpagos",bt_entrar);
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null,"!El cargo no existe! " + nombreUsuario);
+                    return;
+            }
 
         } else {
             JOptionPane.showMessageDialog(null, "Error en el inicio de sesion");

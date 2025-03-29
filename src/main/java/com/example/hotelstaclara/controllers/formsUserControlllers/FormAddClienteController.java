@@ -1,5 +1,6 @@
+//package com.example.hotelstaclara.controllers.formsUserControlllers;
 package com.example.hotelstaclara.controllers.formsUserControlllers;
-
+import com.example.hotelstaclara.model.Rutas;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -8,7 +9,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
 public class FormAddClienteController {
-
     @FXML
     private Button bt_agregar;
 
@@ -36,6 +36,8 @@ public class FormAddClienteController {
     @FXML
     private TextField txt_tel;
 
+    Rutas ruta  = new Rutas();
+
     @FXML
     void br_agregar(ActionEvent event) {
 
@@ -43,7 +45,7 @@ public class FormAddClienteController {
 
     @FXML
     void imgBack(MouseEvent event) {
-
+        ruta.cerrarVentana(bt_agregar);
     }
 
     @FXML

@@ -31,7 +31,7 @@ public class loginDAO {
                 FROM empleado AS e
                 INNER JOIN cargo AS c ON e.id_cargo = c.id_cargo
                 INNER JOIN login AS lo ON e.id_empleado = lo.id_empleado
-                WHERE lo.usuario = ? and lo.contraseña = ?
+                WHERE lo.usuario = ? and lo.contraseña = ? and c.nombre_cargo = ?
                 ;
                 """;
 
@@ -48,25 +48,33 @@ public class loginDAO {
        return null;
     }
 
-    public boolean verificarCredenciales(String nombreUsuario, String contrasena) {
-        String sql = "SELECT contraseña FROM login WHERE usuario = ?";
+    public String verificarCredenciales(String nombreUsuario, String contrasena) {
+        String sql = """
+               SELECT c.nombre_cargo
+                	FROM login l
+               JOIN empleado e ON l.id_empleado = e.id_empleado
+               JOIN cargo c ON e.id_cargo = c.id_cargo
+                WHERE l.usuario = ? AND l.contraseña = ?;
+                """;
 
         try (Connection con = getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
 
             ps.setString(1, nombreUsuario);
+            ps.setString(2, contrasena);
 
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
-                    String contrasenaAlmacenada = rs.getString("contraseña");
-                    return contrasena.equals(contrasenaAlmacenada);
+                    return rs.getString("nombre_cargo");
                 }
             }
         } catch (SQLException e) {
             e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error al octener datos de la base de datos!");
         }
-        return false;
+        return null;
     }
+
 }
 
 

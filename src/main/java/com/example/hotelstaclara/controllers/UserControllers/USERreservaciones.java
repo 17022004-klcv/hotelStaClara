@@ -1,5 +1,6 @@
 package com.example.hotelstaclara.controllers.UserControllers;
 
+import com.example.hotelstaclara.model.Rutas;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -34,6 +35,8 @@ public class USERreservaciones {
     @FXML
     private TextField txt_Buscador;
 
+    Rutas ruta = new Rutas();
+
     @FXML
     void btn_Buscar(ActionEvent event) {
 
@@ -41,7 +44,7 @@ public class USERreservaciones {
 
     @FXML
     void btn_Clientes(ActionEvent event) {
-
+        ruta.pasarRutasRecepcionista("USERclientes", btn_Clientes);
     }
 
     @FXML
@@ -51,12 +54,12 @@ public class USERreservaciones {
 
     @FXML
     void btn_Habitaciones(ActionEvent event) {
-
+        ruta.pasarRutasRecepcionista("USERhabitaciones", btn_Habitaciones);
     }
 
     @FXML
     void btn_Pagos(ActionEvent event) {
-
+        ruta.pasarRutasRecepcionista("USERpagos", btn_Pagos);
     }
 
     @FXML
@@ -64,9 +67,11 @@ public class USERreservaciones {
 
     }
 
+    //------------------------
+
     @FXML
     void but_agregar(ActionEvent event) {
-
+        ruta.pasarRutasRecepcionistaFroms("formReservacion", but_agregar);
     }
 
     @FXML

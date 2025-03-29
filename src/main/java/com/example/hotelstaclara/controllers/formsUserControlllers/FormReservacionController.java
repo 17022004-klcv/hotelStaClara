@@ -1,5 +1,6 @@
 package com.example.hotelstaclara.controllers.formsUserControlllers;
 
+import com.example.hotelstaclara.model.Rutas;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -38,6 +39,8 @@ public class FormReservacionController {
     @FXML
     private RadioButton rb_royal;
 
+    Rutas ruta = new Rutas();
+
     @FXML
     void but_Aceptar(ActionEvent event) {
 
@@ -55,7 +58,7 @@ public class FormReservacionController {
 
     @FXML
     void imgBack(MouseEvent event) {
-
+        ruta.cerrarVentana(but_Aceptar);
     }
 
     @FXML
