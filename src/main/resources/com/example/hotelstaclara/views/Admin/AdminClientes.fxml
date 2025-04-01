@@ -15,18 +15,18 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="fondo" stylesheets="@../../styles/AdminStyles/AdminClientes.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotelstaclara.controllers.AdminController.AdminClientesController">
    <children>
-      <Pane prefHeight="720.0" prefWidth="300.0" styleClass="barra">
+      <Pane prefHeight="720.0" prefWidth="250.0" styleClass="barra">
          <children>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="67.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../img/logo.png" />
                </image>
             </ImageView>
-            <VBox layoutY="205.0" prefHeight="355.0" prefWidth="300.0">
+            <VBox layoutY="205.0" prefHeight="400.0" prefWidth="250.0" styleClass=".">
                <children>
-                  <HBox prefHeight="114.0" prefWidth="300.0">
+                  <HBox prefHeight="114.0" prefWidth="300.0" styleClass="boton-menu">
                      <children>
-                        <ImageView fitHeight="50.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="50.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true" styleClass="boton-menu">
                            <image>
                               <Image url="@../../img/pago.png" />
                            </image>
@@ -39,7 +39,7 @@
                               <Insets />
                            </HBox.margin>
                            <padding>
-                              <Insets bottom="25.0" right="150.0" top="25.0" />
+                              <Insets bottom="25.0" right="120.0" top="25.0" />
                            </padding>
                            <font>
                               <Font size="20.0" />
@@ -47,7 +47,7 @@
                         </Button>
                      </children>
                   </HBox>
-                  <HBox prefHeight="114.0" prefWidth="300.0">
+                  <HBox prefHeight="114.0" prefWidth="300.0" styleClass="boton-menu">
                      <children>
                         <ImageView fitHeight="50.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -57,12 +57,12 @@
                               <Insets left="25.0" top="25.0" />
                            </HBox.margin>
                         </ImageView>
-                        <Button fx:id="but_Empleados" mnemonicParsing="false" onAction="#but_Empleados" prefHeight="26.0" prefWidth="252.0" styleClass="boton-menu" text="Empreados">
+                        <Button fx:id="but_Empleados" mnemonicParsing="false" onAction="#but_Empleados" prefHeight="26.0" prefWidth="252.0" styleClass="boton-menu" text="Empleados">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
                            <padding>
-                              <Insets bottom="25.0" right="108.0" top="25.0" />
+                              <Insets bottom="25.0" right="80.0" top="25.0" />
                            </padding>
                            <font>
                               <Font size="20.0" />
@@ -70,7 +70,7 @@
                         </Button>
                      </children>
                   </HBox>
-                  <HBox prefHeight="114.0" prefWidth="300.0">
+                  <HBox prefHeight="114.0" prefWidth="300.0" styleClass="boton-menu">
                      <children>
                         <ImageView fitHeight="58.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -85,7 +85,7 @@
                               <Insets />
                            </HBox.margin>
                            <padding>
-                              <Insets bottom="25.0" right="140.0" top="25.0" />
+                              <Insets bottom="25.0" right="100.0" top="25.0" />
                            </padding>
                            <font>
                               <Font size="20.0" />
@@ -93,7 +93,7 @@
                         </Button>
                      </children>
                   </HBox>
-                  <HBox prefHeight="114.0" prefWidth="300.0">
+                  <HBox prefHeight="114.0" prefWidth="300.0" styleClass="boton-menu">
                      <children>
                         <ImageView fitHeight="58.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -108,7 +108,7 @@
                               <Insets />
                            </HBox.margin>
                            <padding>
-                              <Insets bottom="25.0" right="90.0" top="25.0" />
+                              <Insets bottom="25.0" right="60.0" top="25.0" />
                            </padding>
                            <font>
                               <Font size="20.0" />
@@ -116,7 +116,7 @@
                         </Button>
                      </children>
                   </HBox>
-                  <HBox prefHeight="114.0" prefWidth="300.0">
+                  <HBox prefHeight="114.0" prefWidth="300.0" styleClass="boton-menu">
                      <children>
                         <ImageView fitHeight="58.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -131,7 +131,7 @@
                               <Insets />
                            </HBox.margin>
                            <padding>
-                              <Insets bottom="25.0" right="90.0" top="25.0" />
+                              <Insets bottom="25.0" right="50.0" top="25.0" />
                            </padding>
                            <font>
                               <Font size="20.0" />

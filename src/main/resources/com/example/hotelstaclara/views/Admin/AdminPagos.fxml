@@ -15,16 +15,16 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="fondo" stylesheets="@../../styles/AdminStyles/AdminPagos.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotelstaclara.controllers.AdminController.AdminPagosController">
    <children>
-      <Pane prefHeight="720.0" prefWidth="300.0" styleClass="barra" stylesheets="@../../styles/AdminStyles/AdminPagos.css">
+      <Pane prefHeight="720.0" prefWidth="250.0" styleClass="barra" stylesheets="@../../styles/AdminStyles/AdminPagos.css">
          <children>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="67.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../img/logo.png" />
                </image>
             </ImageView>
-            <VBox layoutY="205.0" prefHeight="355.0" prefWidth="300.0">
+            <VBox layoutY="205.0" prefHeight="400.0" prefWidth="250.0">
                <children>
-                  <HBox prefHeight="114.0" prefWidth="300.0">
+                  <HBox prefHeight="114.0" prefWidth="300.0" styleClass="boton-menu">
                      <children>
                         <ImageView fitHeight="58.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -39,7 +39,7 @@
                               <Insets />
                            </HBox.margin>
                            <padding>
-                              <Insets bottom="25.0" right="150.0" top="25.0" />
+                              <Insets bottom="25.0" right="120.0" top="25.0" />
                            </padding>
                            <font>
                               <Font size="20.0" />
@@ -47,7 +47,7 @@
                         </Button>
                      </children>
                   </HBox>
-                  <HBox prefHeight="114.0" prefWidth="300.0">
+                  <HBox prefHeight="114.0" prefWidth="300.0" styleClass="boton-menu">
                      <children>
                         <ImageView fitHeight="58.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -57,12 +57,12 @@
                               <Insets left="25.0" top="25.0" />
                            </HBox.margin>
                         </ImageView>
-                        <Button fx:id="but_Empreados" mnemonicParsing="false" onAction="#but_Empreados" prefHeight="26.0" prefWidth="252.0" styleClass="boton-menu" text="Empreados">
+                        <Button fx:id="but_Empreados" mnemonicParsing="false" onAction="#but_Empreados" prefHeight="26.0" prefWidth="252.0" styleClass="boton-menu" text="Empleados">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
                            <padding>
-                              <Insets bottom="25.0" right="108.0" top="25.0" />
+                              <Insets bottom="25.0" right="80.0" top="25.0" />
                            </padding>
                            <font>
                               <Font size="20.0" />
@@ -70,7 +70,7 @@
                         </Button>
                      </children>
                   </HBox>
-                  <HBox prefHeight="114.0" prefWidth="300.0">
+                  <HBox prefHeight="114.0" prefWidth="300.0" styleClass="boton-menu">
                      <children>
                         <ImageView fitHeight="58.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -85,7 +85,7 @@
                               <Insets />
                            </HBox.margin>
                            <padding>
-                              <Insets bottom="25.0" right="140.0" top="25.0" />
+                              <Insets bottom="25.0" right="100.0" top="25.0" />
                            </padding>
                            <font>
                               <Font size="20.0" />
@@ -93,7 +93,7 @@
                         </Button>
                      </children>
                   </HBox>
-                  <HBox prefHeight="114.0" prefWidth="300.0">
+                  <HBox prefHeight="114.0" prefWidth="300.0" styleClass="boton-menu">
                      <children>
                         <ImageView fitHeight="58.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -108,7 +108,7 @@
                               <Insets />
                            </HBox.margin>
                            <padding>
-                              <Insets bottom="25.0" right="90.0" top="25.0" />
+                              <Insets bottom="25.0" right="60.0" top="25.0" />
                            </padding>
                            <font>
                               <Font size="20.0" />
@@ -116,7 +116,7 @@
                         </Button>
                      </children>
                   </HBox>
-                  <HBox prefHeight="114.0" prefWidth="300.0">
+                  <HBox prefHeight="114.0" prefWidth="300.0" styleClass="boton-menu">
                      <children>
                         <ImageView fitHeight="58.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -131,7 +131,7 @@
                               <Insets />
                            </HBox.margin>
                            <padding>
-                              <Insets bottom="25.0" right="90.0" top="25.0" />
+                              <Insets bottom="25.0" right="50.0" top="25.0" />
                            </padding>
                            <font>
                               <Font size="20.0" />
@@ -158,7 +158,7 @@
             <TableColumn prefWidth="144.0" text="Estado" />
         </columns>
       </TableView>
-      <Button fx:id="but_eliminar" layoutX="352.0" layoutY="584.0" mnemonicParsing="false" onAction="#but_eliminar" prefHeight="67.0" prefWidth="176.0" text="ELIMINAR">
+      <Button fx:id="but_eliminar" layoutX="398.0" layoutY="590.0" mnemonicParsing="false" onAction="#but_eliminar" prefHeight="67.0" prefWidth="176.0" text="ELIMINAR">
          <padding>
             <Insets bottom="25.0" left="50.0" right="50.0" top="25.0" />
          </padding>
@@ -167,7 +167,7 @@
             <String fx:value="eliminar" />
          </styleClass>
       </Button>
-      <Button fx:id="but_reservaciones" layoutX="769.0" layoutY="584.0" mnemonicParsing="false" onAction="#but_reservaciones" prefHeight="67.0" prefWidth="176.0" text="PAGO DE RESERVACIONES">
+      <Button fx:id="but_reservaciones" layoutX="815.0" layoutY="590.0" mnemonicParsing="false" onAction="#but_reservaciones" prefHeight="67.0" prefWidth="176.0" text="PAGO DE RESERVACIONES">
          <padding>
             <Insets bottom="25.0" left="15.0" right="15.0" top="25.0" />
          </padding>
@@ -176,7 +176,7 @@
             <String fx:value="btn" />
          </styleClass>
       </Button>
-      <Button fx:id="but_menbrecia" layoutX="975.0" layoutY="584.0" mnemonicParsing="false" onAction="#but_menbrecia" prefHeight="67.0" prefWidth="176.0" text="PAGO DE MEMBRECIA">
+      <Button fx:id="but_menbrecia" layoutX="1021.0" layoutY="590.0" mnemonicParsing="false" onAction="#but_menbrecia" prefHeight="67.0" prefWidth="176.0" text="PAGO DE MEMBRECIA">
          <padding>
             <Insets bottom="25.0" left="15.0" right="15.0" top="25.0" />
          </padding>
@@ -185,7 +185,7 @@
             <String fx:value="btn" />
          </styleClass>
       </Button>
-      <Button fx:id="but_editar" layoutX="559.0" layoutY="584.0" mnemonicParsing="false" onAction="#but_editar" prefHeight="67.0" prefWidth="176.0" text="EDITAR">
+      <Button fx:id="but_editar" layoutX="605.0" layoutY="590.0" mnemonicParsing="false" onAction="#but_editar" prefHeight="67.0" prefWidth="176.0" text="EDITAR">
          <padding>
             <Insets bottom="25.0" left="60.0" right="50.0" top="25.0" />
          </padding>

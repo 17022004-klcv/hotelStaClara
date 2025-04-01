@@ -54,12 +54,11 @@ public class loginDAO {
                 	FROM login l
                JOIN empleado e ON l.id_empleado = e.id_empleado
                JOIN cargo c ON e.id_cargo = c.id_cargo
-                WHERE l.usuario = ? AND l.contraseña = ?;
+               WHERE l.usuario = ? AND l.contraseña = ?;
                 """;
 
         try (Connection con = getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
-
             ps.setString(1, nombreUsuario);
             ps.setString(2, contrasena);
 
@@ -70,7 +69,7 @@ public class loginDAO {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Error al octener datos de la base de datos!");
+            JOptionPane.showMessageDialog(null, "Error al obtener datos de la base de datos!");
         }
         return null;
     }
