@@ -1,4 +1,4 @@
-package com.example.hotelstaclara.model;
+package com.example.hotelstaclara.Recursos;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
