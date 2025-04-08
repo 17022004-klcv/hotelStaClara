@@ -58,5 +58,7 @@ public class AdminHabitacionesController {
     void bt_editar(ActionEvent event) {
 
     }
-
+    public void but_login(javafx.scene.input.MouseEvent mouseEvent) {
+        ruta.pasarRutasLogin("Login", bt_agregar);
+    }
 }

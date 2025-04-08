@@ -5,6 +5,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
+import java.awt.event.MouseEvent;
+
 public class AdminPagosController {
 
     @FXML
@@ -63,9 +65,7 @@ public class AdminPagosController {
 
     @FXML
     void but_eliminar(ActionEvent event) {
-
     }
-
 
     @FXML
     void but_menbrecia(ActionEvent event) {
@@ -75,5 +75,9 @@ public class AdminPagosController {
     @FXML
     void but_reservaciones(ActionEvent event) {
     ruta.pasarRutasAdminFroms("formPagoReservacion", but_reservaciones);
+    }
+
+    public void but_login(javafx.scene.input.MouseEvent mouseEvent) {
+        ruta.pasarRutasLogin("Login", but_Cliente);
     }
 }

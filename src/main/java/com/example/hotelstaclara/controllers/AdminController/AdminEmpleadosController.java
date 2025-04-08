@@ -69,5 +69,8 @@ public class AdminEmpleadosController {
 
     }
 
+    public void but_login(javafx.scene.input.MouseEvent mouseEvent) {
+        ruta.pasarRutasLogin("Login", but_Cliente);
+    }
 
 }

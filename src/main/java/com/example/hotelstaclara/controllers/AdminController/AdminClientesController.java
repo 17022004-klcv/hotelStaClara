@@ -61,9 +61,11 @@ public class AdminClientesController {
     void but_editar(ActionEvent event) {
 
     }
-
     @FXML
     void but_eliminar(ActionEvent event) {
+    }
 
+    public void but_login(javafx.scene.input.MouseEvent mouseEvent) {
+        ruta.pasarRutasLogin("Login", but_agragar);
     }
 }
