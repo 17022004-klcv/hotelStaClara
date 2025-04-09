@@ -1,6 +1,6 @@
 package com.example.hotelstaclara.controllers.formsAdminControllers;
 
-import com.example.hotelstaclara.model.Rutas;
+import com.example.hotelstaclara.Recursos.Rutas;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;

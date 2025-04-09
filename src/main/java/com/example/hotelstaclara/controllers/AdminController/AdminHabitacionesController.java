@@ -1,15 +1,9 @@
 package com.example.hotelstaclara.controllers.AdminController;
 
-import com.example.hotelstaclara.model.Rutas;
+import com.example.hotelstaclara.Recursos.Rutas;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.stage.Stage;
-
-import java.io.IOException;
 
 public class AdminHabitacionesController {
 
@@ -64,5 +58,7 @@ public class AdminHabitacionesController {
     void bt_editar(ActionEvent event) {
 
     }
-
+    public void but_login(javafx.scene.input.MouseEvent mouseEvent) {
+        ruta.pasarRutasLogin("Login", bt_agregar);
+    }
 }

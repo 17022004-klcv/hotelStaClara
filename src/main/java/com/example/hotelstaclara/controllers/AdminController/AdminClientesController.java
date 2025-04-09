@@ -1,16 +1,9 @@
 package com.example.hotelstaclara.controllers.AdminController;
 
-import com.example.hotelstaclara.model.Rutas;
+import com.example.hotelstaclara.Recursos.Rutas;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-
-import java.io.IOException;
 
 public class AdminClientesController {
 
@@ -68,9 +61,11 @@ public class AdminClientesController {
     void but_editar(ActionEvent event) {
 
     }
-
     @FXML
     void but_eliminar(ActionEvent event) {
+    }
 
+    public void but_login(javafx.scene.input.MouseEvent mouseEvent) {
+        ruta.pasarRutasLogin("Login", but_agragar);
     }
 }
