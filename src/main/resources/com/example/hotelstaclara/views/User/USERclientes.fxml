@@ -7,7 +7,6 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.BoxBlur?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -16,16 +15,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="723.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotelstaclara.controllers.UserControllers.USERclientes">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotelstaclara.controllers.UserControllers.USERclientes">
    <children>
-      <ImageView fitHeight="723.0" fitWidth="1280.0" layoutX="-10.0" layoutY="-4.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <ImageView fitHeight="735.0" fitWidth="1300.0" layoutX="-10.0" layoutY="-4.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
             <Image url="@../../img/fondo-recepcionista.jpg" />
          </image>
       </ImageView>
-      <Pane layoutX="110.0" layoutY="90.0" prefHeight="608.0" prefWidth="266.0" styleClass="munu" stylesheets="@../../styles/UserStyles/formsStyle.css" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="50.0">
+      <Pane layoutX="100.0" layoutY="80.0" prefHeight="608.0" prefWidth="266.0" styleClass="munu" stylesheets="@../../styles/UserStyles/formsStyle.css" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="50.0">
          <children>
-            <ImageView fitHeight="189.0" fitWidth="189.0" layoutX="40.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="PanelLogo" fitHeight="189.0" fitWidth="189.0" layoutX="40.0" layoutY="20.0" onMouseClicked="#PanelLogo_Click" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../img/logo.png" />
                </image>
@@ -103,18 +102,15 @@
                </children>
             </VBox>
          </children>
-         <effect>
-            <BoxBlur height="13.0" width="0.0" />
-         </effect>
       </Pane>
-      <Pane layoutX="297.0" layoutY="50.0" prefHeight="623.0" prefWidth="981.0" styleClass="munu" stylesheets="@../../styles/UserStyles/formsStyle.css" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0">
+      <Pane layoutX="365.0" layoutY="60.0" prefHeight="635.0" prefWidth="975.0" styleClass="munu" stylesheets="@../../styles/UserStyles/formsStyle.css" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="50.0">
          <children>
             <Label layoutX="372.0" layoutY="25.0" text="Clientes">
                <font>
                   <Font name="Arial" size="45.0" />
                </font>
             </Label>
-            <TableView layoutX="3.0" layoutY="164.0" prefHeight="330.0" prefWidth="975.0" style="-fx-background-radius: 20;">
+            <TableView layoutX="2.0" layoutY="163.0" prefHeight="330.0" prefWidth="975.0" style="-fx-background-radius: 20;">
                <columns>
                   <TableColumn prefWidth="103.0" text="Nombre" />
                   <TableColumn prefWidth="176.0" text="Apellido" />
@@ -147,12 +143,12 @@
             </Button>
             <Pane layoutX="32.0" layoutY="109.0" prefHeight="38.0" prefWidth="702.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 20;">
                <children>
-                  <TextField fx:id="txt_Buscador" layoutX="48.0" onAction="#txt_Buscar" prefHeight="38.0" prefWidth="633.0" promptText="Buscar: Nombre" style="-fx-background-color: white;" />
-                  <ImageView fitHeight="26.0" fitWidth="30.0" layoutX="10.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="26.0" fitWidth="30.0" layoutX="17.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../img/lupa.png" />
                      </image>
                   </ImageView>
+                  <TextField fx:id="txt_Buscador" layoutX="67.0" onAction="#txt_Buscar" prefHeight="38.0" prefWidth="635.0" style="-fx-background-radius: 20;" />
                </children>
             </Pane>
             <Button fx:id="bnt_Buscar" layoutX="746.0" layoutY="110.0" mnemonicParsing="false" onAction="#btn_Buscar" prefHeight="39.0" prefWidth="111.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 20;" text="Buscar">
@@ -161,9 +157,6 @@
                </font>
             </Button>
          </children>
-         <effect>
-            <BoxBlur height="120.24" width="71.5" />
-         </effect>
       </Pane>
    </children>
 </AnchorPane>

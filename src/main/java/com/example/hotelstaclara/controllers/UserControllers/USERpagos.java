@@ -4,6 +4,7 @@ import com.example.hotelstaclara.Recursos.Rutas;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 
 public class USERpagos {
 
@@ -65,4 +66,7 @@ public class USERpagos {
         ruta.pasarRutasRecepcionistaFroms("formPagoReservacion", but_reservaciones);
     }
 
+    public void PanelLogoClick(MouseEvent mouseEvent) {
+        ruta.pasarRutasLogin("Login", btn_Pagos);
+    }
 }
