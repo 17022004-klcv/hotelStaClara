@@ -13,14 +13,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotelstaclara.controllers.UserControllers.USERhabitaciones">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotelstaclara.controllers.UserControllers.USERhabitaciones">
    <children>
       <ImageView fitHeight="723.0" fitWidth="1280.0" layoutX="10.0" layoutY="8.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
             <Image url="@../../img/fondo-recepcionista.jpg" />
          </image>
       </ImageView>
-      <Pane layoutX="142.0" layoutY="156.0" prefHeight="608.0" prefWidth="266.0" styleClass="munu" stylesheets="@../../styles/UserStyles/formsStyle.css" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="50.0">
+      <Pane layoutX="110.0" layoutY="90.0" prefHeight="608.0" prefWidth="266.0" styleClass="munu" stylesheets="@../../styles/UserStyles/formsStyle.css" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="50.0">
          <children>
             <ImageView fitHeight="189.0" fitWidth="189.0" layoutX="40.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -101,20 +101,20 @@
             </VBox>
          </children>
       </Pane>
-      <Pane layoutX="365.0" layoutY="60.0" prefHeight="623.0" prefWidth="902.0" styleClass="munu" stylesheets="@../../styles/UserStyles/formsStyle.css" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="50.0">
+      <Pane layoutX="375.0" layoutY="70.0" prefHeight="623.0" prefWidth="981.0" styleClass="munu" stylesheets="@../../styles/UserStyles/formsStyle.css" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0">
          <children>
             <Label layoutX="322.0" layoutY="25.0" text="Habitaciones">
                <font>
                   <Font name="Arial" size="45.0" />
                </font>
             </Label>
-            <TableView layoutX="74.0" layoutY="106.0" prefHeight="371.0" prefWidth="760.0" style="-fx-background-radius: 20;">
+            <TableView layoutX="8.0" layoutY="163.0" prefHeight="330.0" prefWidth="964.0" style="-fx-background-radius: 20;">
                <columns>
-                  <TableColumn prefWidth="103.0" text="Numero" />
-                  <TableColumn prefWidth="176.0" text="Tipo" />
-                  <TableColumn prefWidth="148.0" text="Capacidad" />
-                  <TableColumn prefWidth="192.800048828125" text="Precio" />
-                  <TableColumn prefWidth="136.00006103515625" text="Estado" />
+                  <TableColumn prefWidth="129.0" text="Numero" />
+                  <TableColumn prefWidth="183.0" text="Tipo" />
+                  <TableColumn prefWidth="240.0" text="Capacidad" />
+                  <TableColumn prefWidth="192.0" text="Precio" />
+                  <TableColumn prefWidth="218.0" text="Estado" />
                </columns>
             </TableView>
             <Button fx:id="but_editar" layoutX="380.0" layoutY="512.0" mnemonicParsing="false" onAction="#but_editar" prefHeight="67.0" prefWidth="176.0" style="-fx-background-color: #9ACBD0; -fx-background-radius: 20;" text="EDITAR" textFill="WHITE">
