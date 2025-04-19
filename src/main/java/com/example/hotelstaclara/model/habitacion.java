@@ -1,6 +1,6 @@
 package com.example.hotelstaclara.model;
 
-enum estado {
+enum estado_habitacion {
     disponible,
     ocupada,
     sucia
@@ -13,12 +13,12 @@ public class habitacion {
     private String tipo_habitacion;
     private int capacidad;
     private double precio;
-    private estado estado_habitacion;
+    private estado_habitacion estado_habitacion;
 
     public habitacion() {
     }
 
-    public habitacion(int id_habitacion, String numero_habitacion, String tipo_habitacion, int capacidad, double precio, estado estado_habitacion) {
+    public habitacion(int id_habitacion, String numero_habitacion, String tipo_habitacion, int capacidad, double precio, estado_habitacion estado_habitacion) {
         this.id_habitacion = id_habitacion;
         this.numero_habitacion = numero_habitacion;
         this.tipo_habitacion = tipo_habitacion;
@@ -67,11 +67,11 @@ public class habitacion {
         this.precio = precio;
     }
 
-    public estado getEstado_habitacion() {
+    public estado_habitacion getEstado_habitacion() {
         return estado_habitacion;
     }
 
-    public void setEstado_habitacion(estado estado_habitacion) {
+    public void setEstado_habitacion(estado_habitacion estado_habitacion) {
         this.estado_habitacion = estado_habitacion;
     }
 }
