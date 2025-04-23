@@ -4,15 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a44bdff9-8517-448d-807a-b783690deef8" name="Changes" comment="Desing:La insercion de Habitaciones ya lista y funcional. No hay nada validado">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/database/HabiracionDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/model/Estado_habitacion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+
+    <list default="true" id="a44bdff9-8517-448d-807a-b783690deef8" name="Changes" comment="Feat: model contacto creado">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/database/empleadoDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/formsAdminControllers/FormHabitacionesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/formsAdminControllers/FormHabitacionesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/database/connection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/database/connection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/model/habitacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/model/habitacion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/hotelstaclara/views/formsAdminViews/formHabitaciones.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/hotelstaclara/views/formsAdminViews/formHabitaciones.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/AdminController/AdminEmpleadosController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/AdminController/AdminEmpleadosController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/formsAdminControllers/formAddEmpleadoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/formsAdminControllers/formAddEmpleadoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/validations/prueba.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/validations/validaciones.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/hotelstaclara/views/Admin/AdminEmpleados.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/hotelstaclara/views/Admin/AdminEmpleados.fxml" afterDir="false" />
+
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,6 +65,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.HelloApplication.executor": "Run",
@@ -75,6 +77,7 @@
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.43333334"
+
   }
 }]]></component>
   <component name="RunManager">
@@ -155,7 +158,25 @@
       <option name="project" value="LOCAL" />
       <updated>1745353773709</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+
+    <task id="LOCAL-00012" summary="Feat: model cargo creado">
+      <option name="closed" value="true" />
+      <created>1745031199134</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1745031199134</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Feat: model contacto creado">
+      <option name="closed" value="true" />
+      <created>1745031401988</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1745031401988</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
+
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -176,8 +197,17 @@
     <MESSAGE value="Conectar vistas de recepcionista, optimizar la navegación de admin y recepcionista con el login" />
     <MESSAGE value="optimizar el incio de sesion, mejora de rediseño de la parte de admin, crear una clase para mostar mesejes: MensajeAlert" />
     <MESSAGE value="crear carpeta recursos. y pasar clases, rutas y MensajesAlert" />
-    <MESSAGE value="Desing:La insercion de Habitaciones ya lista y funcional. No hay nada validado" />
-    <MESSAGE value="Desing:hacer la clase DAO y hacerla funcional" />
-    <option name="LAST_COMMIT_MESSAGE" value="Desing:hacer la clase DAO y hacerla funcional" />
+
+    <MESSAGE value="Design: Se ha agregado el boton del logo para regresar al login en cada panel" />
+    <MESSAGE value="Feat: Creacion de model Factura y habitacion.java" />
+    <MESSAGE value="Feat: models de cliente_membresia, email, pago y reservacion, se han creado." />
+    <MESSAGE value="Feat: model empleado creado" />
+    <MESSAGE value="Feat: model membresia creado" />
+    <MESSAGE value="Feat: model cliente creado" />
+    <MESSAGE value="Feat: model cargo creado" />
+    <MESSAGE value="Feat: model contacto creado" />
+    <option name="LAST_COMMIT_MESSAGE" value="Feat: model contacto creado" />
+
+
   </component>
 </project>
