@@ -148,16 +148,16 @@
             <Font name="Arial Black" size="45.0" />
          </font>
       </Label>
-      <TableView layoutX="343.0" layoutY="152.0" prefHeight="400.0" prefWidth="900.0">
+      <TableView fx:id="tabla_habitaciones" layoutX="343.0" layoutY="152.0" prefHeight="400.0" prefWidth="900.0">
         <columns>
-          <TableColumn prefWidth="130.0" text="Numero" />
-          <TableColumn prefWidth="200.0" text="Tipo" />
-            <TableColumn prefWidth="200.0" text="Capacidad" />
-            <TableColumn prefWidth="200.0" text="Precio" />
-            <TableColumn prefWidth="168.800048828125" text="Estado" />
+          <TableColumn fx:id="colum_numeroHabiacion" prefWidth="130.0" text="Numero" />
+          <TableColumn fx:id="colum_tipoHabitacion" prefWidth="200.0" text="Tipo" />
+            <TableColumn fx:id="colum_cantidadHabitacion" prefWidth="200.0" text="Capacidad" />
+            <TableColumn fx:id="colum_precioHabitacion" prefWidth="200.0" text="Precio" />
+            <TableColumn fx:id="colum_estadoHabitacion" prefWidth="168.800048828125" text="Estado" />
         </columns>
       </TableView>
-      <Button fx:id="bt_editar" layoutX="410.0" layoutY="584.0" mnemonicParsing="false" onAction="#bt_editar" prefHeight="67.0" prefWidth="176.0" text="ELIMINAR">
+      <Button fx:id="bt_eliminar" layoutX="410.0" layoutY="584.0" mnemonicParsing="false" onAction="#bt_eliminar" prefHeight="67.0" prefWidth="176.0" text="ELIMINAR">
          <padding>
             <Insets bottom="25.0" left="50.0" right="50.0" top="25.0" />
          </padding>
@@ -175,7 +175,7 @@
             <String fx:value="btn" />
          </styleClass>
       </Button>
-      <Button layoutX="718.0" layoutY="584.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="176.0" text="EDITAR">
+      <Button fx:id="bt_editar" layoutX="718.0" layoutY="584.0" mnemonicParsing="false" onAction="#bt_editar" prefHeight="67.0" prefWidth="176.0" text="EDITAR">
          <padding>
             <Insets bottom="25.0" left="60.0" right="50.0" top="25.0" />
          </padding>
