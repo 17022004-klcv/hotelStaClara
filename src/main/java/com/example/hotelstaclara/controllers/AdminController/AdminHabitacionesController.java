@@ -111,6 +111,7 @@ public class AdminHabitacionesController {
         ruta.setOpAddEdit("edit");
         ruta.setHabitacion(hbitacionSeleccionada);
         ruta.pasarRutasAdminFroms("formHabitaciones", bt_editar);
+        ruta.setAdminController(this);
 
     }
 

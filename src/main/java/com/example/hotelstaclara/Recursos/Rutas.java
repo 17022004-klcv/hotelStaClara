@@ -17,6 +17,7 @@ public class Rutas {
 
     private String opAddEdit = "";
     private habitacion habitation;
+    private AdminHabitacionesController adminHabitacionesControllerOriginal;
 
     public Rutas() {
     }
@@ -48,6 +49,8 @@ public class Rutas {
             formHabitacionesController.setHabitacion(habitation);
             formHabitacionesController.inicializarFormulario();
 
+            formHabitacionesController.setAdminController(adminHabitacionesControllerOriginal);
+
             // Crear un nuevo escenario (Stage) para la nueva ventana
             Stage nuevoStage = new Stage();
             Scene scene = new Scene(root);
@@ -60,8 +63,9 @@ public class Rutas {
             nuevoStage.initOwner(stageActual);
             nuevoStage.initModality(Modality.WINDOW_MODAL);
 
-            AdminHabitacionesController adminHabitacionesController = new AdminHabitacionesController();
-            nuevoStage.setOnHidden(e -> adminHabitacionesController.llenarTablaHabitacion());
+            formHabitacionesController.setAdminController(adminHabitacionesControllerOriginal);
+            nuevoStage.setOnHidden(e -> adminHabitacionesControllerOriginal.llenarTablaHabitacion());
+
 
             // Mostrar el nuevo formulario
             nuevoStage.show();
@@ -136,6 +140,10 @@ public class Rutas {
 
     public void setHabitacion(habitacion habitacion) {
         this.habitation = habitacion;
+    }
+
+    public void setAdminController(AdminHabitacionesController adminController) {
+        this.adminHabitacionesControllerOriginal = adminController;
     }
 }
 

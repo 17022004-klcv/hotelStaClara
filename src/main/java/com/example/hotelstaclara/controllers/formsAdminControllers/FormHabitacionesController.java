@@ -6,6 +6,7 @@ import com.example.hotelstaclara.controllers.AdminController.AdminHabitacionesCo
 import com.example.hotelstaclara.database.HabiracionDAO;
 import com.example.hotelstaclara.model.Estado_habitacion;
 import com.example.hotelstaclara.model.habitacion;
+import com.example.hotelstaclara.validations.validaciones;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -65,46 +66,55 @@ public class FormHabitacionesController {
 
     @FXML
     void bt_agregar(ActionEvent event) throws SQLException {
+
+        if (!validarCamposFormulario()) {
+            return; // Si no pasa las validaciones, se detiene aquí
+        }
+
+
         if (OpAddEdit.equals("add")) {
             addHabitacion();
         } else if (OpAddEdit.equals("edit")) {
-            editarHabitacion(habitacion);
+            editarHabitacion();
+            ruta.cerrarVentana(bt_agregar);
         }
-    }
-
-    private void editarHabitacion(habitacion h) throws SQLException {
-        String numeroHabitacion = txt_numHabitaacion.getText();
-        String tipo = comb_tipoHabitacion.getValue();
-        int capacidad = Integer.parseInt(txt_capacidad.getText());
-        double precio = Double.parseDouble(txt_monto.getText());
-        Estado_habitacion estado = comb_estado.getValue();
-
-        HabiracionDAO habitacionesDAO = new HabiracionDAO();
-        habitacionesDAO.actualizarHabitacion(new habitacion(h.getId_habitacion(), numeroHabitacion, tipo, capacidad, precio, estado));
     }
 
 
     private void addHabitacion() throws SQLException {
+        HabiracionDAO habitacionesDAO = new HabiracionDAO();
+        habitacionesDAO.insertarHabitacion(obtenerDatosFormulario());
+    }
+
+    private void editarHabitacion() throws SQLException {
+        HabiracionDAO habitacionesDAO = new HabiracionDAO();
+        habitacionesDAO.actualizarHabitacion(obtenerDatosFormulario());
+    }
+
+
+    private habitacion obtenerDatosFormulario() {
         String numeroHabitacion = txt_numHabitaacion.getText();
         String tipo = comb_tipoHabitacion.getValue();
         int capacidad = Integer.parseInt(txt_capacidad.getText());
         double precio = Double.parseDouble(txt_monto.getText());
         Estado_habitacion estado = comb_estado.getValue();
 
-        HabiracionDAO habitacionesDAO = new HabiracionDAO();
-        habitacionesDAO.insertarHabitacion(new habitacion(0,numeroHabitacion, tipo, capacidad, precio, estado));
-    }
+        int id = (OpAddEdit.equals("edit") && habitacion != null) ? habitacion.getId_habitacion() : 0;
 
-
-
-    private void validarCampos() {
-
+        return new habitacion(id, numeroHabitacion, tipo, capacidad, precio, estado);
     }
 
 
 
 
 
+    private boolean validarCamposFormulario() {
+        return validaciones.validarCombo(comb_estado, "Estado")
+                && validaciones.validarCombo(comb_tipoHabitacion, "Tipo de Habitación");
+//                && validaciones.validarNumeroHabitacion(txt_numHabitaacion)
+//                && validaciones.validarCapacidad(txt_capacidad)
+//                && validaciones.validarPrecio(txt_monto);
+    }
 
 
 
@@ -120,6 +130,18 @@ public class FormHabitacionesController {
     public void setHabitacion(com.example.hotelstaclara.model.habitacion habitacion) {
         this.habitacion = habitacion;
     }
+
+
+    private AdminHabitacionesController adminController;
+
+    public void setAdminController(AdminHabitacionesController controller) {
+        this.adminController = controller;
+    }
+
+    public AdminHabitacionesController getAdminController() {
+        return adminController;
+    }
+
 
 }
 
