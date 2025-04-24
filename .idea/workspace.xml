@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a44bdff9-8517-448d-807a-b783690deef8" name="Changes" comment="Desing:actualizar la tabla cunando se edita, y unas balidaciones">
+    <list default="true" id="a44bdff9-8517-448d-807a-b783690deef8" name="Changes" comment="Desing:Creacion de la funcionalidad de eliminar, y poner las validaciones (se cambio el tipo de datos de TextField a javafx.scene.control.TextField) en la clase validaciones">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/Recursos/Rutas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/Recursos/Rutas.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/AdminController/AdminHabitacionesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/AdminController/AdminHabitacionesController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/formsAdminControllers/FormHabitacionesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/formsAdminControllers/FormHabitacionesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/database/HabiracionDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/database/HabiracionDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/validations/validaciones.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/validations/validaciones.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -202,7 +201,23 @@
       <option name="project" value="LOCAL" />
       <updated>1745461694295</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Desing:Creacion de la funcionalidad de eliminar">
+      <option name="closed" value="true" />
+      <created>1745462809956</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1745462809956</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Desing:Creacion de la funcionalidad de eliminar, y poner las validaciones (se cambio el tipo de datos de TextField a javafx.scene.control.TextField) en la clase validaciones">
+      <option name="closed" value="true" />
+      <created>1745462892170</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1745462892170</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -243,6 +258,8 @@
     <MESSAGE value="Feat: model cliente creado" />
     <MESSAGE value="Desing:ya se puede adtualizar la habitacion" />
     <MESSAGE value="Desing:actualizar la tabla cunando se edita, y unas balidaciones" />
-    <option name="LAST_COMMIT_MESSAGE" value="Desing:actualizar la tabla cunando se edita, y unas balidaciones" />
+    <MESSAGE value="Desing:Creacion de la funcionalidad de eliminar" />
+    <MESSAGE value="Desing:Creacion de la funcionalidad de eliminar, y poner las validaciones (se cambio el tipo de datos de TextField a javafx.scene.control.TextField) en la clase validaciones" />
+    <option name="LAST_COMMIT_MESSAGE" value="Desing:Creacion de la funcionalidad de eliminar, y poner las validaciones (se cambio el tipo de datos de TextField a javafx.scene.control.TextField) en la clase validaciones" />
   </component>
 </project>

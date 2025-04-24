@@ -100,6 +100,7 @@ public class AdminHabitacionesController {
     void bt_agregar(ActionEvent event) {
         ruta.setOpAddEdit("add");
         ruta.pasarRutasAdminFroms("formHabitaciones", bt_agregar);
+        ruta.setAdminController(this);
     }
 
     @FXML

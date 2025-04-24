@@ -54,6 +54,9 @@ public class FormHabitacionesController {
         comb_estado.setItems(FXCollections.observableArrayList(Estado_habitacion.values()));
         comb_tipoHabitacion.setItems(FXCollections.observableArrayList("Sencilla", "Doble", "Matrimonial"));
 
+        comb_tipoHabitacion.getSelectionModel().selectFirst();
+        comb_estado.getSelectionModel().selectFirst();
+
         if (OpAddEdit.equals("edit") && habitacion != null) {
             txt_numHabitaacion.setText(habitacion.getNumero_habitacion());
             comb_tipoHabitacion.setValue(habitacion.getTipo_habitacion());
@@ -104,18 +107,13 @@ public class FormHabitacionesController {
         return new habitacion(id, numeroHabitacion, tipo, capacidad, precio, estado);
     }
 
-
-
-
-
     private boolean validarCamposFormulario() {
-        return validaciones.validarCombo(comb_estado, "Estado")
+        return  validaciones.validarNumeroHabitacion(txt_numHabitaacion)
                 && validaciones.validarCombo(comb_tipoHabitacion, "Tipo de Habitación")
-                && validaciones.validarNumeroHabitacion(txt_numHabitaacion)
                 && validaciones.validarCapacidad(txt_capacidad)
-                && validaciones.validarPrecio(txt_monto);
+                && validaciones.validarPrecio(txt_monto)
+                && validaciones.validarCombo(comb_estado, "Estado");
     }
-
 
 
     @FXML
