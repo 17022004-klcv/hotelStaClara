@@ -4,6 +4,7 @@ import com.example.hotelstaclara.controllers.AdminController.AdminHabitacionesCo
 import com.example.hotelstaclara.controllers.UserControllers.USERhabitaciones;
 import com.example.hotelstaclara.controllers.formsAdminControllers.FormHabitacionesController;
 import com.example.hotelstaclara.controllers.formsUserControlllers.FormHabitacionController;
+import com.example.hotelstaclara.controllers.formsUserControlllers.FormPagoMembresiaController;
 import com.example.hotelstaclara.model.habitacion;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -46,12 +47,7 @@ public class Rutas {
             Parent root = loader.load();
 
             //pasar variables/datos de adminHabitaciones a formHabitaciones
-            FormHabitacionesController formHabitacionesController = loader.getController();
-            formHabitacionesController.setOpAddEdit(opAddEdit);
-            formHabitacionesController.setHabitacion(habitation);
-            formHabitacionesController.inicializarFormulario();
 
-            formHabitacionesController.setAdminController(adminHabitacionesControllerOriginal);
 
             // Crear un nuevo escenario (Stage) para la nueva ventana
             Stage nuevoStage = new Stage();
@@ -65,8 +61,23 @@ public class Rutas {
             nuevoStage.initOwner(stageActual);
             nuevoStage.initModality(Modality.WINDOW_MODAL);
 
-            formHabitacionesController.setAdminController(adminHabitacionesControllerOriginal);
-            nuevoStage.setOnHidden(e -> adminHabitacionesControllerOriginal.llenarTablaHabitacion());
+
+
+            Object controller = loader.getController();
+
+            if (controller instanceof FormHabitacionesController) {
+                FormHabitacionesController formHabitacionesController = loader.getController();
+                formHabitacionesController.setOpAddEdit(opAddEdit);
+                formHabitacionesController.setHabitacion(habitation);
+                formHabitacionesController.inicializarFormulario();
+
+                formHabitacionesController.setAdminController(adminHabitacionesControllerOriginal);
+
+                formHabitacionesController.setAdminController(adminHabitacionesControllerOriginal);
+                nuevoStage.setOnHidden(e -> adminHabitacionesControllerOriginal.llenarTablaHabitacion());
+
+            }
+
 
             // Mostrar el nuevo formulario
             nuevoStage.show();
@@ -101,14 +112,6 @@ public class Rutas {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/hotelstaclara/views/formsUserViews/" + url + ".fxml"));
             Parent root = loader.load();
 
-
-            //pasar variables/datos de adminHabitaciones a formHabitaciones
-            FormHabitacionController formReHabitacionesController = loader.getController();
-
-            formReHabitacionesController.setHabitacion(habitation);
-            formReHabitacionesController.inicializarFormulario();
-
-            formReHabitacionesController.setUserhabitaciones(formHabitacionControllerOriginal);
             // Crear un nuevo escenario (Stage) para la nueva ventana
             Stage nuevoStage = new Stage();
             Scene scene = new Scene(root);
@@ -121,8 +124,20 @@ public class Rutas {
             nuevoStage.initOwner(stageActual);
             nuevoStage.initModality(Modality.WINDOW_MODAL);
 
-            formReHabitacionesController.setUserhabitaciones(formHabitacionControllerOriginal);
-            nuevoStage.setOnHidden(e -> formHabitacionControllerOriginal.llenarTablaHabitacion());
+            //pasar variables/datos de adminHabitaciones a formHabitaciones
+            Object controller = loader.getController();
+
+            if (controller instanceof FormHabitacionController formHabitacionCtrl) {
+                formHabitacionCtrl.setHabitacion(habitation);
+                formHabitacionCtrl.inicializarFormulario();
+                formHabitacionCtrl.setUserhabitaciones(formHabitacionControllerOriginal);
+                nuevoStage.setOnHidden(e -> formHabitacionControllerOriginal.llenarTablaHabitacion());
+            }
+
+            if (controller instanceof FormPagoMembresiaController formPagoMembresiaCtrl) {
+
+            }
+
 
 
             // Mostrar el nuevo formulario
