@@ -1,7 +1,9 @@
 package com.example.hotelstaclara.Recursos;
 
 import com.example.hotelstaclara.controllers.AdminController.AdminHabitacionesController;
+import com.example.hotelstaclara.controllers.UserControllers.USERhabitaciones;
 import com.example.hotelstaclara.controllers.formsAdminControllers.FormHabitacionesController;
+import com.example.hotelstaclara.controllers.formsUserControlllers.FormHabitacionController;
 import com.example.hotelstaclara.model.habitacion;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,7 +12,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.control.Button; // Importa Button correctamente
 
-import javax.swing.*;
 import java.io.IOException;
 
 public class Rutas {
@@ -18,6 +19,7 @@ public class Rutas {
     private String opAddEdit = "";
     private habitacion habitation;
     private AdminHabitacionesController adminHabitacionesControllerOriginal;
+    private USERhabitaciones formHabitacionControllerOriginal;
 
     public Rutas() {
     }
@@ -99,6 +101,14 @@ public class Rutas {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/hotelstaclara/views/formsUserViews/" + url + ".fxml"));
             Parent root = loader.load();
 
+
+            //pasar variables/datos de adminHabitaciones a formHabitaciones
+            FormHabitacionController formReHabitacionesController = loader.getController();
+
+            formReHabitacionesController.setHabitacion(habitation);
+            formReHabitacionesController.inicializarFormulario();
+
+            formReHabitacionesController.setUserhabitaciones(formHabitacionControllerOriginal);
             // Crear un nuevo escenario (Stage) para la nueva ventana
             Stage nuevoStage = new Stage();
             Scene scene = new Scene(root);
@@ -110,6 +120,10 @@ public class Rutas {
             // Configurar el nuevo Stage para que aparezca sobre el actual
             nuevoStage.initOwner(stageActual);
             nuevoStage.initModality(Modality.WINDOW_MODAL);
+
+            formReHabitacionesController.setUserhabitaciones(formHabitacionControllerOriginal);
+            nuevoStage.setOnHidden(e -> formHabitacionControllerOriginal.llenarTablaHabitacion());
+
 
             // Mostrar el nuevo formulario
             nuevoStage.show();
@@ -143,6 +157,10 @@ public class Rutas {
 
     public void setAdminController(AdminHabitacionesController adminController) {
         this.adminHabitacionesControllerOriginal = adminController;
+    }
+
+    public void setrecepcionistaController(USERhabitaciones formHabitacionControllerOriginal) {
+        this.formHabitacionControllerOriginal = formHabitacionControllerOriginal;
     }
 }
 

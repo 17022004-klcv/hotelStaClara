@@ -4,9 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a44bdff9-8517-448d-807a-b783690deef8" name="Changes" comment="fix: solucinar un error al aptualizar tabla al agregar habitacion, y hacer que en los combox salga la primera opcion">
+    <list default="true" id="a44bdff9-8517-448d-807a-b783690deef8" name="Changes" comment="Feat: model contacto creado">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_22_4_2025_21_05__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_22_4_2025_21_05__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_4_2025_21_06__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_4_2025_21_06__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/AdminController/AdminHabitacionesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/AdminController/AdminHabitacionesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/Recursos/Rutas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/Recursos/Rutas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/UserControllers/USERhabitaciones.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/UserControllers/USERhabitaciones.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/formsUserControlllers/FormHabitacionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/formsUserControlllers/FormHabitacionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/hotelstaclara/views/User/USERhabitaciones.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/hotelstaclara/views/User/USERhabitaciones.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +23,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -48,9 +55,6 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
-  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -60,19 +64,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feat-hacer-CRUD-Habitacion&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/karlacarranza/Downloads/mysql-connector-j-9.1.0/mysql-connector-j-9.1.0/mysql-connector-j-9.1.0.jar&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.43333334&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.HelloApplication.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "com.codeium.enabled": "true",
+    "git-widget-placeholder": "feat-CRUD-habitacion-recepcionista",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/karlacarranza/Downloads/mysql-connector-j-9.1.0/mysql-connector-j-9.1.0/mysql-connector-j-9.1.0.jar",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.43333334"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
@@ -135,95 +139,39 @@
       <option name="project" value="LOCAL" />
       <updated>1743629359851</updated>
     </task>
-    <task id="LOCAL-00006" summary="Design: Se ha agregado el boton del logo para regresar al login en cada panel">
+    <task id="LOCAL-00006" summary="Desing:La insercion de Habitaciones ya lista y funcional. No hay nada validado">
       <option name="closed" value="true" />
-      <created>1744176932535</created>
+      <created>1745082029003</created>
       <option name="number" value="00006" />
       <option name="presentableId" value="LOCAL-00006" />
       <option name="project" value="LOCAL" />
-      <updated>1744176932535</updated>
+      <updated>1745082029003</updated>
     </task>
-    <task id="LOCAL-00007" summary="Feat: Creacion de model Factura y habitacion.java">
+    <task id="LOCAL-00007" summary="Desing:hacer la clase DAO y hacerla funcional">
       <option name="closed" value="true" />
-      <created>1744872829799</created>
+      <created>1745353773709</created>
       <option name="number" value="00007" />
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
-      <updated>1744872829799</updated>
+      <updated>1745353773709</updated>
     </task>
-    <task id="LOCAL-00008" summary="Feat: models de cliente_membresia, email, pago y reservacion, se han creado.">
+    <task id="LOCAL-00012" summary="Feat: model cargo creado">
       <option name="closed" value="true" />
-      <created>1745030264610</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1745030264610</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Feat: model empleado creado">
-      <option name="closed" value="true" />
-      <created>1745030612477</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1745030612477</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Feat: model membresia creado">
-      <option name="closed" value="true" />
-      <created>1745030791023</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1745030791023</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Feat: model cliente creado">
-      <option name="closed" value="true" />
-      <created>1745030970002</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1745030970002</updated>
-    </task>
-    <task id="LOCAL-00012" summary="Desing:ya se puede adtualizar la habitacion">
-      <option name="closed" value="true" />
-      <created>1745450628126</created>
+      <created>1745031199134</created>
       <option name="number" value="00012" />
       <option name="presentableId" value="LOCAL-00012" />
       <option name="project" value="LOCAL" />
-      <updated>1745450628127</updated>
+      <updated>1745031199134</updated>
     </task>
-    <task id="LOCAL-00013" summary="Desing:actualizar la tabla cunando se edita, y unas balidaciones">
+    <task id="LOCAL-00013" summary="Feat: model contacto creado">
       <option name="closed" value="true" />
-      <created>1745461694295</created>
+      <created>1745031401988</created>
       <option name="number" value="00013" />
       <option name="presentableId" value="LOCAL-00013" />
       <option name="project" value="LOCAL" />
-      <updated>1745461694295</updated>
+      <updated>1745031401988</updated>
     </task>
-    <task id="LOCAL-00014" summary="Desing:Creacion de la funcionalidad de eliminar">
-      <option name="closed" value="true" />
-      <created>1745462809956</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1745462809956</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Desing:Creacion de la funcionalidad de eliminar, y poner las validaciones (se cambio el tipo de datos de TextField a javafx.scene.control.TextField) en la clase validaciones">
-      <option name="closed" value="true" />
-      <created>1745462892170</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1745462892170</updated>
-    </task>
-    <task id="LOCAL-00016" summary="fix: solucinar un error al aptualizar tabla al agregar habitacion, y hacer que en los combox salga la primera opcion">
-      <option name="closed" value="true" />
-      <created>1745464826535</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1745464826535</updated>
-    </task>
-    <option name="localTasksCounter" value="17" />
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -231,19 +179,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="origin/Feature-Validacion-De-Campos_AdminClientes" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
@@ -262,11 +198,8 @@
     <MESSAGE value="Feat: model empleado creado" />
     <MESSAGE value="Feat: model membresia creado" />
     <MESSAGE value="Feat: model cliente creado" />
-    <MESSAGE value="Desing:ya se puede adtualizar la habitacion" />
-    <MESSAGE value="Desing:actualizar la tabla cunando se edita, y unas balidaciones" />
-    <MESSAGE value="Desing:Creacion de la funcionalidad de eliminar" />
-    <MESSAGE value="Desing:Creacion de la funcionalidad de eliminar, y poner las validaciones (se cambio el tipo de datos de TextField a javafx.scene.control.TextField) en la clase validaciones" />
-    <MESSAGE value="fix: solucinar un error al aptualizar tabla al agregar habitacion, y hacer que en los combox salga la primera opcion" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: solucinar un error al aptualizar tabla al agregar habitacion, y hacer que en los combox salga la primera opcion" />
+    <MESSAGE value="Feat: model cargo creado" />
+    <MESSAGE value="Feat: model contacto creado" />
+    <option name="LAST_COMMIT_MESSAGE" value="Feat: model contacto creado" />
   </component>
 </project>
