@@ -12,6 +12,7 @@ import com.example.hotelstaclara.model.habitacion;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import javax.swing.*;
 import java.sql.SQLException;
 
 public class AdminHabitacionesController {
@@ -70,10 +71,6 @@ public class AdminHabitacionesController {
     }
 
 
-
-
-    //----------------
-
     @FXML
     void but_Clientes(ActionEvent event) {
         ruta.pasarRutasAdmin("AdminClientes", but_Clientes);
@@ -115,7 +112,6 @@ public class AdminHabitacionesController {
         ruta.setHabitacion(hbitacionSeleccionada);
         ruta.pasarRutasAdminFroms("formHabitaciones", bt_editar);
         ruta.setAdminController(this);
-
     }
 
     public void but_login(javafx.scene.input.MouseEvent mouseEvent) {
@@ -128,6 +124,11 @@ public class AdminHabitacionesController {
             Alert.showErrorAlert("Error", "Error", "Seleccione una habitacion");
             return;
         }
+
+        if(!(JOptionPane.showConfirmDialog(null, "Desea borrar el usuario?", "Confirmar borrado", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)) {
+            return;
+        }
+
         HabiracionDAO.eliminarHabitacion(hbitacionSeleccionada.getId_habitacion());
         tabla_habitaciones.setItems(FXCollections.observableArrayList(HabiracionDAO.TraeesHabitacions()));
     }

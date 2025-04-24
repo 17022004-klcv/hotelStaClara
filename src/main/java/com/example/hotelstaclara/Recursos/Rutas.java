@@ -66,15 +66,6 @@ public class Rutas {
             formHabitacionesController.setAdminController(adminHabitacionesControllerOriginal);
             nuevoStage.setOnHidden(e -> adminHabitacionesControllerOriginal.llenarTablaHabitacion());
 
-//            if (adminHabitacionesControllerOriginal != null) {
-//                nuevoStage.setOnHidden(e -> adminHabitacionesControllerOriginal.llenarTablaHabitacion());
-//
-//            } else {
-//                JOptionPane.showMessageDialog(null, "Controller no inicializado");
-//            }
-
-
-
             // Mostrar el nuevo formulario
             nuevoStage.show();
         } catch (IOException e) {

@@ -1,6 +1,5 @@
 package com.example.hotelstaclara.controllers.formsAdminControllers;
 
-import com.example.hotelstaclara.Alert.Alert;
 import com.example.hotelstaclara.Recursos.Rutas;
 import com.example.hotelstaclara.controllers.AdminController.AdminHabitacionesController;
 import com.example.hotelstaclara.database.HabiracionDAO;
@@ -16,7 +15,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
-import javax.swing.*;
 import java.sql.SQLException;
 
 public class FormHabitacionesController {
@@ -71,9 +69,8 @@ public class FormHabitacionesController {
     void bt_agregar(ActionEvent event) throws SQLException {
 
         if (!validarCamposFormulario()) {
-            return; // Si no pasa las validaciones, se detiene aquí
+            return;
         }
-
 
         if (OpAddEdit.equals("add")) {
             addHabitacion();

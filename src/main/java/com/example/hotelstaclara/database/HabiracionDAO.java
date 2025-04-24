@@ -1,9 +1,9 @@
 package com.example.hotelstaclara.database;
 
+import com.example.hotelstaclara.Alert.Alert;
 import com.example.hotelstaclara.model.Estado_habitacion;
 import com.example.hotelstaclara.model.habitacion;
 
-import javax.swing.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,9 +25,10 @@ public class HabiracionDAO {
             stmt.executeUpdate();
             stmt.close();
             conn.close();
-            JOptionPane.showMessageDialog(null, "La habitacion se ingreso correcta mente");
+
+            Alert.showInfoAlert("Exito", "Exito", "La habitacion se ingreso correcta mente");
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error: La habitation no se pudo ingresar" + e.getMessage());
+            Alert.showErrorAlert("Error", "Error", "La habitacion no se pudo ingresar" + e.getMessage());
         }
     }
 
@@ -53,7 +54,7 @@ public class HabiracionDAO {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Pues no se pude mi rey");
+            Alert.showErrorAlert("Error", "Error", "La habitacion no se pudo ingresar" + e.getMessage());
         }
         return lista;
     }
@@ -76,12 +77,12 @@ public class HabiracionDAO {
             int rowsAffected = stmt.executeUpdate();
 
             if (rowsAffected > 0) {
-                JOptionPane.showMessageDialog(null, "La habitación se actualizó correctamente");
+                Alert.showInfoAlert("Exito", "Exito", "La habitacion se actualizo correctamente");
             } else {
-                JOptionPane.showMessageDialog(null, "No se encontró la habitación para actualizar");
+                Alert.showErrorAlert("Error", "Error", "La habitacion no se pudo actualizar");
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error: La habitación no se pudo actualizar. " + e.getMessage());
+            Alert.showErrorAlert("Error", "Error", "La habitacion no se pudo actualizar" + e.getMessage());
             e.printStackTrace(); // Para registrar el error en un log.
         }
     }
@@ -98,13 +99,13 @@ public class HabiracionDAO {
             int rowsAffected = stmt.executeUpdate();
 
             if (rowsAffected > 0) {
-                JOptionPane.showMessageDialog(null, "La habitación se elimino correctamente");
+                Alert.showInfoAlert("Exito", "Exito", "La habitacion se elimino correctamente");
             } else {
-                JOptionPane.showMessageDialog(null, "No se encontró la habitación para eliminar");
+                Alert.showErrorAlert("Error", "Error", "La habitacion no se pudo eliminar");
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error: La habitación no se pudo eliminar. " + e.getMessage());
-            e.printStackTrace(); // Para registrar el error en un log.
+            Alert.showErrorAlert("Error", "Error", "La habitacion no se pudo eliminar" + e.getMessage());
+            e.printStackTrace();
         }
     }
 
