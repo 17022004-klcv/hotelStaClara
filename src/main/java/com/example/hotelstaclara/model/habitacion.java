@@ -18,7 +18,7 @@ public class habitacion {
     public habitacion() {
     }
 
-    public habitacion(String numero_habitacion, String tipo_habitacion, int capacidad, double precio, Estado_habitacion estado_habitacion) {
+    public habitacion(int id_habitacion, String numero_habitacion, String tipo_habitacion, int capacidad, double precio, Estado_habitacion estado_habitacion) {
         this.id_habitacion = id_habitacion;
         this.numero_habitacion = numero_habitacion;
         this.tipo_habitacion = tipo_habitacion;
@@ -26,6 +26,10 @@ public class habitacion {
         this.precio = precio;
         this.estado_habitacion = estado_habitacion;
     }
+
+
+
+
 
     public int getId_habitacion() {
         return id_habitacion;

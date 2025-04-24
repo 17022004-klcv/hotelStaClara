@@ -79,7 +79,7 @@ public class validaciones {
         return true;
     }
 
-    public static boolean validarNumeroHabitacion(TextField txtN_Habitacion) {
+    public static boolean validarNumeroHabitacion(javafx.scene.control.TextField txtN_Habitacion) {
         String numeroHabitacion = txtN_Habitacion.getText();
         if (!numeroHabitacion.matches("[A-C]\\d{2,3}")) {  // Letra A, B o C seguida de 2 o 3 dígitos
             Alert.showWarningAlert("Número de Habitación Inválido", null, "El número de habitación debe seguir el formato: A00, B00, C141.");
@@ -89,7 +89,7 @@ public class validaciones {
     }
 
     // Validación para Precio (Solo números mayores a 0)
-    public static boolean validarPrecio(TextField txtPrecio) {
+    public static boolean validarPrecio(javafx.scene.control.TextField txtPrecio) {
         String precio = txtPrecio.getText();
         try {
             double precioValue = Double.parseDouble(precio);
@@ -105,7 +105,7 @@ public class validaciones {
     }
 
     // Validación para Capacidad (Solo números)
-    public static boolean validarCapacidad(TextField txtCapacidad) {
+    public static boolean validarCapacidad(javafx.scene.control.TextField txtCapacidad) {
         String capacidad = txtCapacidad.getText();
         if (!capacidad.matches("\\d+")) {  // Verifica que sea solo números
             Alert.showWarningAlert("Capacidad Inválida", null, "La capacidad debe ser un número.");
