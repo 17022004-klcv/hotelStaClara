@@ -12,6 +12,8 @@ import com.example.hotelstaclara.model.habitacion;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.sql.SQLException;
+
 public class AdminHabitacionesController {
 
     @FXML
@@ -119,6 +121,13 @@ public class AdminHabitacionesController {
         ruta.pasarRutasLogin("Login", bt_agregar);
     }
 
-    public void bt_eliminar(ActionEvent actionEvent) {
+    public void bt_eliminar(ActionEvent actionEvent) throws SQLException {
+        habitacion hbitacionSeleccionada = tabla_habitaciones.getSelectionModel().getSelectedItem();
+        if (hbitacionSeleccionada == null) {
+            Alert.showErrorAlert("Error", "Error", "Seleccione una habitacion");
+            return;
+        }
+        HabiracionDAO.eliminarHabitacion(hbitacionSeleccionada.getId_habitacion());
+        tabla_habitaciones.setItems(FXCollections.observableArrayList(HabiracionDAO.TraeesHabitacions()));
     }
 }

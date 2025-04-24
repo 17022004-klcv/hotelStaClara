@@ -86,4 +86,28 @@ public class HabiracionDAO {
         }
     }
 
+    // eliminar habitacion
+    public static void eliminarHabitacion(int id) throws SQLException {
+        String sql = "DELETE FROM habitacion WHERE id_habitacion = ?";
+
+        try (Connection conn = connection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, id);
+
+            int rowsAffected = stmt.executeUpdate();
+
+            if (rowsAffected > 0) {
+                JOptionPane.showMessageDialog(null, "La habitación se elimino correctamente");
+            } else {
+                JOptionPane.showMessageDialog(null, "No se encontró la habitación para eliminar");
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error: La habitación no se pudo eliminar. " + e.getMessage());
+            e.printStackTrace(); // Para registrar el error en un log.
+        }
+    }
+
+
+
 }

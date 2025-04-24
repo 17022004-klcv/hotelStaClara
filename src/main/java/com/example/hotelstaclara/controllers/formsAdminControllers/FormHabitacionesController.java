@@ -110,10 +110,10 @@ public class FormHabitacionesController {
 
     private boolean validarCamposFormulario() {
         return validaciones.validarCombo(comb_estado, "Estado")
-                && validaciones.validarCombo(comb_tipoHabitacion, "Tipo de Habitación");
-//                && validaciones.validarNumeroHabitacion(txt_numHabitaacion)
-//                && validaciones.validarCapacidad(txt_capacidad)
-//                && validaciones.validarPrecio(txt_monto);
+                && validaciones.validarCombo(comb_tipoHabitacion, "Tipo de Habitación")
+                && validaciones.validarNumeroHabitacion(txt_numHabitaacion)
+                && validaciones.validarCapacidad(txt_capacidad)
+                && validaciones.validarPrecio(txt_monto);
     }
 
 
