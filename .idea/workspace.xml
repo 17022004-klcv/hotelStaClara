@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+
     <list default="true" id="a44bdff9-8517-448d-807a-b783690deef8" name="Changes" comment="Feat: model cliente creado" />
+
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/Recursos/Rutas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/Recursos/Rutas.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,6 +19,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -21,7 +27,9 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
+
         <entry key="$PROJECT_DIR$" value="feat-adicion-de-Model" />
+
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -57,6 +65,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
@@ -68,8 +77,8 @@
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.43333334&quot;
-  }
-}</component>
+
+}]]></component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
@@ -132,6 +141,7 @@
       <option name="project" value="LOCAL" />
       <updated>1743629359851</updated>
     </task>
+
     <task id="LOCAL-00006" summary="Design: Se ha agregado el boton del logo para regresar al login en cada panel">
       <option name="closed" value="true" />
       <created>1744176932535</created>
@@ -181,6 +191,7 @@
       <updated>1745030970002</updated>
     </task>
     <option name="localTasksCounter" value="12" />
+
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -219,6 +230,9 @@
     <MESSAGE value="Feat: model empleado creado" />
     <MESSAGE value="Feat: model membresia creado" />
     <MESSAGE value="Feat: model cliente creado" />
+
     <option name="LAST_COMMIT_MESSAGE" value="Feat: model cliente creado" />
+
+
   </component>
 </project>

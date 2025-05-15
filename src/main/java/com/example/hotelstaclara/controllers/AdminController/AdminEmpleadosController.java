@@ -4,8 +4,37 @@ import com.example.hotelstaclara.Recursos.Rutas;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 
 public class AdminEmpleadosController {
+
+    @FXML
+    private TableColumn<?, ?> ColumnApellido;
+
+    @FXML
+    private TableColumn<?, ?> ColumnCargo;
+
+    @FXML
+    private TableColumn<?, ?> ColumnCorreo;
+
+    @FXML
+    private TableColumn<?, ?> ColumnDUI;
+
+    @FXML
+    private TableColumn<?, ?> ColumnDireccion;
+
+    @FXML
+    private TableColumn<?, ?> ColumnEstado;
+
+    @FXML
+    private TableColumn<?, ?> ColumnNombre;
+
+    @FXML
+    private TableColumn<?, ?> ColumnTelefono;
+
+    @FXML
+    private TableView<?> TablaEmpleado;
 
     @FXML
     private Button but_Cliente;
@@ -18,7 +47,6 @@ public class AdminEmpleadosController {
 
     @FXML
     private Button but_Reservaciones;
-
 
     @FXML
     private Button but_agregar;
