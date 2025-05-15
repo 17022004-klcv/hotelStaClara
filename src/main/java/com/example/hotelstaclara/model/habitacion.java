@@ -1,14 +1,6 @@
 package com.example.hotelstaclara.model;
 
 
-enum estado_habitacion {
-    disponible,
-    ocupada,
-    sucia
-}
-
-
-
 public class habitacion {
     private int id_habitacion;
     private String numero_habitacion;

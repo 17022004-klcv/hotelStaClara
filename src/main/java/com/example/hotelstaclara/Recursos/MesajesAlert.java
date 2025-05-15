@@ -11,7 +11,7 @@ public class MesajesAlert {
     public  void mostarAlertError(String message) {
   
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle(title);
+        alert.setTitle(null);
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
