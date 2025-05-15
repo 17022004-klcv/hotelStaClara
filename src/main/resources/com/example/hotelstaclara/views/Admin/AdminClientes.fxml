@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="fondo" stylesheets="@../../styles/AdminStyles/AdminClientes.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotelstaclara.controllers.AdminController.AdminClientesController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="fondo" stylesheets="@../../styles/AdminStyles/AdminClientes.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotelstaclara.controllers.AdminController.AdminClientesController">
    <children>
       <Pane prefHeight="720.0" prefWidth="250.0" styleClass="barra">
          <children>
@@ -148,15 +148,15 @@
             <Font name="Arial Black" size="45.0" />
          </font>
       </Label>
-      <TableView layoutX="343.0" layoutY="152.0" prefHeight="400.0" prefWidth="900.0">
+      <TableView fx:id="tableClients" layoutX="343.0" layoutY="152.0" prefHeight="400.0" prefWidth="900.0">
         <columns>
-          <TableColumn prefWidth="135.0" text="Nombre" />
-          <TableColumn prefWidth="135.0" text="Apellido" />
-            <TableColumn prefWidth="115.0" text="telefono" />
-            <TableColumn prefWidth="155.0" text="direcion " />
-            <TableColumn prefWidth="120.0" text="DUI" />
-            <TableColumn prefWidth="135.0" text="Correo" />
-            <TableColumn prefWidth="100.0" text="Estado" />
+          <TableColumn fx:id="columnNombre" prefWidth="135.0" text="Nombre" />
+          <TableColumn fx:id="columnApellido" prefWidth="135.0" text="Apellido" />
+            <TableColumn fx:id="columnTelefono" prefWidth="115.0" text="telefono" />
+            <TableColumn fx:id="columnDireccion" prefWidth="155.0" text="direcion " />
+            <TableColumn fx:id="columnDui" prefWidth="120.0" text="DUI" />
+            <TableColumn fx:id="columnCorreo" prefWidth="135.0" text="Correo" />
+            <TableColumn fx:id="columnEstado" prefWidth="100.0" text="Estado" />
         </columns>
       </TableView>
       <Button fx:id="but_eliminar" layoutX="410.0" layoutY="584.0" mnemonicParsing="false" onAction="#but_eliminar" prefHeight="67.0" prefWidth="176.0" text="ELIMINAR">
