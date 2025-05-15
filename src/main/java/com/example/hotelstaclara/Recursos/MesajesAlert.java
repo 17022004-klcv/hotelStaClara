@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public class MesajesAlert {
 
-    public void mostarAlertError(String message) {
+    public  void mostarAlertError(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error de Login");
         alert.setHeaderText(null);
@@ -15,7 +15,7 @@ public class MesajesAlert {
         alert.showAndWait();
     }
 
-    public void mostarAlertWARNING(String message) {
+    public  void mostarAlertWARNING(String message) {
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle("Error de Login");
         alert.setHeaderText(null);
@@ -25,7 +25,7 @@ public class MesajesAlert {
 
 
 
-    public static boolean mostrarConfirmacion(String titulo, String mensaje) {
+    public  boolean mostrarConfirmacion(String titulo, String mensaje) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle(titulo);
         alert.setHeaderText("Confirmación requerida");
@@ -33,5 +33,35 @@ public class MesajesAlert {
 
         Optional<ButtonType> resultado = alert.showAndWait();
         return resultado.isPresent() && resultado.get() == ButtonType.OK;
+    }
+
+    public  void showInfoAlert(String title, String heading, String message) {
+        showAlert(javafx.scene.control.Alert.AlertType.INFORMATION, title, heading, message);
+    }
+    public  boolean showWarningAlert(String title, String heading, String message) {
+        showAlert(javafx.scene.control.Alert.AlertType.WARNING, title, heading, message);
+        return false;
+    }
+
+    public  void showErrorAlert(String title, String heading, String message) {
+        showAlert(javafx.scene.control.Alert.AlertType.ERROR, title, heading, message);
+    }
+
+    public Optional<ButtonType> showConfirmationAlert(String title, String heading, String message) {
+        javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.CONFIRMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(heading);
+        alert.setContentText(message);
+        return alert.showAndWait();
+    }
+
+    public void showAlert(javafx.scene.control.Alert.AlertType alertType, String title, String heading, String message)
+    {
+        javafx.scene.control.Alert alert = new javafx.scene.control.Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(heading);
+        alert.setContentText(message);
+        alert.showAndWait();
+
     }
 }
