@@ -22,9 +22,11 @@ public class loginController {
 
     @FXML
     void bt_entrar(ActionEvent event) {
+        MesajesAlert mesajesAlert = new MesajesAlert();
+
         String nombreUsuario = txt_usuario.getText();
         String contrasena = String.valueOf(txt_contra.getText());
-        MesajesAlert mesajesAlert = new MesajesAlert();
+        MesajesAlert mesajesAlertas = new MesajesAlert();
         loginDAO logindao=new loginDAO();
         Rutas ruta =new Rutas();
 
@@ -38,7 +40,7 @@ public class loginController {
 
             }
         } else {
-            mesajesAlert.mostarAlertError("Error", "Credenciales incorrectas");
+            mesajesAlert.mostarAlertError("Credenciales incorrectas");
         }
     }
 

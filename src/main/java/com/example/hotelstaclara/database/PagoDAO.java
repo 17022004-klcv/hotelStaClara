@@ -12,6 +12,8 @@ public class PagoDAO {
     // insertar pago
 
     public void insertarPago(BigDecimal monto, BigDecimal monto_con_descuento, LocalDate fecha_pago, String metodo_de_pago, int id_reservacion, int id_cliente) {
+        MesajesAlert mesajesAlert = new MesajesAlert();
+
         String sql = """
                 INSERT INTO pago (monto, monto_con_descuento, fecha_pago, metodo_de_pago, id_reservacion, id_cliente) VALUES
                 (?, ?,?, ?, ?, ?);
@@ -28,10 +30,10 @@ public class PagoDAO {
             stmt.setInt(6, id_cliente);
 
             stmt.executeUpdate();
-            MesajesAlert.mostrarInformacion("Éxito", "El pago se insertó correctamente.");
+            mesajesAlert.mostarAlertWARNING( "El pago se insertó correctamente.");
 
         } catch (SQLException e) {
-            MesajesAlert.mostarAlertError("Error", "El pago no se pudo ingresar: " + e.getMessage());
+            mesajesAlert.mostarAlertError("El pago no se pudo ingresar: " + e.getMessage());
         }
     }
 

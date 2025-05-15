@@ -12,7 +12,10 @@ import java.util.List;
 
 public class ReservacionesDAO {
 
+    MesajesAlert mesajesAlert = new MesajesAlert();
+
     public int guardarReservaciones(Reservaciones reservaciones) {
+
         String sql = "INSERT INTO reservacion (fecha_reserva, fecha_ingreso, fecha_salida, id_cliente, id_empleado, id_habitacion, estado_reserva) VALUES (?, ?, ?, ?, ?, ?, ?);";
 
         try (Connection conn = connection.getConnection();
@@ -32,14 +35,14 @@ public class ReservacionesDAO {
                 try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
                     if (generatedKeys.next()) {
                         int idGenerado = generatedKeys.getInt(1);
-                        MesajesAlert.mostrarInformacion("Éxito", "Reservación ingresada corectamente.");                        return idGenerado;
+                        mesajesAlert.mostarAlertWARNING("Reservación ingresada corectamente.");                        return idGenerado;
                     }
                 }
             }
 
-            MesajesAlert.mostarAlertError("Error", "La reservación se insertó, pero no se pudo obtener el ID.");
+            mesajesAlert.mostarAlertError( "La reservación se insertó, pero no se pudo obtener el ID.");
         } catch (SQLException ex) {
-            MesajesAlert.mostarAlertError("Error", "La reservación no se pudo ingresar: " + ex.getMessage());
+            mesajesAlert.mostarAlertError("La reservación no se pudo ingresar: " + ex.getMessage());
         }
 
         return -1;
@@ -62,7 +65,7 @@ public class ReservacionesDAO {
             }
 
         } catch (SQLException ex) {
-            MesajesAlert.mostarAlertError("Error", "El usuario no se pudo encontrar" + ex.getMessage() + ex);
+            mesajesAlert.mostarAlertError("El usuario no se pudo encontrar" + ex.getMessage() + ex);
         }
         return -1;
     }
@@ -91,12 +94,14 @@ public class ReservacionesDAO {
                 return -1;
             }
         } catch (SQLException e) {
-            MesajesAlert.mostarAlertError("Error", "El usuario no se pudo encontrar" + e.getMessage() + e);
+            mesajesAlert.mostarAlertError("El usuario no se pudo encontrar" + e.getMessage() + e);
         }
         return -1;
     }
 
     public static List<Reservaciones> traerReservaciones(){
+        MesajesAlert mesajesAlert = new MesajesAlert();
+
         List<Reservaciones> reservaciones = new ArrayList<>();
         String sql = """
                 select
@@ -125,7 +130,7 @@ public class ReservacionesDAO {
                 reservaciones.add(r);
             }
         } catch (SQLException e) {
-            MesajesAlert.mostarAlertError("Error", "El usuario no se pudo encontrar" + e.getMessage() + e);
+            mesajesAlert.mostarAlertError( "El usuario no se pudo encontrar" + e.getMessage() + e);
         }
         return reservaciones;
     }

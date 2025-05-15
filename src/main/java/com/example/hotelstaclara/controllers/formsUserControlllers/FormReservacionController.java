@@ -78,6 +78,7 @@ public class FormReservacionController {
     void but_Aceptar(ActionEvent event) {
 
         // optener todas las instancias
+        MesajesAlert mesajesAlert = new MesajesAlert();
         ReservacionesDAO reservacionesDAO = new ReservacionesDAO();
         HabiracionDAO habiracionDAO = new HabiracionDAO();
         IdEmpleado idEmpleado = new IdEmpleado();
@@ -101,11 +102,11 @@ public class FormReservacionController {
 
         // valida que si existe el cliente y la habitacion
         if (id_cliente == -1) {
-            MesajesAlert.mostrarInformacion("Error", "El cliente no se encuentra registrado" );
+            mesajesAlert.mostarAlertError("El cliente no se encuentra registrado");
             return;
         }
         if (id_habitacion == -1) {
-            MesajesAlert.mostrarInformacion("Error", "La habitacion no se encuentra disponible");
+            mesajesAlert.mostarAlertError("La habitacion no se encuentra disponible");
             return;
         }
 
@@ -124,6 +125,7 @@ public class FormReservacionController {
     }
 
     private int obtenerDias() {
+        MesajesAlert mesajesAlert = new MesajesAlert();
         LocalDate fechaInicio = pick_fechaInicio.getValue();
         LocalDate fechaFin = pick_fechaSalida.getValue();
 
@@ -133,12 +135,11 @@ public class FormReservacionController {
             if (dias >= 0) {
                 return (int) dias;
             } else {
-                MesajesAlert.mostrarInformacion("Error", "La fecha de salida debe ser posterior a la fecha de inicio.");
+                mesajesAlert.mostarAlertError("La fecha de salida debe ser posterior a la fecha de inicio.");
                 return 0;
             }
         } else {
-            System.out.println("Selecciona ambas fechas.");
-            MesajesAlert.mostrarInformacion("Error", "Selecciona ambas fechas.");
+            mesajesAlert.mostarAlertError("Selecciona ambas fechas.");
         }
         return 0;
     }
