@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+
     <list default="true" id="a44bdff9-8517-448d-807a-b783690deef8" name="Changes" comment="fix: corregi error al abrir formalarios tando en rescepcionista como addmin">
       <change afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/database/PagoDAO.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/database/ReservacionesDAO.java" afterDir="false" />
@@ -12,6 +13,7 @@
       <change afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/model/Reservaciones.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_22_4_2025_14_52_[Changes]/shelved.patch" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_22_4_2025_14_52__Changes_.xml" beforeDir="false" />
+
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_22_4_2025_21_05_[Changes]/shelved.patch" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_22_4_2025_21_05__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_24_4_2025_09_54_[Changes]/shelved.patch" beforeDir="false" />
@@ -26,6 +28,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_4_2025_12_22__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/HelloApplication.java" afterDir="false" />
+
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/Recursos/MesajesAlert.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/Recursos/MesajesAlert.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/UserControllers/USERreservaciones.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/UserControllers/USERreservaciones.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/formsUserControlllers/FormReservacionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/formsUserControlllers/FormReservacionController.java" afterDir="false" />
@@ -35,6 +38,7 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/model/reservacion.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/hotelstaclara/views/User/USERreservaciones.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/hotelstaclara/views/User/USERreservaciones.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/hotelstaclara/views/formsUserViews/formReservacion.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/hotelstaclara/views/formsUserViews/formReservacion.fxml" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +49,6 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
-        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -64,18 +67,21 @@
     &quot;assignee&quot;: &quot;Javier-M-2023&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/17022004-klcv/hotelStaClara.git&quot;,
-    &quot;accountId&quot;: &quot;4cd81f03-605c-428d-bceb-0b6e9628a215&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/17022004-klcv/hotelStaClara.git",
+    "accountId": "d0deba83-a99a-4e94-8e49-7c2e2bfd3fb6"
   }
-}</component>
+}]]></component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
         <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
       </MavenGeneralSettings>
     </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
@@ -86,6 +92,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
@@ -161,39 +168,55 @@
       <option name="project" value="LOCAL" />
       <updated>1743629359851</updated>
     </task>
-    <task id="LOCAL-00006" summary="Desing:La insercion de Habitaciones ya lista y funcional. No hay nada validado">
+    <task id="LOCAL-00006" summary="Design: Se ha agregado el boton del logo para regresar al login en cada panel">
       <option name="closed" value="true" />
-      <created>1745082029003</created>
+      <created>1744176932535</created>
       <option name="number" value="00006" />
       <option name="presentableId" value="LOCAL-00006" />
       <option name="project" value="LOCAL" />
-      <updated>1745082029003</updated>
+      <updated>1744176932535</updated>
     </task>
-    <task id="LOCAL-00007" summary="Desing:hacer la clase DAO y hacerla funcional">
+    <task id="LOCAL-00007" summary="Feat: Creacion de model Factura y habitacion.java">
       <option name="closed" value="true" />
-      <created>1745353773709</created>
+      <created>1744872829799</created>
       <option name="number" value="00007" />
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
-      <updated>1745353773709</updated>
+      <updated>1744872829799</updated>
     </task>
-    <task id="LOCAL-00012" summary="Feat: model cargo creado">
+    <task id="LOCAL-00008" summary="Feat: models de cliente_membresia, email, pago y reservacion, se han creado.">
       <option name="closed" value="true" />
-      <created>1745031199134</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
+      <created>1745030264610</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
       <option name="project" value="LOCAL" />
-      <updated>1745031199134</updated>
+      <updated>1745030264610</updated>
     </task>
-    <task id="LOCAL-00013" summary="Feat: model contacto creado">
+    <task id="LOCAL-00009" summary="Feat: model empleado creado">
       <option name="closed" value="true" />
-      <created>1745031401988</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
+      <created>1745030612477</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
       <option name="project" value="LOCAL" />
-      <updated>1745031401988</updated>
+      <updated>1745030612477</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00010" summary="Feat: model membresia creado">
+      <option name="closed" value="true" />
+      <created>1745030791023</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1745030791023</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Feat: model cliente creado">
+      <option name="closed" value="true" />
+      <created>1745030970002</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1745030970002</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -201,7 +224,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/Feature-Validacion-De-Campos_AdminClientes" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -220,8 +255,6 @@
     <MESSAGE value="Feat: model empleado creado" />
     <MESSAGE value="Feat: model membresia creado" />
     <MESSAGE value="Feat: model cliente creado" />
-    <MESSAGE value="Feat: model cargo creado" />
-    <MESSAGE value="Feat: model contacto creado" />
-    <option name="LAST_COMMIT_MESSAGE" value="Feat: model contacto creado" />
+    <option name="LAST_COMMIT_MESSAGE" value="Feat: model cliente creado" />
   </component>
 </project>
