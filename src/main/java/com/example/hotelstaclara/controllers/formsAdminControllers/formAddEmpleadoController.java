@@ -9,13 +9,15 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
+import java.util.Map;
+
 public class formAddEmpleadoController {
 
     @FXML
     private Button bt_agregar;
 
     @FXML
-    private ComboBox<?> cb_cargo;
+    private ComboBox<String> cb_cargo;
 
     @FXML
     private ImageView imgBack;
