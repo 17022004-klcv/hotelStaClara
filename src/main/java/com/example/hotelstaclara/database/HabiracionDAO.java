@@ -59,7 +59,6 @@ public class HabiracionDAO {
         return lista;
     }
 
-
     // actualizar habitacion
     public void actualizarHabitacion(habitacion h) throws SQLException {
         String sql = "UPDATE habitacion SET numero_habitacion = ?, tipo_habitacion = ?, capacidad = ?, precio = ?, estado_habitacion = ? WHERE id_habitacion = ?";
@@ -109,6 +108,47 @@ public class HabiracionDAO {
         }
     }
 
+    public int buscarHabitacion(String numero_habitacion){
+        String sql = "select id_habitacion from habitacion where numero_habitacion =? && estado_habitacion = 'disponible';";
 
+        try (Connection conn = connection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, numero_habitacion);
+
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("id_habitacion");
+            }else{
+                return -1;
+            }
+        }catch (SQLException ex) {
+            Alert.showErrorAlert("Error", "Error", "La habitacion no se encontro" + ex.getMessage());
+            ex.printStackTrace();
+        }
+        return -1;
+    }
+
+    // traer monto de habitacion
+
+    public double traerMontoHabitacion(int id_habitacion) {
+        String sql = "SELECT precio FROM habitacion WHERE id_habitacion = ?";
+        try (Connection conn = connection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, id_habitacion);
+
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getDouble("precio");
+            } else {
+                return 0.0;
+            }
+        } catch (SQLException e) {
+            Alert.showErrorAlert("Error", "Error", "La habitacion no se pudo ingresar" + e.getMessage());
+            e.printStackTrace();
+            return 0.0;
+        }
+    }
 
 }
