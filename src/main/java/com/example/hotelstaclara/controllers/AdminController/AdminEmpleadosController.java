@@ -65,7 +65,7 @@ public class AdminEmpleadosController {
 
     Rutas ruta = new Rutas();
     MesajesAlert alert=new MesajesAlert();
-    public String Estado_boton = "", Email_seleccionado = "";
+    public static String Estado_boton = "", Email_seleccionado = "";
 
     @FXML
     public void initialize() throws SQLException, ClassNotFoundException {
