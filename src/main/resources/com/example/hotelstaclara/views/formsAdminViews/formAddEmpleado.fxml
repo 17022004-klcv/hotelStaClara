@@ -52,17 +52,12 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="40.0" layoutY="360.0" text="Celular">
+      <Text fill="WHITE" layoutX="45.0" layoutY="358.0" text="Direccion">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="40.0" layoutY="410.0" text="Direccion">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Text>
-      <Text fill="WHITE" layoutX="40.0" layoutY="460.0" text="Cargo">
+      <Text fill="WHITE" layoutX="45.0" layoutY="408.0" text="Cargo">
          <font>
             <Font size="14.0" />
          </font>
@@ -73,11 +68,10 @@
       <TextField fx:id="txt_dui" layoutX="160.0" layoutY="190.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-radius: 15px;" />
       <TextField fx:id="txt_email" layoutX="160.0" layoutY="240.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-radius: 15px;" />
       <TextField fx:id="txt_tel" layoutX="160.0" layoutY="290.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-radius: 15px;" />
-      <TextField fx:id="txtCelular" layoutX="160.0" layoutY="340.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-radius: 15px;" />
-      <TextField fx:id="txt_direccion" layoutX="160.0" layoutY="390.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-radius: 15px;" />
+      <TextField fx:id="txt_direccion" layoutX="165.0" layoutY="338.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-radius: 15px;" />
 
       <Button fx:id="bt_agregar" layoutX="140.0" layoutY="531.0" mnemonicParsing="false" onAction="#bt_agregar" prefHeight="45.0" prefWidth="130.0" style="-fx-background-color: green; -fx-text-fill: white; -fx-background-radius: 10px;" text="AGREGAR" />
-      <RadioButton fx:id="btnAdministrador" layoutX="126.0" layoutY="454.0" mnemonicParsing="false" text="Adminstrador" textFill="WHITE">
+      <RadioButton fx:id="btnAdministrador" layoutX="131.0" layoutY="393.0" mnemonicParsing="false" selected="true" text="Adminstrador" textFill="WHITE">
          <toggleGroup>
             <ToggleGroup fx:id="rdoCargo" />
          </toggleGroup>
@@ -85,12 +79,25 @@
             <Font size="14.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="btnLimpieza" layoutX="250.0" layoutY="454.0" mnemonicParsing="false" text="Limpieza" textFill="WHITE" toggleGroup="$rdoCargo">
+      <RadioButton fx:id="btnRecepcionista" layoutX="260.0" layoutY="393.0" mnemonicParsing="false" selected="true" text="Recepcionista" textFill="WHITE" toggleGroup="$rdoCargo">
          <font>
             <Font size="14.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="btnServicio" layoutX="126.0" layoutY="493.0" mnemonicParsing="false" text="Servicio" textFill="WHITE" toggleGroup="$rdoCargo">
+      <Text fill="WHITE" layoutX="51.0" layoutY="462.0" text="estado">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <RadioButton fx:id="btnActivo" layoutX="125.0" layoutY="446.0" mnemonicParsing="false" selected="true" text="Activo" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <toggleGroup>
+            <ToggleGroup fx:id="rdoEstado" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="btnInActivo" layoutX="248.0" layoutY="446.0" mnemonicParsing="false" text="Inactivo" textFill="WHITE" toggleGroup="$rdoEstado">
          <font>
             <Font size="14.0" />
          </font>

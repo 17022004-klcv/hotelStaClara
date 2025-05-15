@@ -4,15 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a44bdff9-8517-448d-807a-b783690deef8" name="Changes" comment="Feat: SELECT hecho en AdminEmpleadosController">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/database/ContactoDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/database/emailDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_22_4_2025_14_52_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_22_4_2025_14_52__Changes_.xml" beforeDir="false" />
+    <list default="true" id="a44bdff9-8517-448d-807a-b783690deef8" name="Changes" comment="Feat: DELETE hecho en AdminEmpleadosController">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/AdminController/AdminEmpleadosController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/AdminController/AdminEmpleadosController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/formsAdminControllers/formAddEmpleadoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/formsAdminControllers/formAddEmpleadoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/database/emailDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/database/emailDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/database/empleadoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/database/empleadoDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/model/contacto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/model/contacto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/model/empleado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/model/empleado.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/validations/validaciones.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/validations/validaciones.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/hotelstaclara/views/formsAdminViews/formAddEmpleado.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/hotelstaclara/views/formsAdminViews/formAddEmpleado.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -180,7 +179,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747277663063</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Feat: DELETE hecho en AdminEmpleadosController">
+      <option name="closed" value="true" />
+      <created>1747287512694</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1747287512694</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -211,6 +218,7 @@
     <MESSAGE value="Merge pull request #5 from 17022004-klcv/feat-Crud-empleado-admin&#10;&#10;Design: Se agregaron las carpetas de Validations y Alert para validar…" />
     <MESSAGE value="Feat: model contacto creado" />
     <MESSAGE value="Feat: SELECT hecho en AdminEmpleadosController" />
-    <option name="LAST_COMMIT_MESSAGE" value="Feat: SELECT hecho en AdminEmpleadosController" />
+    <MESSAGE value="Feat: DELETE hecho en AdminEmpleadosController" />
+    <option name="LAST_COMMIT_MESSAGE" value="Feat: DELETE hecho en AdminEmpleadosController" />
   </component>
 </project>

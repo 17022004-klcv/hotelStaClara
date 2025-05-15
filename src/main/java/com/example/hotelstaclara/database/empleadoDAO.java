@@ -11,10 +11,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class empleadoDAO {
-    MesajesAlert alert=new MesajesAlert();
+    static MesajesAlert alert=new MesajesAlert();
 
 
-    public boolean insertarEmpleado(empleado empleado) {
+    public void insertarEmpleado(empleado empleado) {
         String sql = """
         INSERT INTO empleado
         (nombre_empleado, apellido_empleado, DUI_empleado, 
@@ -44,12 +44,9 @@ public class empleadoDAO {
                 }
             }
 
-            return filasAfectadas > 0;
-
         } catch (SQLException e) {
             alert.showErrorAlert("ERROR", null,
                     "Ocurrió un error al ingresar el empleado: " + e.getMessage());
-            return false;
         }
     }
 
@@ -163,7 +160,7 @@ public class empleadoDAO {
                     Empleado.put("direccion", rs.getString("direccion"));
                     Empleado.put("DUI_empleado", rs.getString("DUI_empleado"));
                     Empleado.put("email", rs.getString("email"));
-                    Empleado.put("cargo", rs.getString("cargo")); // Agregado
+                    Empleado.put("nombre_cargo", rs.getString("nombre_cargo"));// Agregado
                     Empleado.put("estado_empleado", rs.getInt("estado_empleado"));
 
                     lista.add(Empleado);
@@ -178,7 +175,7 @@ public class empleadoDAO {
         }
     }
 
-    public boolean actualizarEmpleado(empleado empleado, int id) {
+    public void UPDATE_Empleado(empleado empleado, int id) {
         String sql = """
         UPDATE empleado
         SET nombre_empleado = ?,
@@ -204,13 +201,50 @@ public class empleadoDAO {
             pstm.setInt(6, id);
 
             int filasAfectadas = pstm.executeUpdate();
-            return filasAfectadas > 0;
 
         } catch (SQLException e) {
             throw new RuntimeException("Error al actualizar el empleado con ID: " + id, e);
         }
     }
 
+    public static ObservableList<Map> Obtener_idsCorrespondientes_Empleados(String email) {
+        ObservableList<Map> lista = FXCollections.observableArrayList();
 
+        String query = """
+        SELECT
+            c.id_contacto,
+            emp.id_empleado,
+            e.id_email
+        FROM contacto AS c
+        INNER JOIN empleado AS emp ON c.id_contacto = c.id_contacto
+        INNER JOIN email AS e ON emp.id_empleado = e.id_empleado
+        WHERE e.email = ?;
+    """;
+
+        try (Connection con = connection.getConnection();
+             PreparedStatement stmt = con.prepareStatement(query)) {
+
+            // Configurar el parámetro en la consulta
+            stmt.setString(1, email);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                // Recorrer los resultados y mapearlos
+                while (rs.next()) {
+                    Map<String, Object> Empleado = new HashMap<>();
+
+                    Empleado.put("id_contacto", rs.getInt("id_contacto"));
+                    Empleado.put("id_empleado", rs.getInt("id_empleado"));
+                    Empleado.put("id_email", rs.getInt("id_email"));
+
+                    lista.add(Empleado);
+                }
+            }
+            return lista;
+        } catch (SQLException e) {
+            alert.showErrorAlert("", null, "Error al obtener ids del Empleado: " + e.getMessage());
+        }
+
+        return null;
+    }
 
 }

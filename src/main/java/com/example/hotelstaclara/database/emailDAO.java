@@ -58,7 +58,7 @@ public class emailDAO {
         }
     }
 
-    public int ObtenerUltimoid_empleado() throws SQLException {
+    public static int ObtenerUltimoid_empleado() throws SQLException {
         String sql = """
         SELECT MAX(id_empleado) AS empleado 
         FROM empleado;
