@@ -50,12 +50,20 @@ public class ReservacionesDAO {
 
 
     public int buscarUsuario(String userDUI) {
-        String sql = "select id_cliente from cliente where nombre_cliente = ? || DUI_cliente = ?;";
+        String sql = """
+                SELECT id_cliente
+                FROM cliente cl
+                WHERE cl.nombre_cliente = ?
+                   OR cl.DUI_cliente = ?
+                   OR CONCAT(cl.nombre_cliente, ' ', cl.apellido_cliente) = ?;
+                                
+                """;
         try (Connection conn = connection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, userDUI);
             stmt.setString(2, userDUI);
+            stmt.setString(3, userDUI);
 
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
