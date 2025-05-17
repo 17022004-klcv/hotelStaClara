@@ -2,9 +2,12 @@ package com.example.hotelstaclara.Recursos;
 
 import com.example.hotelstaclara.controllers.AdminController.AdminHabitacionesController;
 import com.example.hotelstaclara.controllers.UserControllers.USERhabitaciones;
+import com.example.hotelstaclara.controllers.UserControllers.USERreservaciones;
 import com.example.hotelstaclara.controllers.formsAdminControllers.FormHabitacionesController;
 import com.example.hotelstaclara.controllers.formsUserControlllers.FormHabitacionController;
 import com.example.hotelstaclara.controllers.formsUserControlllers.FormPagoMembresiaController;
+import com.example.hotelstaclara.controllers.formsUserControlllers.FormReservacionController;
+import com.example.hotelstaclara.model.Reservaciones;
 import com.example.hotelstaclara.model.habitacion;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,6 +16,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.control.Button; // Importa Button correctamente
 
+import javax.swing.*;
 import java.io.IOException;
 
 public class Rutas {
@@ -20,7 +24,11 @@ public class Rutas {
     private String opAddEdit = "";
     private habitacion habitation;
     private AdminHabitacionesController adminHabitacionesControllerOriginal;
-    private USERhabitaciones formHabitacionControllerOriginal;
+    private USERhabitaciones formHabitacionController;
+
+
+    // optener objeto de reservaciones
+    private Reservaciones reservaciones;
 
     public Rutas() {
     }
@@ -40,6 +48,7 @@ public class Rutas {
             e.printStackTrace();
         }
     }
+
 
     public void pasarRutasAdminFroms(String url, Button activador) {
         try {
@@ -75,9 +84,7 @@ public class Rutas {
 
                 formHabitacionesController.setAdminController(adminHabitacionesControllerOriginal);
                 nuevoStage.setOnHidden(e -> adminHabitacionesControllerOriginal.llenarTablaHabitacion());
-
             }
-
 
             // Mostrar el nuevo formulario
             nuevoStage.show();
@@ -107,6 +114,9 @@ public class Rutas {
         }
     }
 
+
+
+    //  metodos para pasar visra en la parte de recepcionista froms
     public void pasarRutasRecepcionistaFroms(String url, Button activador) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/hotelstaclara/views/formsUserViews/" + url + ".fxml"));
@@ -130,14 +140,19 @@ public class Rutas {
             if (controller instanceof FormHabitacionController formHabitacionCtrl) {
                 formHabitacionCtrl.setHabitacion(habitation);
                 formHabitacionCtrl.inicializarFormulario();
-                formHabitacionCtrl.setUserhabitaciones(formHabitacionControllerOriginal);
-                nuevoStage.setOnHidden(e -> formHabitacionControllerOriginal.llenarTablaHabitacion());
+
+                formHabitacionCtrl.setUserhabitaciones(formHabitacionController);
+                nuevoStage.setOnHidden(e -> formHabitacionController.llenarTablaHabitacion());
             }
 
-            if (controller instanceof FormPagoMembresiaController formPagoMembresiaCtrl) {
-
+            // pasar variables/datos de Reservaciones a formReservaciones
+            if (controller instanceof FormReservacionController && opAddEdit.equals("Edit")) {
+                FormReservacionController formReservacionController = loader.getController();
+                // Cast explícito de Object a Reservaciones
+                Reservaciones reservacion = (Reservaciones) getController;
+                formReservacionController.llenarDatos(reservacion, opAddEdit);
+                opAddEdit = "";
             }
-
 
 
             // Mostrar el nuevo formulario
@@ -146,6 +161,8 @@ public class Rutas {
             e.printStackTrace();
         }
     }
+
+    //  metodos para pasar vista en la parte de login
 
     public void pasarRutasLogin(String url, Button activador) {
         try {
@@ -162,6 +179,25 @@ public class Rutas {
         }
     }
 
+
+
+
+
+
+
+
+
+
+
+    //Esta parte la voy a mentener para el futuro, solo va a quedar objeto general y botton controlador
+
+
+
+
+
+
+
+
     public void setOpAddEdit(String opAddEdit) {
         this.opAddEdit = opAddEdit;
     }
@@ -174,8 +210,23 @@ public class Rutas {
         this.adminHabitacionesControllerOriginal = adminController;
     }
 
-    public void setrecepcionistaController(USERhabitaciones formHabitacionControllerOriginal) {
-        this.formHabitacionControllerOriginal = formHabitacionControllerOriginal;
+    public void setrecepcionistaController(USERhabitaciones formHabitacionController) {
+        this.formHabitacionController = formHabitacionController;
+    }
+
+    public void setAdminController(Reservaciones reservaciones) {
+        this.reservaciones = reservaciones;
+    }
+
+    //-----------------------------------------------------------------
+    private Object getController;
+
+    public Object getGetController() {
+        return getController;
+    }
+
+    public void setGetController(Object getController) {
+        this.getController = getController;
     }
 }
 

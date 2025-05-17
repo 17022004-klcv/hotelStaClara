@@ -31,14 +31,15 @@ public class Reservaciones {
         this.estado_reservacion = estado_reservacion;
     }
 
-    public Reservaciones(Date fecha_reserva, Date fecha_ingreso, Date fecha_salida, String nombre_cliente, String nombre_empleado, String numero_habitacion) {
-        this.fecha_reserva = fecha_reserva;
-        this.fecha_ingreso = fecha_ingreso;
-        this.fecha_salida = fecha_salida;
-        this.nombre_cliente = nombre_cliente;
-        this.nombre_empleado = nombre_empleado;
-        this.numero_habitacion = numero_habitacion;
-    }
+//    public Reservaciones(Date fecha_reserva, Date fecha_ingreso, Date fecha_salida, String nombre_cliente, String nombre_empleado, String numero_habitacion, int id_reservacion) {
+//        this.fecha_reserva = fecha_reserva;
+//        this.fecha_ingreso = fecha_ingreso;
+//        this.fecha_salida = fecha_salida;
+//        this.nombre_cliente = nombre_cliente;
+//        this.nombre_empleado = nombre_empleado;
+//        this.numero_habitacion = numero_habitacion;
+//        this.id_reservacion = id_reservacion;
+//    }
 
     // Getters y setters
 

@@ -2,6 +2,7 @@ package com.example.hotelstaclara.controllers.formsUserControlllers;
 
 import com.example.hotelstaclara.Recursos.MesajesAlert;
 import com.example.hotelstaclara.Recursos.Rutas;
+import com.example.hotelstaclara.controllers.UserControllers.USERreservaciones;
 import com.example.hotelstaclara.database.HabiracionDAO;
 import com.example.hotelstaclara.database.PagoDAO;
 import com.example.hotelstaclara.database.ReservacionesDAO;
@@ -52,6 +53,12 @@ public class FormReservacionController {
     private RadioButton rb_royal;
 
     Rutas ruta = new Rutas();
+    private String Estado_boton = "";
+    private int IdReservacion;
+
+    public void initialize() {
+        limpiarCampos();
+    }
 
     @FXML
     void imgBack(MouseEvent event) {
@@ -83,20 +90,18 @@ public class FormReservacionController {
         HabiracionDAO habiracionDAO = new HabiracionDAO();
         IdEmpleado idEmpleado = new IdEmpleado();
 
-
         // optener todos lo datos de la reservacion
         String habitacion = tex_habitacion.getText();
         String cliente = tex_cliente.getText().trim();
-        String fechaInicio = pick_fechaInicio.getValue().toString();
-        String fechaSalida = pick_fechaSalida.getValue().toString();
 
-        // 0ptener la fechas
+        // optener la fechas
         LocalDate fechaIni = pick_fechaInicio.getValue();
         java.sql.Date fecha_inicio = java.sql.Date.valueOf(fechaIni);
 
         LocalDate fechaSal = pick_fechaSalida.getValue();
         java.sql.Date fecha_salida = java.sql.Date.valueOf(fechaSal);
 
+        // optener el id del cliente y la habitacion
        int id_cliente = reservacionesDAO.buscarUsuario(cliente);
        int id_habitacion = habiracionDAO.buscarHabitacion(habitacion);
 
@@ -110,22 +115,27 @@ public class FormReservacionController {
             return;
         }
 
-
-
-
         // optener la fecha actual
         LocalDate fechaActual = LocalDate.now();
         java.sql.Date fecha_actual = java.sql.Date.valueOf(fechaActual);
 
+        if (!Estado_boton.equals("Edit")) {
+            // crear la reservacion
+            int id_reservacion =  reservacionesDAO.guardarReservaciones(new Reservaciones(0, fecha_actual, fecha_inicio, fecha_salida, id_cliente, idEmpleado.getIdEmpleado(),id_habitacion, Estado_reservaciones.activa));
+            opcionPago(id_habitacion, id_cliente, id_reservacion, "Add");
+            limpiarCampos();
+        }else {
+            // editar la reservacion
+            reservacionesDAO.actualizarEstadoReservacion(new Reservaciones(IdReservacion, fecha_actual, fecha_inicio, fecha_salida, id_cliente, idEmpleado.getIdEmpleado(),id_habitacion, Estado_reservaciones.activa));
+            opcionPago(id_habitacion, id_cliente, IdReservacion, "Edit");
 
-        // crear la reservacion
-     int id_reservacion =  reservacionesDAO.guardarReservaciones(new Reservaciones(0, fecha_actual, fecha_inicio, fecha_salida, id_cliente, idEmpleado.getIdEmpleado(),id_habitacion, Estado_reservaciones.activa));
-
-        montoApagar(id_habitacion, id_cliente, id_reservacion);
+            ruta.cerrarVentana(but_Aceptar);
+        }
     }
 
     private int obtenerDias() {
         MesajesAlert mesajesAlert = new MesajesAlert();
+
         LocalDate fechaInicio = pick_fechaInicio.getValue();
         LocalDate fechaFin = pick_fechaSalida.getValue();
 
@@ -144,21 +154,74 @@ public class FormReservacionController {
         return 0;
     }
 
-    private void montoApagar(int id_habitacion, int id_cliente, int id_reservacion) {
+
+    public void llenarDatos(Reservaciones reservaciones, String Estado_boton) {
+        this.Estado_boton = Estado_boton;
+        this.IdReservacion = reservaciones.getId_reservacion();
+        but_Aceptar.setText("Editar Reservacion");
+        tex_habitacion.setText(reservaciones.getNumero_habitacion());
+        tex_cliente.setText(reservaciones.getNombre_cliente());
+
+        // obtener la fecha de inicio y la fecha de salida
+        pick_fechaInicio.setValue(reservaciones.getFecha_ingreso().toLocalDate());
+        pick_fechaSalida.setValue(reservaciones.getFecha_salida().toLocalDate());
+
+    }
+
+
+
+    private  void  opcionPago (int id_habitacion, int id_cliente, int id_reservacion, String Estado_opcion) {
         HabiracionDAO habiracionDAO = new HabiracionDAO();
         ReservacionesDAO reservacionesDAO = new ReservacionesDAO();
         PagoDAO pagoDAO = new PagoDAO();
 
-        int dias = obtenerDias();
-
         double monto = habiracionDAO.traerMontoHabitacion(id_habitacion);
         double descuento = reservacionesDAO.tearDescuento(id_cliente);
 
-        if (descuento == -1) {
-            monto =  (monto * dias);
-        }else{
-            monto =  (monto * dias) - ((monto * dias) * (descuento/100));
+        // monto con descuento
+        double montoDescuento = 0;
+        if (descuento != -1) {
+            montoDescuento =  (monto * obtenerDias()) - ((monto * obtenerDias()) * (descuento/100));
         }
-       pagoDAO.insertarPago(new BigDecimal(monto), new BigDecimal(monto), LocalDate.now(), "Efectivo", id_reservacion, id_cliente);
+
+        if (Estado_opcion.equals("Add")) {
+            pagoDAO.insertarPago(new BigDecimal(monto * obtenerDias()), new BigDecimal(montoDescuento), LocalDate.now(), "Efectivo", id_reservacion, id_cliente);
+        } else if (Estado_opcion.equals("Edit")) {
+            int id_pago = pagoDAO.trarIDPago(id_reservacion);
+            pagoDAO.actualizarPago(id_pago,new BigDecimal(monto * obtenerDias()), new BigDecimal(montoDescuento), LocalDate.now(), "Efectivo", id_reservacion, id_cliente);
+        }
+
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public void limpiarCampos() {
+        tex_habitacion.clear();
+        tex_cliente.clear();
+        // poner fecha actual
+        LocalDate fechaActual = LocalDate.now();
+        pick_fechaInicio.setValue(fechaActual);
+        pick_fechaSalida.setValue(fechaActual);
+    }
+
+    // singronisar con UserReservaciones
+
+    private USERreservaciones reservaciones;
+
+    public void setReservaciones(USERreservaciones reservaciones) {
+        this.reservaciones = reservaciones;
+    }
+
+
+
 }

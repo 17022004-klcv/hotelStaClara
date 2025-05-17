@@ -110,7 +110,8 @@ public class ReservacionesDAO {
                 c.fecha_salida,
                 concat(cl.nombre_cliente, ' ', cl.apellido_cliente) As nombreCliente,
                 concat(e.nombre_empleado, ' ', e.apellido_empleado) As nombreEmpreado,
-                h.numero_habitacion
+                h.numero_habitacion,
+                c.id_reservacion
                 from reservacion c
                 JOIN cliente cl On c.id_cliente = cl.id_cliente
                 join empleado e On c.id_empleado = e.id_empleado
@@ -127,6 +128,7 @@ public class ReservacionesDAO {
                 r.setNombre_cliente(rs.getString("nombreCliente"));
                 r.setNombre_empleado(rs.getString("nombreEmpreado"));
                 r.setNumero_habitacion(rs.getString("numero_habitacion"));
+                r.setId_reservacion(rs.getInt("id_reservacion"));
                 reservaciones.add(r);
             }
         } catch (SQLException e) {
@@ -135,5 +137,26 @@ public class ReservacionesDAO {
         return reservaciones;
     }
 
+    // actualizar estado de la reservacion
+    public void actualizarEstadoReservacion(Reservaciones r) {
+        String sql = "UPDATE reservacion SET fecha_ingreso = ?, fecha_salida = ?, id_cliente = ?, id_habitacion = ? WHERE id_reservacion = ?";
+        try (Connection conn = connection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
 
+            stmt.setDate(1, r.getFecha_ingreso());
+            stmt.setDate(2, r.getFecha_salida());
+            stmt.setInt(3, r.getId_cliente());
+            stmt.setInt(4, r.getId_habitacion());
+            stmt.setInt(5, r.getId_reservacion());
+
+            if (stmt.executeUpdate() > 0) {
+                mesajesAlert.mostarAlertWARNING("Reservación actualizada corectamente.");
+            }else{
+                mesajesAlert.mostarAlertError("La reservación no se pudo actualizar.");
+            }
+
+        } catch (SQLException e) {
+            mesajesAlert.mostarAlertError( "El usuario no se pudo encontrar" + e.getMessage() + e);
+        }
+    }
 }
