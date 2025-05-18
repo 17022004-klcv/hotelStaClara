@@ -116,10 +116,13 @@ public class ReservacionesDAO {
                 c.fecha_reserva,
                 c.fecha_ingreso,
                 c.fecha_salida,
+                cl.nombre_cliente,
+                cl.apellido_cliente,
                 concat(cl.nombre_cliente, ' ', cl.apellido_cliente) As nombreCliente,
                 concat(e.nombre_empleado, ' ', e.apellido_empleado) As nombreEmpreado,
                 h.numero_habitacion,
-                c.id_reservacion
+                c.id_reservacion,
+                cl.id_cliente
                 from reservacion c
                 JOIN cliente cl On c.id_cliente = cl.id_cliente
                 join empleado e On c.id_empleado = e.id_empleado
@@ -133,10 +136,14 @@ public class ReservacionesDAO {
                 r.setFecha_reserva(rs.getDate("fecha_reserva"));
                 r.setFecha_ingreso(rs.getDate("fecha_ingreso"));
                 r.setFecha_salida(rs.getDate("fecha_salida"));
-                r.setNombre_cliente(rs.getString("nombreCliente"));
+                r.setNombre_cliente(rs.getString("nombre_cliente"));
+                r.setApellido_cliente(rs.getString("apellido_cliente"));
+                r.setNombreClienteCopleto(rs.getString("nombreCliente"));
                 r.setNombre_empleado(rs.getString("nombreEmpreado"));
                 r.setNumero_habitacion(rs.getString("numero_habitacion"));
                 r.setId_reservacion(rs.getInt("id_reservacion"));
+                r.setId_cliente(rs.getInt("id_cliente"));
+
                 reservaciones.add(r);
             }
         } catch (SQLException e) {

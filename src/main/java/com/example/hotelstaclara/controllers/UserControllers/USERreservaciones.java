@@ -8,10 +8,7 @@ import com.example.hotelstaclara.model.Reservaciones;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -131,7 +128,7 @@ public class USERreservaciones {
     public void llenarTablaReservaciones(){
 
         colum_id.setCellValueFactory(new PropertyValueFactory<>("id_reservacion"));
-        colum_cliente.setCellValueFactory(new PropertyValueFactory<>("nombre_cliente"));
+        colum_cliente.setCellValueFactory(new PropertyValueFactory<>("nombreClienteCopleto"));
         colum_empleado.setCellValueFactory(new PropertyValueFactory<>("nombre_empleado"));
         colum_fechaReserva.setCellValueFactory(new PropertyValueFactory<>("fecha_reserva"));
         colum_fechaRetiro.setCellValueFactory(new PropertyValueFactory<>("fecha_salida"));
@@ -144,4 +141,5 @@ public class USERreservaciones {
     @FXML
     void btn_Buscar(ActionEvent event) {
     }
+
 }

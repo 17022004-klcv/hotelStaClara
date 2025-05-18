@@ -153,9 +153,14 @@ public class Rutas {
                 formReservacionController.llenarDatos(reservacion, opAddEdit);
                 opAddEdit = "";
             }
+            if (controller instanceof FormReservacionController && opAddEdit.equals("AddHabitacion")) {
+                FormReservacionController formReservacionController = loader.getController();
+                formReservacionController.llenarDatosHabitacion((habitacion) getController);
+
+            }
 
 
-            // Mostrar el nuevo formulario
+                // Mostrar el nuevo formulario
             nuevoStage.show();
         } catch (IOException e) {
             e.printStackTrace();
