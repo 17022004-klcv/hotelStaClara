@@ -75,7 +75,7 @@
                               <Insets left="25.0" top="20.0" />
                            </HBox.margin>
                         </ImageView>
-                        <Button fx:id="btn_Reservaciones" mnemonicParsing="false" onAction="#btn_Reservaciones" prefHeight="70.0" prefWidth="203.0" styleClass="boton" stylesheets="@../../styles/UserStyles/formsStyle.css" text="Reservaciones">
+                        <Button fx:id="btn_Reservaciones" mnemonicParsing="false" prefHeight="70.0" prefWidth="203.0" styleClass="boton" stylesheets="@../../styles/UserStyles/formsStyle.css" text="Reservaciones">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -112,7 +112,7 @@
             </Label>
             <TableView fx:id="tabla_reservacion" layoutX="8.0" layoutY="163.0" prefHeight="330.0" prefWidth="964.0" style="-fx-background-radius: 20;">
                <columns>
-                  <TableColumn prefWidth="77.0" text="ID" />
+                  <TableColumn fx:id="colum_id" prefWidth="77.0" text="ID" />
                   <TableColumn fx:id="colum_fechaReserva" prefWidth="145.0" text="Fecha Reserva" />
                   <TableColumn fx:id="colum_fechaingreso" prefWidth="149.0" text="Fecha Ingreso" />
                   <TableColumn fx:id="colum_fechaRetiro" prefWidth="162.0" text="Fecha Retiro" />
@@ -148,7 +148,7 @@
                         <Image url="@../../img/lupa.png" />
                      </image>
                   </ImageView>
-                  <TextField fx:id="txt_Buscador" layoutX="67.0" onAction="#txt_Buscar" prefHeight="38.0" prefWidth="635.0" style="-fx-background-radius: 20;" />
+                  <TextField fx:id="txt_Buscador" layoutX="67.0" prefHeight="38.0" prefWidth="635.0" style="-fx-background-radius: 20;" />
                </children>
             </Pane>
             <Button fx:id="bnt_Buscar" layoutX="746.0" layoutY="110.0" mnemonicParsing="false" onAction="#btn_Buscar" prefHeight="39.0" prefWidth="111.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 20;" text="Buscar">

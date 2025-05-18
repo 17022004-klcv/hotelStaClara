@@ -1,5 +1,6 @@
 package com.example.hotelstaclara.controllers.UserControllers;
 
+import com.example.hotelstaclara.Recursos.MesajesAlert;
 import com.example.hotelstaclara.Recursos.Rutas;
 import com.example.hotelstaclara.database.HabiracionDAO;
 import com.example.hotelstaclara.database.ReservacionesDAO;
@@ -7,13 +8,12 @@ import com.example.hotelstaclara.model.Reservaciones;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+
+import javax.swing.*;
 
 public class USERreservaciones {
 
@@ -63,31 +63,26 @@ public class USERreservaciones {
     private TableColumn<Reservaciones, Integer> colum_habitacion;
 
     @FXML
+    private TableColumn<Reservaciones, Integer> colum_id;
+
+    @FXML
     private TableView<Reservaciones> tabla_reservacion;
 
     @FXML
     private TextField txt_Buscador;
 
     Rutas ruta = new Rutas();
-
+    MesajesAlert mesajesAlert = new MesajesAlert();
 
     public void initialize() {
         llenarTablaReservaciones();
     }
 
-    @FXML
-    void btn_Buscar(ActionEvent event) {
-
-    }
+    // nevagacion en view
 
     @FXML
     void btn_Clientes(ActionEvent event) {
         ruta.pasarRutasRecepcionista("USERclientes", btn_Clientes);
-    }
-
-    @FXML
-    void btn_Eliminar(ActionEvent event) {
-
     }
 
     @FXML
@@ -100,35 +95,40 @@ public class USERreservaciones {
         ruta.pasarRutasRecepcionista("USERpagos", btn_Pagos);
     }
 
-    @FXML
-    void btn_Reservaciones(ActionEvent event) {
-
+    public void PanelLogo_Click(MouseEvent mouseEvent) {
+        ruta.pasarRutasLogin("Login", btn_Pagos);
     }
 
-    //------------------------
+    //------------------------ operaciones crud ------------------------
 
     @FXML
-    void but_agregar(ActionEvent event) {
-        ruta.pasarRutasRecepcionistaFroms("formReservacion", but_agregar);
+    void but_agregar(ActionEvent event) {ruta.pasarRutasRecepcionistaFroms("formReservacion", but_agregar);
     }
 
     @FXML
     void but_editar(ActionEvent event) {
 
+        Reservaciones filaSeleccionada = tabla_reservacion.getSelectionModel().getSelectedItem();
+        if (filaSeleccionada == null) {
+            mesajesAlert.mostarAlertError("Seleccione una fila");
+            return;
+        }
+        ruta.setGetController(filaSeleccionada);
+        ruta.setOpAddEdit("Edit");
+        ruta.pasarRutasRecepcionistaFroms("formReservacion", but_agregar);
     }
 
     @FXML
-    void txt_Buscar(ActionEvent event) {
+    void btn_Eliminar(ActionEvent event) {
 
     }
 
-    public void PanelLogo_Click(MouseEvent mouseEvent) {
-        ruta.pasarRutasLogin("Login", btn_Pagos);
-    }
+    // ------------------------ otras funciones ------------------------
 
     public void llenarTablaReservaciones(){
 
-        colum_cliente.setCellValueFactory(new PropertyValueFactory<>("nombre_cliente"));
+        colum_id.setCellValueFactory(new PropertyValueFactory<>("id_reservacion"));
+        colum_cliente.setCellValueFactory(new PropertyValueFactory<>("nombreClienteCopleto"));
         colum_empleado.setCellValueFactory(new PropertyValueFactory<>("nombre_empleado"));
         colum_fechaReserva.setCellValueFactory(new PropertyValueFactory<>("fecha_reserva"));
         colum_fechaRetiro.setCellValueFactory(new PropertyValueFactory<>("fecha_salida"));
@@ -137,4 +137,9 @@ public class USERreservaciones {
 
         tabla_reservacion.setItems(FXCollections.observableArrayList(ReservacionesDAO.traerReservaciones()));
     }
+
+    @FXML
+    void btn_Buscar(ActionEvent event) {
+    }
+
 }

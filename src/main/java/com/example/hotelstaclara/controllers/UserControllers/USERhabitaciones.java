@@ -9,9 +9,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+
+import javax.swing.*;
+import java.sql.SQLException;
 
 public class USERhabitaciones {
 
@@ -52,6 +56,7 @@ public class USERhabitaciones {
 
     public void initialize(){
         llenarTablaHabitacion();
+        agregarDobleClickEnTabla();
     }
 
 
@@ -103,4 +108,24 @@ public class USERhabitaciones {
     public void PanelLogo_Click(MouseEvent mouseEvent) {
         ruta.pasarRutasLogin("Login", btn_Pagos);
     }
+
+    private void agregarDobleClickEnTabla() {
+        tabla_habitaciones.setRowFactory(tv -> {
+            TableRow<habitacion> row = new TableRow<>();
+
+            row.setOnMouseClicked(event -> {
+                if (!row.isEmpty() && event.getClickCount() == 2) {
+                    habitacion habitacion = row.getItem();
+
+                    ruta.setOpAddEdit("AddHabitacion");
+                    ruta.setGetController(habitacion);
+                    ruta.pasarRutasRecepcionistaFroms("formReservacion", btn_Clientes);
+
+                }
+            });
+
+            return row;
+        });
+    }
+
 }

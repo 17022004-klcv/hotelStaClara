@@ -14,8 +14,10 @@ public class Reservaciones {
 
     // variables auxiliares
     private String nombre_cliente;
+    private String apellido_cliente;
     private String nombre_empleado;
     private String numero_habitacion;
+    private String nombreClienteCopleto;
     // Constructor
     public Reservaciones() {
     }
@@ -29,15 +31,6 @@ public class Reservaciones {
         this.id_empleado = id_empleado;
         this.id_habitacion = id_habitacion;
         this.estado_reservacion = estado_reservacion;
-    }
-
-    public Reservaciones(Date fecha_reserva, Date fecha_ingreso, Date fecha_salida, String nombre_cliente, String nombre_empleado, String numero_habitacion) {
-        this.fecha_reserva = fecha_reserva;
-        this.fecha_ingreso = fecha_ingreso;
-        this.fecha_salida = fecha_salida;
-        this.nombre_cliente = nombre_cliente;
-        this.nombre_empleado = nombre_empleado;
-        this.numero_habitacion = numero_habitacion;
     }
 
     // Getters y setters
@@ -135,5 +128,21 @@ public class Reservaciones {
 
     public void setNumero_habitacion(String numero_habitacion) {
         this.numero_habitacion = numero_habitacion;
+    }
+
+    public String getApellido_cliente() {
+        return apellido_cliente;
+    }
+
+    public void setApellido_cliente(String apellido_cliente) {
+        this.apellido_cliente = apellido_cliente;
+    }
+
+    public String getNombreClienteCopleto() {
+        return nombreClienteCopleto;
+    }
+
+    public void setNombreClienteCopleto(String nombreClienteCopleto) {
+        this.nombreClienteCopleto = nombreClienteCopleto;
     }
 }
