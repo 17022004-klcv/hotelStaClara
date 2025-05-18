@@ -27,9 +27,6 @@ public class FormReservacionController {
     private Button but_Aceptar;
 
     @FXML
-    private ImageView imgBack;
-
-    @FXML
     private Label label_descuento;
 
     @FXML
@@ -59,15 +56,20 @@ public class FormReservacionController {
     Rutas ruta = new Rutas();
     private String Estado_boton = "";
     private int IdReservacion;
+
+    // listas
     private List<habitacion> listaHabitaciones;
     private List<Reservaciones> listaReservaciones;
 
     public void initialize() {
+        // optener todas la lsitas de habitaciones y reservaciones
         listaHabitaciones = HabiracionDAO.TraeesHabitacions();
         listaReservaciones = ReservacionesDAO.traerReservaciones();
+        // limpiar los campos y mostrar los dias
         limpiarCampos();
         mostrarDias();
 
+        // eventos para actualizar en tiempo real
         tex_habitacion();
         tex_cliente();
     }
@@ -75,22 +77,6 @@ public class FormReservacionController {
     @FXML
     void imgBack(MouseEvent event) {
         ruta.cerrarVentana(but_Aceptar);
-    }
-
-    @FXML
-    void rb_estandar(ActionEvent event) {
-    }
-
-    @FXML
-    void rb_premium(ActionEvent event) {
-    }
-
-    @FXML
-    void rb_royal(ActionEvent event) {
-
-    }
-
-    public void tex_habitacion(ActionEvent actionEvent) {
     }
 
     @FXML
@@ -121,8 +107,7 @@ public class FormReservacionController {
         if (id_cliente == -1) {
             mesajesAlert.mostarAlertError("El cliente no se encuentra registrado");
             return;
-        }
-        if (id_habitacion == -1) {
+        }else if(id_habitacion == -1) {
             mesajesAlert.mostarAlertError("La habitacion no se encuentra disponible");
             return;
         }
@@ -136,6 +121,8 @@ public class FormReservacionController {
             int id_reservacion =  reservacionesDAO.guardarReservaciones(new Reservaciones(0, fecha_actual, fecha_inicio, fecha_salida, id_cliente, idEmpleado.getIdEmpleado(),id_habitacion, Estado_reservaciones.activa));
             opcionPago(id_habitacion, id_cliente, id_reservacion, "Add");
             limpiarCampos();
+            ruta.cerrarVentana(but_Aceptar);
+            ruta.pasarRutasRecepcionista("USERreservaciones", but_Aceptar);
         }else {
             // editar la reservacion
             reservacionesDAO.actualizarEstadoReservacion(new Reservaciones(IdReservacion, fecha_actual, fecha_inicio, fecha_salida, id_cliente, idEmpleado.getIdEmpleado(),id_habitacion, Estado_reservaciones.activa));

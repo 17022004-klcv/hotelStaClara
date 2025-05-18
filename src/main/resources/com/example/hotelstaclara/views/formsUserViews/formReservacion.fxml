@@ -31,7 +31,7 @@
       <DatePicker fx:id="pick_fechaInicio" layoutX="165.0" layoutY="103.0" prefHeight="46.0" prefWidth="230.0" />
       <DatePicker fx:id="pick_fechaSalida" layoutX="165.0" layoutY="161.0" prefHeight="46.0" prefWidth="230.0" />
       <TextField fx:id="tex_cliente" layoutX="166.0" layoutY="220.0" prefHeight="46.0" prefWidth="230.0" promptText="Nombre/DUI" />
-      <TextField fx:id="tex_habitacion" layoutX="166.0" layoutY="277.0" onAction="#tex_habitacion" prefHeight="46.0" prefWidth="230.0" promptText="A000" />
+      <TextField fx:id="tex_habitacion" layoutX="166.0" layoutY="277.0" prefHeight="46.0" prefWidth="230.0" promptText="A000" />
       <Text layoutX="57.0" layoutY="383.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo de habitación" wrappingWidth="130.82697296142578" />
       <Text layoutX="58.0" layoutY="411.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Precio de habitación" />
       <Text layoutX="59.0" layoutY="437.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dias de estadia" />
