@@ -167,6 +167,9 @@ public class FormReservacionController {
         pick_fechaSalida.setValue(reservaciones.getFecha_salida().toLocalDate());
 
         mostrarDias();
+        tex_habitacion();
+        tex_cliente();
+        calcularPrecio();
         // obtener el precio de la habitacion
 
     }
@@ -178,7 +181,7 @@ public class FormReservacionController {
         label_precioHabitacion.setText(String.valueOf(habitacion.getPrecio()));
         mostrarDias();
         label_diasEstadia.setText(String.valueOf(obtenerDias()));
-
+        calcularPrecio();
     }
 
 
@@ -203,6 +206,7 @@ public class FormReservacionController {
             int id_pago = pagoDAO.trarIDPago(id_reservacion);
             pagoDAO.actualizarPago(id_pago,new BigDecimal(monto * obtenerDias()), new BigDecimal(montoDescuento), LocalDate.now(), "Efectivo", id_reservacion, id_cliente);
         }
+        calcularPrecio();
     }
 
 
@@ -218,6 +222,7 @@ public class FormReservacionController {
         label_diasEstadia.setText("1");
         label_precioHabitacion.setText("0.0");
         label_precioTotal.setText("0.00");
+        calcularPrecio();
     }
 
 

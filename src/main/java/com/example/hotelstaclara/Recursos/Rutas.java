@@ -4,6 +4,7 @@ import com.example.hotelstaclara.controllers.AdminController.AdminHabitacionesCo
 import com.example.hotelstaclara.controllers.UserControllers.USERhabitaciones;
 import com.example.hotelstaclara.controllers.UserControllers.USERreservaciones;
 import com.example.hotelstaclara.controllers.formsAdminControllers.FormHabitacionesController;
+import com.example.hotelstaclara.controllers.formsAdminControllers.formReservacionesController;
 import com.example.hotelstaclara.controllers.formsUserControlllers.FormHabitacionController;
 import com.example.hotelstaclara.controllers.formsUserControlllers.FormPagoMembresiaController;
 import com.example.hotelstaclara.controllers.formsUserControlllers.FormReservacionController;
@@ -84,6 +85,20 @@ public class Rutas {
 
                 formHabitacionesController.setAdminController(adminHabitacionesControllerOriginal);
                 nuevoStage.setOnHidden(e -> adminHabitacionesControllerOriginal.llenarTablaHabitacion());
+            }
+
+            //pasar variables/datos de adminReservaciones a formReservaciones
+            if (controller instanceof formReservacionesController && opAddEdit.equals("Edit")) {
+                formReservacionesController formReservacionController = loader.getController();
+
+                // Cast explícito de Object a Reservaciones
+                Reservaciones reservacion = (Reservaciones) getController;
+                formReservacionController.llenarDatosPUTA(reservacion, opAddEdit);
+                opAddEdit = "";
+            }
+            if (controller instanceof formReservacionesController && opAddEdit.equals("AddHabitacion")) {
+                FormReservacionController formReservacionController = loader.getController();
+                formReservacionController.llenarDatosHabitacion((habitacion) getController);
             }
 
             // Mostrar el nuevo formulario
