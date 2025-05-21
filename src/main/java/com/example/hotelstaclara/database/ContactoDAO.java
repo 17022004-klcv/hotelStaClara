@@ -87,7 +87,7 @@ public class ContactoDAO {
         String sql = """
                 UPDATE contacto
                 SET telefono_1 = ?, 
-                direccion = ?
+                    direccion = ?
                 WHERE id_contacto = ?;
                 """;
 
