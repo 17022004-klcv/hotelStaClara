@@ -1,5 +1,15 @@
 package com.example.hotelstaclara.Recursos;
 
+
+import com.example.hotelstaclara.controllers.AdminController.AdminHabitacionesController;
+import com.example.hotelstaclara.controllers.UserControllers.USERhabitaciones;
+import com.example.hotelstaclara.controllers.formsAdminControllers.FormHabitacionesController;
+import com.example.hotelstaclara.controllers.formsUserControlllers.FormHabitacionController;
+import com.example.hotelstaclara.controllers.formsUserControlllers.FormReservacionController;
+import com.example.hotelstaclara.controllers.formsAdminControllers.formReservacionesController;
+import com.example.hotelstaclara.model.Reservaciones;
+import com.example.hotelstaclara.model.habitacion;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -48,6 +58,34 @@ public class Rutas {
             // Configurar el nuevo Stage para que aparezca sobre el actual
             nuevoStage.initOwner(stageActual);
             nuevoStage.initModality(Modality.WINDOW_MODAL);
+
+            Object controller = loader.getController();
+
+            if (controller instanceof FormHabitacionesController) {
+                FormHabitacionesController formHabitacionesController = loader.getController();
+                formHabitacionesController.setOpAddEdit(opAddEdit);
+                formHabitacionesController.setHabitacion(habitation);
+                formHabitacionesController.inicializarFormulario();
+
+                formHabitacionesController.setAdminController(adminHabitacionesControllerOriginal);
+
+                formHabitacionesController.setAdminController(adminHabitacionesControllerOriginal);
+                nuevoStage.setOnHidden(e -> adminHabitacionesControllerOriginal.llenarTablaHabitacion());
+            }
+
+            // pasar variables/datos de Reservaciones a formReservaciones
+            if (controller instanceof formReservacionesController && opAddEdit.equals("Edit")) {
+                formReservacionesController formReservacionController = loader.getController();
+                // Cast explícito de Object a Reservaciones
+                Reservaciones reservacion = (Reservaciones) getController;
+                formReservacionController.llenarDatos(reservacion, opAddEdit);
+                opAddEdit = "";
+            }
+            // esto es otra clase
+            if (controller instanceof formReservacionesController && opAddEdit.equals("AddHabitacion")) {
+                formReservacionesController formReservacionController = loader.getController();
+                formReservacionController.llenarDatosHabitacion((habitacion) getController);
+            }
 
 
             // Mostrar el nuevo formulario
@@ -98,6 +136,32 @@ public class Rutas {
             nuevoStage.initOwner(stageActual);
             nuevoStage.initModality(Modality.WINDOW_MODAL);
 
+            //pasar variables/datos de adminHabitaciones a formHabitaciones
+            Object controller = loader.getController();
+
+            if (controller instanceof FormHabitacionController formHabitacionCtrl) {
+                formHabitacionCtrl.setHabitacion(habitation);
+                formHabitacionCtrl.inicializarFormulario();
+
+                formHabitacionCtrl.setUserhabitaciones(formHabitacionController);
+                nuevoStage.setOnHidden(e -> formHabitacionController.llenarTablaHabitacion());
+            }
+
+            // pasar variables/datos de Reservaciones a formReservaciones
+            if (controller instanceof FormReservacionController && opAddEdit.equals("Edit")) {
+                FormReservacionController formReservacionController = loader.getController();
+                // Cast explícito de Object a Reservaciones
+                Reservaciones reservacion = (Reservaciones) getController;
+                formReservacionController.llenarDatos(reservacion, opAddEdit);
+                opAddEdit = "";
+            }
+            if (controller instanceof FormReservacionController && opAddEdit.equals("AddHabitacion")) {
+                FormReservacionController formReservacionController = loader.getController();
+                formReservacionController.llenarDatosHabitacionn((habitacion) getController);
+            }
+
+
+                // Mostrar el nuevo formulario
             nuevoStage.show();
         } catch (IOException e) {
             e.printStackTrace();

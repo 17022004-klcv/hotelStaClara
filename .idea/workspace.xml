@@ -5,12 +5,17 @@
   </component>
   <component name="ChangeListManager">
 
-    <list default="true" id="a44bdff9-8517-448d-807a-b783690deef8" name="Changes" comment="Feat: UPDATE y INSERT hecho en AdminEmpleadosController&#10;hay un pequeño bug en el cargo, de que si es recepcionista, no pude cambiar a Administrador">
+    <list default="true" id="a44bdff9-8517-448d-807a-b783690deef8" name="Changes" comment="feat: ya se pude add y update de admin">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/Recursos/Rutas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/Recursos/Rutas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/formsAdminControllers/formAddEmpleadoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/formsAdminControllers/formAddEmpleadoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/database/ContactoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/database/ContactoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/database/empleadoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/database/empleadoDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/AdminController/AdminHabitacionesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/AdminController/AdminHabitacionesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/UserControllers/USERhabitaciones.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/UserControllers/USERhabitaciones.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/UserControllers/USERreservaciones.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/UserControllers/USERreservaciones.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/formsAdminControllers/formReservacionesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/formsAdminControllers/formReservacionesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/formsUserControlllers/FormReservacionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/formsUserControlllers/FormReservacionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/database/ReservacionesDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/database/ReservacionesDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/hotelstaclara/views/formsAdminViews/formReservaciones.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/hotelstaclara/views/formsAdminViews/formReservaciones.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/hotelstaclara/views/formsUserViews/formReservacion.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/hotelstaclara/views/formsUserViews/formReservacion.fxml" afterDir="false" />
 
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -45,10 +50,10 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/17022004-klcv/hotelStaClara.git&quot;,
-    &quot;accountId&quot;: &quot;2489487a-7396-4a2c-99d4-add8450b0739&quot;
+    &quot;accountId&quot;: &quot;4cd81f03-605c-428d-bceb-0b6e9628a215&quot;
 
   }
-}]]></component>
+}</component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -203,13 +208,21 @@
       <updated>1747539848107</updated>
     </task>
 
-    <task id="LOCAL-00016" summary="Feat: UPDATE y INSERT hecho en AdminEmpleadosController&#10;hay un pequeño bug en el cargo, de que si es recepcionista, no pude cambiar a Administrador">
+    <task id="LOCAL-00015" summary="feat: solo de puso nuva ruta">
       <option name="closed" value="true" />
-      <created>1747293918382</created>
+      <created>1747540332597</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1747540332597</updated>
+    </task>
+    <task id="LOCAL-00016" summary="feat: ya se pude add y update de admin">
+      <option name="closed" value="true" />
+      <created>1747781559167</created>
       <option name="number" value="00016" />
       <option name="presentableId" value="LOCAL-00016" />
       <option name="project" value="LOCAL" />
-      <updated>1747293918382</updated>
+      <updated>1747781559167</updated>
     </task>
     <option name="localTasksCounter" value="17" />
 
@@ -240,13 +253,12 @@
     <MESSAGE value="Feat: model membresia creado" />
     <MESSAGE value="Feat: model cliente creado" />
 
-    <MESSAGE value="Feat: model cargo creado" />
-    <MESSAGE value="Merge pull request #5 from 17022004-klcv/feat-Crud-empleado-admin&#10;&#10;Design: Se agregaron las carpetas de Validations y Alert para validar…" />
-    <MESSAGE value="Feat: model contacto creado" />
-    <MESSAGE value="Feat: SELECT hecho en AdminEmpleadosController" />
-    <MESSAGE value="Feat: DELETE hecho en AdminEmpleadosController" />
-    <MESSAGE value="Feat: UPDATE y INSERT hecho en AdminEmpleadosController&#10;hay un pequeño bug en el cargo, de que si es recepcionista, no pude cambiar a Administrador" />
-    <option name="LAST_COMMIT_MESSAGE" value="Feat: UPDATE y INSERT hecho en AdminEmpleadosController&#10;hay un pequeño bug en el cargo, de que si es recepcionista, no pude cambiar a Administrador" />
+    <MESSAGE value="ya se pude editar" />
+    <MESSAGE value="fix- solucion de llamdo de cliente" />
+    <MESSAGE value="feat: se creo la funcionalidad de al tocar una habitacion se inserte una Reservacion" />
+    <MESSAGE value="feat: solo de puso nuva ruta" />
+    <MESSAGE value="feat: ya se pude add y update de admin" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: ya se pude add y update de admin" />
 
   </component>
 </project>
