@@ -197,7 +197,22 @@ public class Rutas {
 
 
 
+
+
+
+
+
+
+
+
     //Esta parte la voy a mentener para el futuro, solo va a quedar objeto general y botton controlador
+
+
+
+
+
+
+
 
     public void setOpAddEdit(String opAddEdit) {
         this.opAddEdit = opAddEdit;

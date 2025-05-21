@@ -184,15 +184,30 @@ public class formAddEmpleadoController {
 
 
         String email_Empleado = AdminEmpleadosController.Email_seleccionado;
-        Map<String, Object> datosCliente = empleadoDAO.get_datos_Empleado(email_Empleado).get(0);
+        Map<String, Object> datosEmpleado = empleadoDAO.get_datos_Empleado(email_Empleado).get(0);
 
         // Cargar los datos en los TextFields del formulario
-        txt_nombres.setText(datosCliente.get("nombre_empleado").toString());
-        txt_apellidos.setText(datosCliente.get("apellido_empleado").toString());
-        txt_dui.setText(datosCliente.get("DUI_empleado").toString());
-        txt_email.setText(datosCliente.get("email").toString());
-        txt_tel.setText(datosCliente.get("telefono_1").toString());
-        txt_direccion.setText(datosCliente.get("direccion").toString());
+        txt_nombres.setText(datosEmpleado.get("nombre_empleado").toString());
+        txt_apellidos.setText(datosEmpleado.get("apellido_empleado").toString());
+        txt_dui.setText(datosEmpleado.get("DUI_empleado").toString());
+        txt_email.setText(datosEmpleado.get("email").toString());
+        txt_tel.setText(datosEmpleado.get("telefono_1").toString());
+        txt_direccion.setText(datosEmpleado.get("direccion").toString());
+        // Seleccionar el RadioButton de cargo según id_cargo
+        int idCargo = Integer.parseInt(datosEmpleado.get("id_cargo").toString());
+        if (idCargo == 1) {
+            btnAdministrador.setSelected(true);
+        } else if (idCargo == 2) {
+            btnRecepcionista.setSelected(true);
+        }
+
+        // Seleccionar el RadioButton de estado según estado_empleado
+        int estadoEmpleado = Integer.parseInt(datosEmpleado.get("estado_empleado").toString());
+        if (estadoEmpleado == 0) {
+            btnInActivo.setSelected(true);
+        } else {
+            btnActivo.setSelected(true);
+        }
 
     }
 
@@ -205,20 +220,21 @@ public class formAddEmpleadoController {
         telefono = txt_tel.getText();
         direccion = txt_direccion.getText();
 
-        if(rdoCargo.getSelectedToggle() == btnAdministrador){
+        if (rdoCargo.getSelectedToggle() == btnAdministrador) {
             cargo = 1;
-        }else if(rdoCargo.getSelectedToggle() == btnRecepcionista){
+        } else if (rdoCargo.getSelectedToggle() == btnRecepcionista) {
             cargo = 2;
+        }
 
-        if(rdoEstado.getSelectedToggle() == btnInActivo){
+        if (rdoEstado.getSelectedToggle() == btnInActivo) {
             estado = 0;
-        }else{
+        } else {
             estado = 1;
         }
 
         Map ids = empleadoDAO.Obtener_idsCorrespondientes_Empleados(CorreoEmpleado).get(0);
         // se coloca -1 por el hecho de que le estamos pasando el objeto completo, entonces este campo no puede ir vacio
-        empleado empleado=new empleado(nombre,apellido,dui,-1,cargo,estado);
+        empleado empleado = new empleado(nombre, apellido, dui, -1, cargo, estado);
 
         //obtenemos el id de el usuario
         int id_contacto = (int) ids.get("id_contacto");
@@ -231,19 +247,17 @@ public class formAddEmpleadoController {
         emailDAO emaildao = new emailDAO();
 
         //Actualizamos nuestro cliente
-        try{
-            contactodao.UPDATE_CONTACTO(telefono,direccion,id_contacto);
+        try {
+            contactodao.UPDATE_CONTACTO(telefono, direccion, id_contacto);
             empleadodao.UPDATE_Empleado(empleado, id_empleado);
-            emaildao.UPDATE_Email(correo,id_email);
+            emaildao.UPDATE_Email(correo, id_email);
 
-
-            alert.showInfoAlert("Exito",null,"El contacto se Actualizo correctamente");
+            alert.showInfoAlert("Exito", null, "El contacto se Actualizo correctamente");
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null,"Ocurrio un error al actualizar el contacto: " + e.getMessage(),"VUELVE A INTENTARLO",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Ocurrio un error al actualizar el contacto: " + e.getMessage(), "VUELVE A INTENTARLO", JOptionPane.ERROR_MESSAGE);
         }
-}
-    }
 
+    }
     //Limpia las casillas de todos los textfield
     public void Limpiar(){
         txt_nombres.setText("");
@@ -255,6 +269,7 @@ public class formAddEmpleadoController {
     }
 
     public void imgBack(MouseEvent mouseEvent) {
+        ruta.pasarRutasAdmin("AdminEmpleados",bt_agregar);
     }
 
     public void txt_cel(MouseEvent mouseEvent) {
