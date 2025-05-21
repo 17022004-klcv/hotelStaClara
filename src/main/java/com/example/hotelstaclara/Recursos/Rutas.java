@@ -7,9 +7,12 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.control.Button; // Importa Button correctamente
 
+import javax.swing.*;
 import java.io.IOException;
 
 public class Rutas {
+
+
     public Rutas() {
     }
 
@@ -28,6 +31,7 @@ public class Rutas {
         }
     }
 
+
     public void pasarRutasAdminFroms(String url, Button activador) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/hotelstaclara/views/formsAdminViews/" + url + ".fxml"));
@@ -44,6 +48,7 @@ public class Rutas {
             // Configurar el nuevo Stage para que aparezca sobre el actual
             nuevoStage.initOwner(stageActual);
             nuevoStage.initModality(Modality.WINDOW_MODAL);
+
 
             // Mostrar el nuevo formulario
             nuevoStage.show();
@@ -73,6 +78,9 @@ public class Rutas {
         }
     }
 
+
+
+    //  metodos para pasar visra en la parte de recepcionista froms
     public void pasarRutasRecepcionistaFroms(String url, Button activador) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/hotelstaclara/views/formsUserViews/" + url + ".fxml"));
@@ -90,12 +98,13 @@ public class Rutas {
             nuevoStage.initOwner(stageActual);
             nuevoStage.initModality(Modality.WINDOW_MODAL);
 
-            // Mostrar el nuevo formulario
             nuevoStage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+    //  metodos para pasar vista en la parte de login
 
     public void pasarRutasLogin(String url, Button activador) {
         try {
@@ -111,5 +120,3 @@ public class Rutas {
             e.printStackTrace();
         }
     }
-}
-

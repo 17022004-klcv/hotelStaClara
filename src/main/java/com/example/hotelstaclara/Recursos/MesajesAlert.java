@@ -7,9 +7,11 @@ import java.util.Optional;
 
 public class MesajesAlert {
 
+
     public  void mostarAlertError(String message) {
+  
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error de Login");
+        alert.setTitle(null);
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
