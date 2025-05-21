@@ -2,6 +2,7 @@ package com.example.hotelstaclara.controllers;
 import com.example.hotelstaclara.database.loginDAO;
 import com.example.hotelstaclara.Recursos.MesajesAlert;
 import com.example.hotelstaclara.Recursos.Rutas;
+import com.example.hotelstaclara.model.IdEmpleado;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -21,9 +22,11 @@ public class loginController {
 
     @FXML
     void bt_entrar(ActionEvent event) {
+        MesajesAlert mesajesAlert = new MesajesAlert();
+
         String nombreUsuario = txt_usuario.getText();
         String contrasena = String.valueOf(txt_contra.getText());
-        MesajesAlert mesajesAlert = new MesajesAlert();
+        MesajesAlert mesajesAlertas = new MesajesAlert();
         loginDAO logindao=new loginDAO();
         Rutas ruta =new Rutas();
 
@@ -34,9 +37,10 @@ public class loginController {
                 case "administrador" -> ruta.pasarRutasAdmin("AdminReservaciones",bt_entrar);
                 case "recepcionista" -> ruta.pasarRutasRecepcionista("USERpagos",bt_entrar);
                 default -> mesajesAlert.mostarAlertWARNING("!El cargo no existe! " + nombreUsuario);
+
             }
         } else {
-            mesajesAlert.mostarAlertError("Error en el inicio de sesion");
+            mesajesAlert.mostarAlertError("Credenciales incorrectas");
         }
     }
 
