@@ -133,7 +133,7 @@ public class empleadoDAO {
                 co.direccion,
                 e.DUI_empleado,
                 ema.email,
-                ca.nombre_cargo,
+                ca.id_cargo,
                 e.estado_empleado
             FROM empleado AS e
             INNER JOIN email AS ema ON e.id_empleado = ema.id_empleado
@@ -160,7 +160,7 @@ public class empleadoDAO {
                     Empleado.put("direccion", rs.getString("direccion"));
                     Empleado.put("DUI_empleado", rs.getString("DUI_empleado"));
                     Empleado.put("email", rs.getString("email"));
-                    Empleado.put("nombre_cargo", rs.getString("nombre_cargo"));// Agregado
+                    Empleado.put("id_cargo", rs.getString("id_cargo"));// Agregado
                     Empleado.put("estado_empleado", rs.getInt("estado_empleado"));
 
                     lista.add(Empleado);
@@ -216,7 +216,7 @@ public class empleadoDAO {
             emp.id_empleado,
             e.id_email
         FROM contacto AS c
-        INNER JOIN empleado AS emp ON c.id_contacto = c.id_contacto
+        INNER JOIN empleado AS emp ON c.id_contacto = emp.id_contacto
         INNER JOIN email AS e ON emp.id_empleado = e.id_empleado
         WHERE e.email = ?;
     """;
@@ -243,7 +243,6 @@ public class empleadoDAO {
         } catch (SQLException e) {
             alert.showErrorAlert("", null, "Error al obtener ids del Empleado: " + e.getMessage());
         }
-
         return null;
     }
 
