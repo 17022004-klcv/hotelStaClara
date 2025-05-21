@@ -103,6 +103,7 @@ public class USERreservaciones {
 
     @FXML
     void but_agregar(ActionEvent event) {ruta.pasarRutasRecepcionistaFroms("formReservacion", but_agregar);
+        ruta.setOpAddEdit("AddHabitacion");
     }
 
     @FXML

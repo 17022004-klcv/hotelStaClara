@@ -61,6 +61,12 @@ public class FormReservacionController {
     private List<habitacion> listaHabitaciones;
     private List<Reservaciones> listaReservaciones;
 
+    // instancias
+    MesajesAlert mesajesAlert = new MesajesAlert();
+    ReservacionesDAO reservacionesDAO = new ReservacionesDAO();
+    HabiracionDAO habiracionDAO = new HabiracionDAO();
+    IdEmpleado idEmpleado = new IdEmpleado();
+
     public void initialize() {
         // optener todas la lsitas de habitaciones y reservaciones
         listaHabitaciones = HabiracionDAO.TraeesHabitacions();
@@ -81,12 +87,6 @@ public class FormReservacionController {
 
     @FXML
     void but_Aceptar(ActionEvent event) {
-        // optener todas las instancias
-        MesajesAlert mesajesAlert = new MesajesAlert();
-        ReservacionesDAO reservacionesDAO = new ReservacionesDAO();
-        HabiracionDAO habiracionDAO = new HabiracionDAO();
-        IdEmpleado idEmpleado = new IdEmpleado();
-
         // optener todos lo datos de la reservacion
         String habitacion = tex_habitacion.getText();
         String cliente = tex_cliente.getText().trim();
@@ -101,7 +101,6 @@ public class FormReservacionController {
         // optener el id del cliente y la habitacion
        int id_cliente = reservacionesDAO.buscarUsuario(cliente),
            id_habitacion = habiracionDAO.buscarHabitacion(habitacion);
-
 
         // valida que si existe el cliente y la habitacion
         if (id_cliente == -1) {
@@ -127,7 +126,6 @@ public class FormReservacionController {
             // editar la reservacion
             reservacionesDAO.actualizarEstadoReservacion(new Reservaciones(IdReservacion, fecha_actual, fecha_inicio, fecha_salida, id_cliente, idEmpleado.getIdEmpleado(),id_habitacion, Estado_reservaciones.activa));
             opcionPago(id_habitacion, id_cliente, IdReservacion, "Edit");
-
             ruta.cerrarVentana(but_Aceptar);
         }
     }
@@ -165,30 +163,27 @@ public class FormReservacionController {
         // obtener la fecha de inicio y la fecha de salida
         pick_fechaInicio.setValue(reservaciones.getFecha_ingreso().toLocalDate());
         pick_fechaSalida.setValue(reservaciones.getFecha_salida().toLocalDate());
-
+        label_descuento.setText("0.0");
         mostrarDias();
         tex_habitacion();
         tex_cliente();
-        calcularPrecio();
-        // obtener el precio de la habitacion
+        traerDatosUpdate();
 
+        // obtener el precio de la habitacion
     }
 
 
-    public void llenarDatosHabitacion(habitacion habitacion) {
+    public void llenarDatosHabitacionn(habitacion habitacion) {
         tex_habitacion.setText(habitacion.getNumero_habitacion());
         label_tipo.setText(habitacion.getTipo_habitacion());
         label_precioHabitacion.setText(String.valueOf(habitacion.getPrecio()));
         mostrarDias();
         label_diasEstadia.setText(String.valueOf(obtenerDias()));
-        calcularPrecio();
     }
 
 
-
+    // opcion de pago editar o agregar
     private  void  opcionPago (int id_habitacion, int id_cliente, int id_reservacion, String Estado_opcion) {
-        HabiracionDAO habiracionDAO = new HabiracionDAO();
-        ReservacionesDAO reservacionesDAO = new ReservacionesDAO();
         PagoDAO pagoDAO = new PagoDAO();
 
         double monto = habiracionDAO.traerMontoHabitacion(id_habitacion);
@@ -224,10 +219,6 @@ public class FormReservacionController {
         label_precioTotal.setText("0.00");
         calcularPrecio();
     }
-
-
-
-
 
     // mostar dias de reservacion
     public void mostrarDias() {
@@ -284,11 +275,13 @@ public class FormReservacionController {
             if (!newVal) { // cuando pierde foco
                 String cliente = tex_cliente.getText().trim();
 
+                // validar que el campo no este vacio
                 if (cliente.isEmpty()) {
                     label_descuento.setText("0.0");
                     return;
                 }
 
+                // Buscar habitación en la lista
                 Reservaciones reservaciones = null;
                 for (Reservaciones r : listaReservaciones) {
                     if (r.getNombre_cliente().equalsIgnoreCase(cliente) || r.getApellido_cliente().equalsIgnoreCase(cliente) || r.getNombreClienteCopleto().equalsIgnoreCase(cliente)) {
@@ -316,6 +309,33 @@ public class FormReservacionController {
         });
     }
 
+    public void traerDatosUpdate() {
+        String habitacionNum = tex_habitacion.getText().trim();
+        String cliente = tex_cliente.getText().trim();
+
+        habitacion habEncontrada = null;
+        for (habitacion h : listaHabitaciones) {
+            if (h.getNumero_habitacion().equalsIgnoreCase(habitacionNum)) {
+                habEncontrada = h;
+                break;
+            }
+        }
+
+        // Buscar descuento en la lista
+        Reservaciones reservaciones = null;
+        for (Reservaciones r : listaReservaciones) {
+            if (r.getNombre_cliente().equalsIgnoreCase(cliente) || r.getApellido_cliente().equalsIgnoreCase(cliente) || r.getNombreClienteCopleto().equalsIgnoreCase(cliente)) {
+                reservaciones = r;
+                break;
+            }
+        }
+
+        label_tipo.setText(habEncontrada.getTipo_habitacion());
+        label_precioHabitacion.setText(String.valueOf(habEncontrada.getPrecio()));
+        label_descuento.setText(String.valueOf(reservacionesDAO.tearDescuento(reservaciones.getId_cliente())));
+        calcularPrecio();
+    }
+
     // metodo para calcular precio
     public void calcularPrecio() {
         if (label_descuento.equals("0.0")) {
@@ -326,7 +346,6 @@ public class FormReservacionController {
             label_descuento.setText("0.0");
         } else {
             double precio = Double.parseDouble(label_precioHabitacion.getText());
-            int dias = obtenerDias();
             double descuento = Double.parseDouble(label_descuento.getText());
             double  precioTotal =  (precio * obtenerDias()) - ((precio * obtenerDias()) * (descuento/100));
             label_precioTotal.setText(String.valueOf(precioTotal));

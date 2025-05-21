@@ -126,7 +126,6 @@ public class formReservacionesController {
             opcionPago(id_habitacion, id_cliente, id_reservacion, "Add");
             limpiarCampos();
             ruta.cerrarVentana(but_Aceptar);
-            ruta.pasarRutasAdmin("AdminReservaciones", but_Aceptar);
         }else {
             // editar la reservacion
             reservacionesDAO.actualizarEstadoReservacion(new Reservaciones(IdReservacion, fecha_actual, fecha_inicio, fecha_salida, id_cliente, idEmpleado.getIdEmpleado(),id_habitacion, Estado_reservaciones.activa));
@@ -160,7 +159,7 @@ public class formReservacionesController {
     }
 
 
-    public void llenarDatosPUTA(Reservaciones reservaciones, String Estado_boton) {
+    public void llenarDatos(Reservaciones reservaciones, String Estado_boton) {
         this.Estado_boton = Estado_boton;
         this.IdReservacion = reservaciones.getId_reservacion();
         but_Aceptar.setText("Editar Reservacion");
@@ -170,26 +169,22 @@ public class formReservacionesController {
         // obtener la fecha de inicio y la fecha de salida
         pick_fechaInicio.setValue(reservaciones.getFecha_ingreso().toLocalDate());
         pick_fechaSalida.setValue(reservaciones.getFecha_salida().toLocalDate());
-
+        label_descuento.setText("0.0");
         mostrarDias();
         tex_habitacion();
         tex_cliente();
+        traerDatosUpdate();
         // obtener el precio de la habitacion
-
-
     }
 
 
-    public void llenarDatosHabitacionPUTA(habitacion habitacion) {
+    public void llenarDatosHabitacion(habitacion habitacion) {
         txt_habitacion.setText(habitacion.getNumero_habitacion());
         label_tipo.setText(habitacion.getTipo_habitacion());
         label_precioHabitacion.setText(String.valueOf(habitacion.getPrecio()));
-        mostrarDias();
         label_diasEstadia.setText(String.valueOf(obtenerDias()));
-
+        mostrarDias();
     }
-
-
 
     private  void  opcionPago (int id_habitacion, int id_cliente, int id_reservacion, String Estado_opcion) {
         HabiracionDAO habiracionDAO = new HabiracionDAO();
@@ -326,5 +321,33 @@ public class formReservacionesController {
             double  precioTotal =  (precio * obtenerDias()) - ((precio * obtenerDias()) * (descuento/100));
             label_precioTotal.setText(String.valueOf(precioTotal));
         }
+    }
+
+    public void traerDatosUpdate() {
+        ReservacionesDAO reservacionesDAO = new ReservacionesDAO();
+        String habitacionNum = txt_habitacion.getText().trim();
+        String cliente = txt_cliente.getText().trim();
+
+        habitacion habEncontrada = null;
+        for (habitacion h : listaHabitaciones) {
+            if (h.getNumero_habitacion().equalsIgnoreCase(habitacionNum)) {
+                habEncontrada = h;
+                break;
+            }
+        }
+
+        // Buscar descuento en la lista
+        Reservaciones reservaciones = null;
+        for (Reservaciones r : listaReservaciones) {
+            if (r.getNombre_cliente().equalsIgnoreCase(cliente) || r.getApellido_cliente().equalsIgnoreCase(cliente) || r.getNombreClienteCopleto().equalsIgnoreCase(cliente)) {
+                reservaciones = r;
+                break;
+            }
+        }
+
+        label_tipo.setText(habEncontrada.getTipo_habitacion());
+        label_precioHabitacion.setText(String.valueOf(habEncontrada.getPrecio()));
+        label_descuento.setText(String.valueOf(reservacionesDAO.tearDescuento(reservaciones.getId_cliente())));
+        calcularPrecio();
     }
 }
