@@ -32,11 +32,21 @@ public class Rutas {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/hotelstaclara/views/formsAdminViews/" + url + ".fxml"));
             Parent root = loader.load();
-            // Obtener la ventana actual desde el botón activador
-            Stage stage = (Stage) activador.getScene().getWindow();
+
+            // Crear un nuevo escenario (Stage) para la nueva ventana
+            Stage nuevoStage = new Stage();
             Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+            nuevoStage.setScene(scene);
+
+            // Obtener la ventana actual desde el botón activador
+            Stage stageActual = (Stage) activador.getScene().getWindow();
+
+            // Configurar el nuevo Stage para que aparezca sobre el actual
+            nuevoStage.initOwner(stageActual);
+            nuevoStage.initModality(Modality.WINDOW_MODAL);
+
+            // Mostrar el nuevo formulario
+            nuevoStage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
