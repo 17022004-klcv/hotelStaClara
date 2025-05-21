@@ -1,5 +1,6 @@
 package com.example.hotelstaclara.Recursos;
 
+
 import com.example.hotelstaclara.controllers.AdminController.AdminHabitacionesController;
 import com.example.hotelstaclara.controllers.UserControllers.USERhabitaciones;
 import com.example.hotelstaclara.controllers.formsAdminControllers.FormHabitacionesController;
@@ -8,6 +9,7 @@ import com.example.hotelstaclara.controllers.formsUserControlllers.FormReservaci
 import com.example.hotelstaclara.controllers.formsAdminControllers.formReservacionesController;
 import com.example.hotelstaclara.model.Reservaciones;
 import com.example.hotelstaclara.model.habitacion;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -20,14 +22,6 @@ import java.io.IOException;
 
 public class Rutas {
 
-    private String opAddEdit = "";
-    private habitacion habitation;
-    private AdminHabitacionesController adminHabitacionesControllerOriginal;
-    private USERhabitaciones formHabitacionController;
-
-
-    // optener objeto de reservaciones
-    private Reservaciones reservaciones;
 
     public Rutas() {
     }
@@ -41,7 +35,6 @@ public class Rutas {
             Stage stage = (Stage) activador.getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);
-
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -53,9 +46,6 @@ public class Rutas {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/hotelstaclara/views/formsAdminViews/" + url + ".fxml"));
             Parent root = loader.load();
-
-            //pasar variables/datos de adminHabitaciones a formHabitaciones
-
 
             // Crear un nuevo escenario (Stage) para la nueva ventana
             Stage nuevoStage = new Stage();
@@ -194,55 +184,3 @@ public class Rutas {
             e.printStackTrace();
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-    //Esta parte la voy a mentener para el futuro, solo va a quedar objeto general y botton controlador
-
-
-
-
-
-
-
-
-    public void setOpAddEdit(String opAddEdit) {
-        this.opAddEdit = opAddEdit;
-    }
-
-    public void setHabitacion(habitacion habitacion) {
-        this.habitation = habitacion;
-    }
-
-    public void setAdminController(AdminHabitacionesController adminController) {
-        this.adminHabitacionesControllerOriginal = adminController;
-    }
-
-    public void setrecepcionistaController(USERhabitaciones formHabitacionController) {
-        this.formHabitacionController = formHabitacionController;
-    }
-
-    public void setAdminController(Reservaciones reservaciones) {
-        this.reservaciones = reservaciones;
-    }
-
-    //-----------------------------------------------------------------
-    private Object getController;
-
-    public Object getGetController() {
-        return getController;
-    }
-
-    public void setGetController(Object getController) {
-        this.getController = getController;
-    }
-}
-
