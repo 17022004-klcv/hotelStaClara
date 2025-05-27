@@ -109,7 +109,7 @@ public class HabiracionDAO {
     }
 
     public int buscarHabitacion(String numero_habitacion){
-        String sql = "select id_habitacion from habitacion where numero_habitacion =? && estado_habitacion = 'disponible';";
+        String sql = "select id_habitacion from habitacion where numero_habitacion =? ;";
 
         try (Connection conn = connection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -175,7 +175,68 @@ public class HabiracionDAO {
         }
     }
 
+    // traes tipo de habitacion
+    public String traerTipoHabitacion(int id_habitacion) {
+        String sql = "SELECT tipo_habitacion FROM habitacion WHERE id_habitacion = ?";
+        try (Connection conn = connection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, id_habitacion);
+
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getString("tipo_habitacion");
+            } else {
+                return "";
+            }
+        } catch (SQLException e) {
+            Alert.showErrorAlert("Error", "Error", "La habitacion no se pudo ingresar" + e.getMessage());
+            e.printStackTrace();
+            return "";
+        }
+    }
+
+    //traer precio de la habitacion
+    public double traerPrecioHabitacion(int id_habitacion) {
+        String sql = "SELECT precio FROM habitacion WHERE id_habitacion = ?";
+        try (Connection conn = connection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, id_habitacion);
+
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getDouble("precio");
+            } else {
+                return 0.0;
+            }
+        } catch (SQLException e) {
+            Alert.showErrorAlert("Error", "Error", "La habitacion no se pudo ingresar" + e.getMessage());
+            e.printStackTrace();
+            return 0.0;
+        }
+    }
 
 
+    // trer el estado de la habitacion
+    public String traerEstadoHabitacion(int id_habitacion) {
+        String sql = "SELECT estado_habitacion FROM habitacion WHERE id_habitacion = ?";
+        try (Connection conn = connection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, id_habitacion);
+
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getString("estado_habitacion");
+            } else {
+                return "";
+            }
+        } catch (SQLException e) {
+            Alert.showErrorAlert("Error", "Error", "La habitacion no se pudo ingresar" + e.getMessage());
+            e.printStackTrace();
+            return "";
+        }
+    }
 
 }

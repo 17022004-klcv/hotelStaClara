@@ -61,13 +61,13 @@ public class formReservacionesController {
     private int IdReservacion;
 
     // listas
-    private List<habitacion> listaHabitaciones;
-    private List<Reservaciones> listaReservaciones;
+   private List<habitacion> listaHabitaciones;
+//    private List<Reservaciones> listaReservaciones;
 
     public void initialize() {
         // optener todas la lsitas de habitaciones y reservaciones
         listaHabitaciones = HabiracionDAO.TraeesHabitacions();
-        listaReservaciones = ReservacionesDAO.traerReservaciones();
+        //listaReservaciones = ReservacionesDAO.traerReservaciones();
         // limpiar los campos y mostrar los dias
         limpiarCampos();
         mostrarDias();
@@ -75,6 +75,7 @@ public class formReservacionesController {
         // eventos para actualizar en tiempo real
         tex_habitacion();
         tex_cliente();
+        validarAceptar();
     }
     @FXML
     void imgBack(MouseEvent event) {
@@ -84,54 +85,61 @@ public class formReservacionesController {
 
     public void but_Aceptar(MouseEvent mouseEvent) {
         // optener todas las instancias
-        MesajesAlert mesajesAlert = new MesajesAlert();
-        ReservacionesDAO reservacionesDAO = new ReservacionesDAO();
-        HabiracionDAO habiracionDAO = new HabiracionDAO();
-        IdEmpleado idEmpleado = new IdEmpleado();
+        try {
+            MesajesAlert mesajesAlert = new MesajesAlert();
+            ReservacionesDAO reservacionesDAO = new ReservacionesDAO();
+            HabiracionDAO habiracionDAO = new HabiracionDAO();
+            IdEmpleado idEmpleado = new IdEmpleado();
 
-        // optener todos lo datos de la reservacion
-        String habitacion = txt_habitacion.getText();
-        String cliente = txt_cliente.getText().trim();
+            // optener todos lo datos de la reservacion
+            String habitacion = txt_habitacion.getText();
+            String cliente = txt_cliente.getText().trim();
 
-        // optener la fechas
-        LocalDate fechaIni = pick_fechaInicio.getValue();
-        java.sql.Date fecha_inicio = java.sql.Date.valueOf(fechaIni);
+            // optener la fechas
+            LocalDate fechaIni = pick_fechaInicio.getValue();
+            java.sql.Date fecha_inicio = java.sql.Date.valueOf(fechaIni);
 
-        LocalDate fechaSal = pick_fechaSalida.getValue();
-        java.sql.Date fecha_salida = java.sql.Date.valueOf(fechaSal);
+            LocalDate fechaSal = pick_fechaSalida.getValue();
+            java.sql.Date fecha_salida = java.sql.Date.valueOf(fechaSal);
 
-        // optener el id del cliente y la habitacion
-        int id_cliente = reservacionesDAO.buscarUsuario(cliente),
-                id_habitacion = habiracionDAO.buscarHabitacion(habitacion);
+            // optener el id del cliente y la habitacion
+            int id_cliente = reservacionesDAO.buscarUsuario(cliente),
+                    id_habitacion = habiracionDAO.buscarHabitacion(habitacion);
 
 
-        // valida que si existe el cliente y la habitacion
-        if (id_cliente == -1) {
-            mesajesAlert.mostarAlertError("El cliente no se encuentra registrado");
-            return;
-        }else if(id_habitacion == -1) {
-            mesajesAlert.mostarAlertError("La habitacion no se encuentra disponible");
-            return;
-        }
+            // valida que si existe el cliente y la habitacion
+            if (id_cliente == -1) {
+                mesajesAlert.mostarAlertError("El cliente no se encuentra registrado");
+                return;
+            }else if(id_habitacion == -1) {
+                mesajesAlert.mostarAlertError("La habitacion no se encuentra disponible");
+                return;
+            }
 
-        // optener la fecha actual
-        LocalDate fechaActual = LocalDate.now();
-        java.sql.Date fecha_actual = java.sql.Date.valueOf(fechaActual);
+            // optener la fecha actual
+            LocalDate fechaActual = LocalDate.now();
+            java.sql.Date fecha_actual = java.sql.Date.valueOf(fechaActual);
 
-        if (!Estado_boton.equals("Edit")) {
-            // crear la reservacion
-            int id_reservacion =  reservacionesDAO.guardarReservaciones(new Reservaciones(0, fecha_actual, fecha_inicio, fecha_salida, id_cliente, idEmpleado.getIdEmpleado(),id_habitacion, Estado_reservaciones.activa));
-            opcionPago(id_habitacion, id_cliente, id_reservacion, "Add");
-            limpiarCampos();
-            // editar la reservacion del estado
-            habiracionDAO.editarEstadoHabitacion(id_habitacion, "Ocupada");
-            ruta.cerrarVentana(but_Aceptar);
-        }else {
-            // editar la reservacion
-            reservacionesDAO.actualizarEstadoReservacion(new Reservaciones(IdReservacion, fecha_actual, fecha_inicio, fecha_salida, id_cliente, idEmpleado.getIdEmpleado(),id_habitacion, Estado_reservaciones.activa));
-            opcionPago(id_habitacion, id_cliente, IdReservacion, "Edit");
+            if (!Estado_boton.equals("Edit")) {
+                // crear la reservacion
+                int id_reservacion =  reservacionesDAO.guardarReservaciones(new Reservaciones(0, fecha_actual, fecha_inicio, fecha_salida, id_cliente, idEmpleado.getIdEmpleado(),id_habitacion, Estado_reservaciones.activa));
+                opcionPago(id_habitacion, id_cliente, id_reservacion, "Add");
+                limpiarCampos();
+                // editar la reservacion del estado
+                habiracionDAO.editarEstadoHabitacion(id_habitacion, "Ocupada");
+                ruta.cerrarVentana(but_Aceptar);
+            }else {
+                // editar la reservacion
+                reservacionesDAO.actualizarEstadoReservacion(new Reservaciones(IdReservacion, fecha_actual, fecha_inicio, fecha_salida, id_cliente, idEmpleado.getIdEmpleado(),id_habitacion, Estado_reservaciones.activa));
+                opcionPago(id_habitacion, id_cliente, IdReservacion, "Edit");
 
-            ruta.cerrarVentana(but_Aceptar);
+                ruta.cerrarVentana(but_Aceptar);
+            }
+        }catch (Exception e) {
+            // lansae errror
+            MesajesAlert mesajesAlert = new MesajesAlert();
+            mesajesAlert.mostarAlertError("Error al guardar la reservacion");
+            e.printStackTrace();
         }
 
     }
@@ -174,7 +182,7 @@ public class formReservacionesController {
         tex_habitacion();
         tex_cliente();
         traerDatosUpdate();
-        // obtener el precio de la habitacion
+
     }
 
 
@@ -241,33 +249,48 @@ public class formReservacionesController {
         });
     }
 
+
     public void tex_habitacion() {
+        HabiracionDAO habiracionDAO = new HabiracionDAO();
+
         txt_habitacion.focusedProperty().addListener((obs, oldVal, newVal) -> {
-            if (!newVal) { // cuando pierde foco
+            if (!newVal) {
                 String habitacionNum = txt_habitacion.getText().trim();
 
                 if (habitacionNum.isEmpty()) {
                     label_tipo.setText("Desconocido");
                     label_precioHabitacion.setText("0.00");
+                    habitacionValida = false;
+                    validarAceptar();
                     return;
                 }
-                // Buscar habitación en la lista
-                habitacion habEncontrada = null;
-                for (habitacion h : listaHabitaciones) {
-                    if (h.getNumero_habitacion().equalsIgnoreCase(habitacionNum)) {
-                        habEncontrada = h;
-                        break;
-                    }
-                }
 
-                if (habEncontrada == null) {
-                    new MesajesAlert().mostarAlertError("La habitación no se encuentra registrada");
+                int idHabitacion = habiracionDAO.buscarHabitacion(habitacionNum);
+
+                if (idHabitacion == -1) {
+                    new MesajesAlert().mostarAlertError("La habitación no se encuentra registrada.");
                     label_tipo.setText("Desconocido");
                     label_precioHabitacion.setText("0.00");
-                } else {
-                    label_tipo.setText(habEncontrada.getTipo_habitacion());
-                    label_precioHabitacion.setText(String.valueOf(habEncontrada.getPrecio()));
+                    habitacionValida = false;
+                    validarAceptar();
+                    return;
+                }
+
+                String estadoHabitacion = habiracionDAO.traerEstadoHabitacion(idHabitacion);
+
+                if (estadoHabitacion.equalsIgnoreCase("Disponible")) {
+                    String tipoHabitacion = habiracionDAO.traerTipoHabitacion(idHabitacion);
+                    double precio = habiracionDAO.traerPrecioHabitacion(idHabitacion);
+
+                    label_tipo.setText(tipoHabitacion);
+                    label_precioHabitacion.setText(String.valueOf(precio));
+                    habitacionValida = true;
+                    validarAceptar();
                     calcularPrecio();
+                } else {
+                    new MesajesAlert().mostarAlertError("La habitación no se encuentra disponible.");
+                    habitacionValida = false;
+                    validarAceptar();
                 }
             }
         });
@@ -275,40 +298,45 @@ public class formReservacionesController {
 
     public void tex_cliente() {
         ReservacionesDAO reservacionesDAO = new ReservacionesDAO();
+
         txt_cliente.focusedProperty().addListener((obs, oldVal, newVal) -> {
-            if (!newVal) { // cuando pierde foco
+            if (!newVal) {
                 String cliente = txt_cliente.getText().trim();
 
                 if (cliente.isEmpty()) {
                     label_descuento.setText("0.0");
+                    clienteValido = false;
+                    validarAceptar();
                     return;
                 }
 
-                Reservaciones reservaciones = null;
-                for (Reservaciones r : listaReservaciones) {
-                    if (r.getNombre_cliente().equalsIgnoreCase(cliente) || r.getApellido_cliente().equalsIgnoreCase(cliente) || r.getNombreClienteCopleto().equalsIgnoreCase(cliente)) {
-                        reservaciones = r;
-                        break;
-                    }
-                }
+                int idCliente = reservacionesDAO.buscarUsuario(cliente);
 
-                if (reservaciones == null) {
+                if (idCliente == -1) {
                     label_descuento.setText("0.0");
                     new MesajesAlert().mostarAlertError("El cliente no se encuentra registrado");
-
+                    clienteValido = false;
+                    validarAceptar();
                     calcularPrecio();
-                } else {
-                    double descuento = reservacionesDAO.tearDescuento(reservaciones.getId_cliente());
-                    if (descuento == -1) {
-                        label_descuento.setText("0.0");
-                        calcularPrecio();
-                        return;
-                    }
-                    label_descuento.setText(String.valueOf(descuento));
-                    calcularPrecio();
+                    return;
                 }
+
+                double descuento = reservacionesDAO.tearDescuento(idCliente);
+                label_descuento.setText(descuento == -1 ? "0.0" : String.valueOf(descuento));
+
+                clienteValido = true;
+                validarAceptar();
+                calcularPrecio();
             }
         });
+    }
+
+
+    private boolean clienteValido = false;
+    private boolean habitacionValida = false;
+
+    private void validarAceptar() {
+        but_Aceptar.setDisable(!(clienteValido && habitacionValida));
     }
 
 
@@ -340,19 +368,9 @@ public class formReservacionesController {
                 break;
             }
         }
-
-        // Buscar descuento en la lista
-        Reservaciones reservaciones = null;
-        for (Reservaciones r : listaReservaciones) {
-            if (r.getNombre_cliente().equalsIgnoreCase(cliente) || r.getApellido_cliente().equalsIgnoreCase(cliente) || r.getNombreClienteCopleto().equalsIgnoreCase(cliente)) {
-                reservaciones = r;
-                break;
-            }
-        }
-
         label_tipo.setText(habEncontrada.getTipo_habitacion());
         label_precioHabitacion.setText(String.valueOf(habEncontrada.getPrecio()));
-        label_descuento.setText(String.valueOf(reservacionesDAO.tearDescuento(reservaciones.getId_cliente())));
+        label_descuento.setText(String.valueOf(reservacionesDAO.tearDescuento(reservacionesDAO.buscarUsuario(cliente))));
         calcularPrecio();
     }
 }
