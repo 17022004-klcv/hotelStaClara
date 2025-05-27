@@ -5,10 +5,7 @@ import com.example.hotelstaclara.Recursos.Rutas;
 import com.example.hotelstaclara.database.HabiracionDAO;
 import com.example.hotelstaclara.database.PagoDAO;
 import com.example.hotelstaclara.database.ReservacionesDAO;
-import com.example.hotelstaclara.model.Estado_reservaciones;
-import com.example.hotelstaclara.model.IdEmpleado;
-import com.example.hotelstaclara.model.Reservaciones;
-import com.example.hotelstaclara.model.habitacion;
+import com.example.hotelstaclara.model.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -18,6 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
+import javax.swing.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
@@ -125,6 +123,8 @@ public class formReservacionesController {
             int id_reservacion =  reservacionesDAO.guardarReservaciones(new Reservaciones(0, fecha_actual, fecha_inicio, fecha_salida, id_cliente, idEmpleado.getIdEmpleado(),id_habitacion, Estado_reservaciones.activa));
             opcionPago(id_habitacion, id_cliente, id_reservacion, "Add");
             limpiarCampos();
+            // editar la reservacion del estado
+            habiracionDAO.editarEstadoHabitacion(id_habitacion, "Ocupada");
             ruta.cerrarVentana(but_Aceptar);
         }else {
             // editar la reservacion
@@ -179,6 +179,11 @@ public class formReservacionesController {
 
 
     public void llenarDatosHabitacion(habitacion habitacion) {
+        if (!habitacion.getEstado_habitacion().equals(Estado_habitacion.disponible)) {
+            JOptionPane.showMessageDialog(null, "La habitacion se encuentra disponible =(");
+            but_Aceptar.setDisable(true);
+        }
+
         txt_habitacion.setText(habitacion.getNumero_habitacion());
         label_tipo.setText(habitacion.getTipo_habitacion());
         label_precioHabitacion.setText(String.valueOf(habitacion.getPrecio()));

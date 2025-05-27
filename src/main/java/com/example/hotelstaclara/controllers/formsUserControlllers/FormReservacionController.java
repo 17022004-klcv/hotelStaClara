@@ -120,6 +120,7 @@ public class FormReservacionController {
             int id_reservacion =  reservacionesDAO.guardarReservaciones(new Reservaciones(0, fecha_actual, fecha_inicio, fecha_salida, id_cliente, idEmpleado.getIdEmpleado(),id_habitacion, Estado_reservaciones.activa));
             opcionPago(id_habitacion, id_cliente, id_reservacion, "Add");
             limpiarCampos();
+            habiracionDAO.editarEstadoHabitacion(id_habitacion, "Ocupada");
             ruta.cerrarVentana(but_Aceptar);
             ruta.pasarRutasRecepcionista("USERreservaciones", but_Aceptar);
         }else {
@@ -174,6 +175,10 @@ public class FormReservacionController {
 
 
     public void llenarDatosHabitacionn(habitacion habitacion) {
+        if (!habitacion.getEstado_habitacion().equals(Estado_habitacion.disponible)) {
+            JOptionPane.showMessageDialog(null, "La habitacion se encuentra disponible =(");
+            but_Aceptar.setDisable(true);
+        }
         tex_habitacion.setText(habitacion.getNumero_habitacion());
         label_tipo.setText(habitacion.getTipo_habitacion());
         label_precioHabitacion.setText(String.valueOf(habitacion.getPrecio()));

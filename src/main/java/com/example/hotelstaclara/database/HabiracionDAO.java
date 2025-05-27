@@ -151,4 +151,31 @@ public class HabiracionDAO {
         }
     }
 
+
+    // edtar el estado de la habitacion
+    public void editarEstadoHabitacion(int id_habitacion, String estado){
+        String sql = "UPDATE habitacion SET estado_habitacion = ? WHERE id_habitacion = ?";
+
+        try (Connection conn = connection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, estado);
+            stmt.setInt(2, id_habitacion);
+
+            int rowsAffected = stmt.executeUpdate();
+
+            if (rowsAffected > 0) {
+                Alert.showInfoAlert("Exito", "Exito", "La habitacion se actualizo correctamente");
+            } else {
+                Alert.showErrorAlert("Error", "Error", "La habitacion no se pudo actualizar");
+            }
+        } catch (SQLException e) {
+            Alert.showErrorAlert("Error", "Error", "La habitacion no se pudo actualizar" + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+
+
+
 }
