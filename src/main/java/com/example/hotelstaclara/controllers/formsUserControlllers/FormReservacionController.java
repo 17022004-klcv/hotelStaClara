@@ -61,6 +61,12 @@ public class FormReservacionController {
     private List<habitacion> listaHabitaciones;
     private List<Reservaciones> listaReservaciones;
 
+    // instancias
+    MesajesAlert mesajesAlert = new MesajesAlert();
+    ReservacionesDAO reservacionesDAO = new ReservacionesDAO();
+    HabiracionDAO habiracionDAO = new HabiracionDAO();
+    IdEmpleado idEmpleado = new IdEmpleado();
+
     public void initialize() {
         // optener todas la lsitas de habitaciones y reservaciones
         listaHabitaciones = HabiracionDAO.TraeesHabitacions();
@@ -72,6 +78,7 @@ public class FormReservacionController {
         // eventos para actualizar en tiempo real
         tex_habitacion();
         tex_cliente();
+        validarAceptar();
     }
 
     @FXML
@@ -81,12 +88,6 @@ public class FormReservacionController {
 
     @FXML
     void but_Aceptar(ActionEvent event) {
-        // optener todas las instancias
-        MesajesAlert mesajesAlert = new MesajesAlert();
-        ReservacionesDAO reservacionesDAO = new ReservacionesDAO();
-        HabiracionDAO habiracionDAO = new HabiracionDAO();
-        IdEmpleado idEmpleado = new IdEmpleado();
-
         // optener todos lo datos de la reservacion
         String habitacion = tex_habitacion.getText();
         String cliente = tex_cliente.getText().trim();
@@ -103,14 +104,6 @@ public class FormReservacionController {
            id_habitacion = habiracionDAO.buscarHabitacion(habitacion);
 
 
-        // valida que si existe el cliente y la habitacion
-        if (id_cliente == -1) {
-            mesajesAlert.mostarAlertError("El cliente no se encuentra registrado");
-            return;
-        }else if(id_habitacion == -1) {
-            mesajesAlert.mostarAlertError("La habitacion no se encuentra disponible");
-            return;
-        }
 
         // optener la fecha actual
         LocalDate fechaActual = LocalDate.now();
@@ -121,13 +114,13 @@ public class FormReservacionController {
             int id_reservacion =  reservacionesDAO.guardarReservaciones(new Reservaciones(0, fecha_actual, fecha_inicio, fecha_salida, id_cliente, idEmpleado.getIdEmpleado(),id_habitacion, Estado_reservaciones.activa));
             opcionPago(id_habitacion, id_cliente, id_reservacion, "Add");
             limpiarCampos();
+            habiracionDAO.editarEstadoHabitacion(id_habitacion, "Ocupada");
             ruta.cerrarVentana(but_Aceptar);
             ruta.pasarRutasRecepcionista("USERreservaciones", but_Aceptar);
         }else {
             // editar la reservacion
             reservacionesDAO.actualizarEstadoReservacion(new Reservaciones(IdReservacion, fecha_actual, fecha_inicio, fecha_salida, id_cliente, idEmpleado.getIdEmpleado(),id_habitacion, Estado_reservaciones.activa));
             opcionPago(id_habitacion, id_cliente, IdReservacion, "Edit");
-
             ruta.cerrarVentana(but_Aceptar);
         }
     }
@@ -165,27 +158,31 @@ public class FormReservacionController {
         // obtener la fecha de inicio y la fecha de salida
         pick_fechaInicio.setValue(reservaciones.getFecha_ingreso().toLocalDate());
         pick_fechaSalida.setValue(reservaciones.getFecha_salida().toLocalDate());
-
+        label_descuento.setText("0.0");
         mostrarDias();
-        // obtener el precio de la habitacion
+        tex_habitacion();
+        tex_cliente();
+        traerDatosUpdate();
 
+        // obtener el precio de la habitacion
     }
 
 
-    public void llenarDatosHabitacion(habitacion habitacion) {
+    public void llenarDatosHabitacionn(habitacion habitacion) {
+        if (!habitacion.getEstado_habitacion().equals(Estado_habitacion.disponible)) {
+            JOptionPane.showMessageDialog(null, "La habitacion se encuentra disponible =(");
+            but_Aceptar.setDisable(true);
+        }
         tex_habitacion.setText(habitacion.getNumero_habitacion());
         label_tipo.setText(habitacion.getTipo_habitacion());
         label_precioHabitacion.setText(String.valueOf(habitacion.getPrecio()));
         mostrarDias();
         label_diasEstadia.setText(String.valueOf(obtenerDias()));
-
     }
 
 
-
+    // opcion de pago editar o agregar
     private  void  opcionPago (int id_habitacion, int id_cliente, int id_reservacion, String Estado_opcion) {
-        HabiracionDAO habiracionDAO = new HabiracionDAO();
-        ReservacionesDAO reservacionesDAO = new ReservacionesDAO();
         PagoDAO pagoDAO = new PagoDAO();
 
         double monto = habiracionDAO.traerMontoHabitacion(id_habitacion);
@@ -203,6 +200,7 @@ public class FormReservacionController {
             int id_pago = pagoDAO.trarIDPago(id_reservacion);
             pagoDAO.actualizarPago(id_pago,new BigDecimal(monto * obtenerDias()), new BigDecimal(montoDescuento), LocalDate.now(), "Efectivo", id_reservacion, id_cliente);
         }
+        calcularPrecio();
     }
 
 
@@ -218,11 +216,8 @@ public class FormReservacionController {
         label_diasEstadia.setText("1");
         label_precioHabitacion.setText("0.0");
         label_precioTotal.setText("0.00");
+        calcularPrecio();
     }
-
-
-
-
 
     // mostar dias de reservacion
     public void mostrarDias() {
@@ -240,75 +235,119 @@ public class FormReservacionController {
     }
 
     public void tex_habitacion() {
+        HabiracionDAO habiracionDAO = new HabiracionDAO();
+
         tex_habitacion.focusedProperty().addListener((obs, oldVal, newVal) -> {
-            if (!newVal) { // cuando pierde foco
+            if (!newVal) {
                 String habitacionNum = tex_habitacion.getText().trim();
 
                 if (habitacionNum.isEmpty()) {
                     label_tipo.setText("Desconocido");
                     label_precioHabitacion.setText("0.00");
+                    habitacionValida = false;
+                    validarAceptar();
                     return;
                 }
-                // Buscar habitación en la lista
-                habitacion habEncontrada = null;
-                for (habitacion h : listaHabitaciones) {
-                    if (h.getNumero_habitacion().equalsIgnoreCase(habitacionNum)) {
-                        habEncontrada = h;
-                        break;
-                    }
-                }
 
-                if (habEncontrada == null) {
-                    new MesajesAlert().mostarAlertError("La habitación no se encuentra registrada");
+                int idHabitacion = habiracionDAO.buscarHabitacion(habitacionNum);
+
+                if (idHabitacion == -1) {
+                    new MesajesAlert().mostarAlertError("La habitación no se encuentra registrada.");
                     label_tipo.setText("Desconocido");
                     label_precioHabitacion.setText("0.00");
-                } else {
-                    label_tipo.setText(habEncontrada.getTipo_habitacion());
-                    label_precioHabitacion.setText(String.valueOf(habEncontrada.getPrecio()));
+                    habitacionValida = false;
+                    validarAceptar();
+                    return;
+                }
+
+                String estadoHabitacion = habiracionDAO.traerEstadoHabitacion(idHabitacion);
+
+                if (estadoHabitacion.equalsIgnoreCase("Disponible")) {
+                    String tipoHabitacion = habiracionDAO.traerTipoHabitacion(idHabitacion);
+                    double precio = habiracionDAO.traerPrecioHabitacion(idHabitacion);
+
+                    label_tipo.setText(tipoHabitacion);
+                    label_precioHabitacion.setText(String.valueOf(precio));
+                    habitacionValida = true;
+                    validarAceptar();
                     calcularPrecio();
+                } else {
+                    new MesajesAlert().mostarAlertError("La habitación no se encuentra disponible.");
+                    habitacionValida = false;
+                    validarAceptar();
                 }
             }
         });
     }
 
-
-
     public void tex_cliente() {
         ReservacionesDAO reservacionesDAO = new ReservacionesDAO();
+
         tex_cliente.focusedProperty().addListener((obs, oldVal, newVal) -> {
-            if (!newVal) { // cuando pierde foco
+            if (!newVal) {
                 String cliente = tex_cliente.getText().trim();
 
                 if (cliente.isEmpty()) {
                     label_descuento.setText("0.0");
+                    clienteValido = false;
+                    validarAceptar();
                     return;
                 }
 
-                Reservaciones reservaciones = null;
-                for (Reservaciones r : listaReservaciones) {
-                    if (r.getNombre_cliente().equalsIgnoreCase(cliente) || r.getApellido_cliente().equalsIgnoreCase(cliente) || r.getNombreClienteCopleto().equalsIgnoreCase(cliente)) {
-                        reservaciones = r;
-                        break;
-                    }
-                }
+                int idCliente = reservacionesDAO.buscarUsuario(cliente);
 
-                if (reservaciones == null) {
+                if (idCliente == -1) {
                     label_descuento.setText("0.0");
                     new MesajesAlert().mostarAlertError("El cliente no se encuentra registrado");
-
+                    clienteValido = false;
+                    validarAceptar();
                     calcularPrecio();
-                } else {
-                    double descuento = reservacionesDAO.tearDescuento(reservaciones.getId_cliente());
-                    if (descuento == -1) {
-                        label_descuento.setText("0.0");
-                        calcularPrecio();
-                        return;
-                    }
-                    label_descuento.setText(String.valueOf(descuento));
-                    calcularPrecio();
+                    return;
                 }
+
+                double descuento = reservacionesDAO.tearDescuento(idCliente);
+                label_descuento.setText(descuento == -1 ? "0.0" : String.valueOf(descuento));
+
+                clienteValido = true;
+                validarAceptar();
+                calcularPrecio();
             }
         });
+    }
+
+
+    private boolean clienteValido = false;
+    private boolean habitacionValida = false;
+
+    private void validarAceptar() {
+        but_Aceptar.setDisable(!(clienteValido && habitacionValida));
+    }
+
+    public void traerDatosUpdate() {
+        String habitacionNum = tex_habitacion.getText().trim();
+        String cliente = tex_cliente.getText().trim();
+
+        habitacion habEncontrada = null;
+        for (habitacion h : listaHabitaciones) {
+            if (h.getNumero_habitacion().equalsIgnoreCase(habitacionNum)) {
+                habEncontrada = h;
+                break;
+            }
+        }
+
+        // Buscar descuento en la lista
+        Reservaciones reservaciones = null;
+        for (Reservaciones r : listaReservaciones) {
+            if (r.getNombre_cliente().equalsIgnoreCase(cliente) || r.getApellido_cliente().equalsIgnoreCase(cliente) || r.getNombreClienteCopleto().equalsIgnoreCase(cliente)) {
+                reservaciones = r;
+                break;
+            }
+        }
+
+        label_tipo.setText(habEncontrada.getTipo_habitacion());
+        label_precioHabitacion.setText(String.valueOf(habEncontrada.getPrecio()));
+        label_descuento.setText(String.valueOf(reservacionesDAO.tearDescuento(reservaciones.getId_cliente())));
+        calcularPrecio();
     }
 
     // metodo para calcular precio
@@ -321,7 +360,6 @@ public class FormReservacionController {
             label_descuento.setText("0.0");
         } else {
             double precio = Double.parseDouble(label_precioHabitacion.getText());
-            int dias = obtenerDias();
             double descuento = Double.parseDouble(label_descuento.getText());
             double  precioTotal =  (precio * obtenerDias()) - ((precio * obtenerDias()) * (descuento/100));
             label_precioTotal.setText(String.valueOf(precioTotal));
@@ -329,8 +367,7 @@ public class FormReservacionController {
     }
 
 
-    // singronisar con UserReservaciones no funciona XD
-
+    // singronisar con UserReservaciones no funciona
     private USERreservaciones reservaciones;
 
     public void setReservaciones(USERreservaciones reservaciones) {

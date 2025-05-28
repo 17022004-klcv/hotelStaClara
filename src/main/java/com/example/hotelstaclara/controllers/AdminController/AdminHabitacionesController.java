@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import com.example.hotelstaclara.model.habitacion;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
@@ -57,6 +58,7 @@ public class AdminHabitacionesController {
 
     public void initialize() {
         llenarTablaHabitacion();
+        agregarDobleClickEnTabla();
     }
 
     public void llenarTablaHabitacion(){
@@ -131,5 +133,24 @@ public class AdminHabitacionesController {
 
         HabiracionDAO.eliminarHabitacion(hbitacionSeleccionada.getId_habitacion());
         tabla_habitaciones.setItems(FXCollections.observableArrayList(HabiracionDAO.TraeesHabitacions()));
+    }
+
+    private void agregarDobleClickEnTabla() {
+        tabla_habitaciones.setRowFactory(tv -> {
+            TableRow<habitacion> row = new TableRow<>();
+
+            row.setOnMouseClicked(event -> {
+                if (!row.isEmpty() && event.getClickCount() == 2) {
+                    habitacion habitacion = row.getItem();
+
+                    ruta.setOpAddEdit("AddHabitacion");
+                    ruta.setGetController(habitacion);
+                    ruta.pasarRutasAdminFroms("formReservaciones", bt_agregar);
+
+                }
+            });
+
+            return row;
+        });
     }
 }

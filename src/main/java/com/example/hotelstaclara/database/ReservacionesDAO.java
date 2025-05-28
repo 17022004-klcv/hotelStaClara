@@ -56,7 +56,6 @@ public class ReservacionesDAO {
                 WHERE cl.nombre_cliente = ?
                    OR cl.DUI_cliente = ?
                    OR CONCAT(cl.nombre_cliente, ' ', cl.apellido_cliente) = ?;
-                                
                 """;
         try (Connection conn = connection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {

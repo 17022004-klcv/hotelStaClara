@@ -120,7 +120,6 @@ public class USERhabitaciones {
                     ruta.setOpAddEdit("AddHabitacion");
                     ruta.setGetController(habitacion);
                     ruta.pasarRutasRecepcionistaFroms("formReservacion", btn_Clientes);
-
                 }
             });
 
