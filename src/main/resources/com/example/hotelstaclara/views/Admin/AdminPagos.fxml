@@ -19,7 +19,7 @@
          <children>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="67.0" layoutY="14.0" onMouseClicked="#but_login" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../img/logo.png" />
+                  <Image url="@../../img/logo.png" /> 
                </image>
             </ImageView>
             <VBox layoutY="205.0" prefHeight="400.0" prefWidth="250.0">
@@ -148,14 +148,13 @@
             <Font name="Arial Black" size="45.0" />
          </font>
       </Label>
-      <TableView layoutX="343.0" layoutY="152.0" prefHeight="400.0" prefWidth="900.0">
+      <TableView fx:id="tabla_pagos" layoutX="343.0" layoutY="152.0" prefHeight="400.0" prefWidth="900.0">
         <columns>
-          <TableColumn prefWidth="103.0" text="id res" />
-          <TableColumn prefWidth="176.0" text="Cliente" />
-            <TableColumn prefWidth="148.0" text="Empreado" />
-            <TableColumn prefWidth="192.800048828125" text="Habitacion" />
-            <TableColumn prefWidth="136.00006103515625" text="Monto" />
-            <TableColumn prefWidth="144.0" text="Estado" />
+          <TableColumn fx:id="colum_cliente" prefWidth="176.0" text="Cliente" />
+            <TableColumn fx:id="colum_empleado" prefWidth="148.0" text="Empreado" />
+            <TableColumn fx:id="colum_habitacion" prefWidth="192.800048828125" text="Habitacion" />
+            <TableColumn fx:id="colum_monto" prefWidth="136.00006103515625" text="Monto" />
+            <TableColumn fx:id="colum_estado" prefWidth="144.0" text="Estado" />
         </columns>
       </TableView>
       <Button fx:id="but_eliminar" layoutX="398.0" layoutY="590.0" mnemonicParsing="false" onAction="#but_eliminar" prefHeight="67.0" prefWidth="176.0" text="ELIMINAR">
@@ -167,7 +166,7 @@
             <String fx:value="eliminar" />
          </styleClass>
       </Button>
-      <Button fx:id="but_reservaciones" layoutX="815.0" layoutY="590.0" mnemonicParsing="false" onAction="#but_reservaciones" prefHeight="67.0" prefWidth="176.0" text="PAGO DE RESERVACIONES">
+      <Button fx:id="but_reservaciones" layoutX="815.0" layoutY="590.0" mnemonicParsing="false" onMouseClicked="#but_reservaciones" prefHeight="67.0" prefWidth="176.0" text="PAGO DE RESERVACIONES">
          <padding>
             <Insets bottom="25.0" left="15.0" right="15.0" top="25.0" />
          </padding>
