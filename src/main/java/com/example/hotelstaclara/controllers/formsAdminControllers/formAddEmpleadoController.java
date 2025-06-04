@@ -170,7 +170,7 @@ public class formAddEmpleadoController {
             Limpiar();
 
         } catch (SQLException e) {
-            con.rollback(); // ❌ Revierte todo si algo falla
+            con.rollback(); //revierte los cambios si algo falla
             alert.showErrorAlert("Error", null, "Error al registrar el empleado: " + e.getMessage());
             throw new SQLException("Error al registrar el empleado", e);
 
