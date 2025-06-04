@@ -5,6 +5,7 @@ import com.example.hotelstaclara.database.clienteDAO;
 import com.example.hotelstaclara.model.cliente;
 import com.example.hotelstaclara.model.contacto;
 import com.example.hotelstaclara.model.email;
+import com.example.hotelstaclara.validations.validaciones;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -13,6 +14,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
 import javax.swing.*;
+import java.sql.SQLException;
 
 public class FormAddClienteController {
     @FXML
@@ -50,10 +52,17 @@ public class FormAddClienteController {
     }
     @FXML
     void br_agregar(ActionEvent event) {
+        // Primero validamos todos los campos
+        if (!validar_campos()) {
+            return;
+        }
+
+        // Creamos los objetos solo si la validación es exitosa
         contacto contacCliente = new contacto();
         cliente client = new cliente();
         email mail = new email();
 
+        // Asignación de valores (sin cambios)
         contacCliente.setTelefono_1(txt_tel.getText());
         contacCliente.setTelefono_2(txt_cel.getText());
         contacCliente.setDireccion(txt_direccion.getText());
@@ -66,30 +75,52 @@ public class FormAddClienteController {
         mail.setEmail(txt_email.getText());
         mail.setId_empleado(1);
 
-        clienteDAO cliente = new clienteDAO();
+        // Operación con la base de datos
+        try {
+            clienteDAO cliente = new clienteDAO();
 
-        if (bt_agregar.getText().equals("Editar")) {
-            try {
+            if (bt_agregar.getText().equals("Editar")) {
                 cliente.actualizarCliente(contacCliente, client, mail);
-                limpiar_campos();
-                ruta.cerrarVentana(bt_agregar);
-                if (onSuccessCallback != null) {
-                    onSuccessCallback.run();
-                }
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error " + e);
-            }
-        } else {
-            try {
+            } else {
                 cliente.insertarCliente(contacCliente, client, mail);
-                limpiar_campos();
-                if (onSuccessCallback != null) {
-                    onSuccessCallback.run();
-                }
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error " + e);
             }
+
+            limpiar_campos();
+            ruta.cerrarVentana(bt_agregar);
+
+            if (onSuccessCallback != null) {
+                onSuccessCallback.run();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace(); // Para depuración
         }
+    }
+
+    public boolean validar_campos() {
+        // Validación plana sin anidamiento excesivo
+        boolean valido = true;
+
+        if (!validaciones.validarNombreApellido(txt_nombres, txt_apellidos)) {
+            valido = false;
+        }
+        if (!validaciones.validarDUI(txt_dui)) {
+            valido = false;
+        }
+        if (!validaciones.validarCorreo(txt_email)) {
+            valido = false;
+        }
+        if (!validaciones.validarTelefono(txt_tel)) {
+            valido = false;
+        }
+        if (!validaciones.validarTelefono(txt_cel)) {
+            valido = false;
+        }
+        if (!validaciones.validarDireccion(txt_direccion)) {
+            valido = false;
+        }
+
+        return valido;
     }
 
     public void limpiar_campos() {
@@ -101,6 +132,7 @@ public class FormAddClienteController {
         txt_dui.setText("");
         txt_email.setText("");
     }
+
 
     public void setDatos(String nombre, String apellido, String telefono, String celular, String direccion, String dui, String email) {
         txt_nombres.setText(nombre);
