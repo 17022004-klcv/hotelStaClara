@@ -1,10 +1,16 @@
 package com.example.hotelstaclara.validations;
 
 import com.example.hotelstaclara.Alert.Alert;
+import com.example.hotelstaclara.database.connection;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.TextField;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 
 public class validaciones {
@@ -165,12 +171,24 @@ public class validaciones {
     }
 
     // Validación para habitación seleccionada
-    public static boolean validarHabitacionSeleccionada(ComboBox<?> cboHabitacion) {
-        if (cboHabitacion.getValue() == null) {
-            Alert.showWarningAlert("Habitación No Seleccionada", null, "Por favor seleccione una habitación.");
-            return false;
+    public static boolean validarHabitacionSeleccionada(String N_Habitacion) {
+        try (Connection conn = connection.getConnection()) {
+            PreparedStatement stmt = conn.prepareStatement("select * from habitacion where numero_habitacion = ?");
+            stmt.setString(1, N_Habitacion);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                Alert.showWarningAlert("Habitación Encontrada puto", null, "La habitación seleccionada ya se encuentra registrada en la base de datos.");
+                return false;
+            } else {
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return true;
+
         }
-        return true;
+
     }
+
 
 }
