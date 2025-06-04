@@ -2,61 +2,35 @@ package com.example.hotelstaclara.database;
 
 import com.example.hotelstaclara.Recursos.MesajesAlert;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class emailDAO {
 
     MesajesAlert alert=new MesajesAlert();
 
-    public void Insert_Email_Empleado(String email, int  id_empleado) throws SQLException {
-
+    public void Insert_Email_Empleado(String email, int id_empleado) throws SQLException {
         Connection con = connection.getConnection();
 
         String query = """
-                INSERT INTO email (email,id_empleado) VALUES (?,?);
-                """;
+            INSERT INTO email (email, id_empleado) VALUES (?, ?);
+            """;
 
-        if(con != null) {
-
-            try(PreparedStatement ps = con.prepareStatement(query)) {
-
+        if (con != null) {
+            try (PreparedStatement ps = con.prepareStatement(query)) {
                 ps.setString(1, email);
                 ps.setInt(2, id_empleado);
                 ps.execute();
 
-                alert.showInfoAlert("Exito",null,"El Empleado se agrego correctamente");
+                alert.showInfoAlert("Éxito", null, "El empleado se agregó correctamente");
+            } catch (SQLIntegrityConstraintViolationException e) {
+                alert.showErrorAlert("Email duplicado", null, "Ya existe un registro con ese correo electrónico.");
             } catch (SQLException e) {
-                alert.showErrorAlert("No se pudo ingresar el Email",null,"Ah ocurrido un error al intenter ingresar el Email del empleado" + e.getMessage());
+                alert.showErrorAlert("Error al ingresar el Email", null,
+                        "Ha ocurrido un error al intentar ingresar el Email del empleado: " + e.getMessage());
             }
         }
     }
 
-    public void Insert_Email_Cliente(String email, int  id_Cliente) throws SQLException {
-
-        Connection con = connection.getConnection();
-
-        String query = """
-                INSERT INTO email (email,id_cliente) VALUES (?,?);
-                """;
-
-        if(con != null) {
-
-            try(PreparedStatement ps = con.prepareStatement(query)) {
-
-                ps.setString(1, email);
-                ps.setInt(2, id_Cliente);
-                ps.execute();
-
-                alert.showInfoAlert("Exito",null,"El cliente se agrego correctamente");
-            } catch (SQLException e) {
-                alert.showErrorAlert("No se pudo ingresar el Email",null,"Ah ocurrido un error al intenter ingresar el Email del Cliente" + e.getMessage());
-            }
-
-        }
-    }
 
     public static int ObtenerUltimoid_empleado() throws SQLException {
         String sql = """

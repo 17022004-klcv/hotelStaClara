@@ -16,10 +16,10 @@ public class empleadoDAO {
 
     public void insertarEmpleado(empleado empleado) {
         String sql = """
-        INSERT INTO empleado
-        (nombre_empleado, apellido_empleado, DUI_empleado, 
-         id_contacto, id_cargo, estado_empleado)
-        VALUES (?, ?, ?, ?, ?, ?)""";
+    INSERT INTO empleado
+    (nombre_empleado, apellido_empleado, DUI_empleado, 
+     id_contacto, id_cargo, estado_empleado)
+    VALUES (?, ?, ?, ?, ?, ?)""";
 
         try (Connection con = connection.getConnection();
              PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
@@ -37,18 +37,22 @@ public class empleadoDAO {
 
             int filasAfectadas = ps.executeUpdate();
 
-            // Obtener el ID generado si es necesario
             try (ResultSet rs = ps.getGeneratedKeys()) {
                 if (rs.next()) {
                     empleado.setId_empleado(rs.getInt(1));
                 }
             }
 
+        } catch (SQLIntegrityConstraintViolationException e) {
+            // Error específico por violar restricción UNIQUE
+            alert.showErrorAlert("DUI duplicado", null,
+                    "Ya existe un empleado con ese número de DUI.");
         } catch (SQLException e) {
             alert.showErrorAlert("ERROR", null,
                     "Ocurrió un error al ingresar el empleado: " + e.getMessage());
         }
     }
+
 
     //SELECT PARA MOSTRAR EN EL CRUD
     public static ObservableList<Map> getEmpleados(){
@@ -125,22 +129,26 @@ public class empleadoDAO {
 
         ObservableList<Map> lista = FXCollections.observableArrayList();
         String query = """
-            SELECT
-                e.id_empleado,
-                e.nombre_empleado,
-                e.apellido_empleado,
-                co.telefono_1,
-                co.direccion,
-                e.DUI_empleado,
-                ema.email,
-                ca.id_cargo,
-                e.estado_empleado
-            FROM empleado AS e
-            INNER JOIN email AS ema ON e.id_empleado = ema.id_empleado
-            INNER JOIN contacto AS co ON e.id_contacto = co.id_contacto
-            INNER JOIN cargo AS ca ON e.id_cargo = ca.id_cargo
-            WHERE ema.email = ?;
-            """;
+                    SELECT
+                        e.id_empleado,
+                        e.nombre_empleado,
+                        e.apellido_empleado,
+                        co.telefono_1,
+                        co.direccion,
+                        e.DUI_empleado,
+                        ema.email,
+                        ca.id_cargo,
+                        e.estado_empleado,
+                        l.usuario,
+                        l.contraseña
+                    FROM empleado AS e
+                    INNER JOIN email AS ema ON e.id_empleado = ema.id_empleado
+                    INNER JOIN contacto AS co ON e.id_contacto = co.id_contacto
+                    INNER JOIN cargo AS ca ON e.id_cargo = ca.id_cargo
+                    LEFT JOIN login AS l ON e.id_empleado = l.id_empleado
+                    WHERE ema.email = ?;
+                    """;
+
 
         try (Connection con = connection.getConnection();
              PreparedStatement stmt = con.prepareStatement(query)) {
@@ -162,6 +170,8 @@ public class empleadoDAO {
                     Empleado.put("email", rs.getString("email"));
                     Empleado.put("id_cargo", rs.getString("id_cargo"));// Agregado
                     Empleado.put("estado_empleado", rs.getInt("estado_empleado"));
+                    Empleado.put("usuario", rs.getString("usuario"));
+                    Empleado.put("contraseña", rs.getString("contraseña")); // cuidado con exponer esto visualmente
 
                     lista.add(Empleado);
                 }
@@ -244,6 +254,32 @@ public class empleadoDAO {
             alert.showErrorAlert("", null, "Error al obtener ids del Empleado: " + e.getMessage());
         }
         return null;
+    }
+
+    public int getIdEmpleadoPorEmail(String email) {
+        String query = """
+        SELECT e.id_empleado
+        FROM empleado AS e
+        INNER JOIN email AS em ON e.id_empleado = em.id_empleado
+        WHERE em.email = ?
+    """;
+
+        try (Connection con = connection.getConnection();
+             PreparedStatement ps = con.prepareStatement(query)) {
+
+            ps.setString(1, email);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt("id_empleado");
+                }
+            }
+
+        } catch (SQLException e) {
+            alert.showErrorAlert("Error", null, "No se pudo obtener el ID del empleado: " + e.getMessage());
+        }
+
+        return -1; // Devuelve -1 si no se encuentra o hay error
     }
 
 }
