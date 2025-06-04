@@ -143,20 +143,21 @@
             </VBox>
          </children>
       </Pane>
-      <Label layoutX="718.0" layoutY="22.0" text="Clientes" textFill="WHITE">
+      <Label fx:id="tablaClients" layoutX="718.0" layoutY="22.0" text="Clientes" textFill="WHITE">
          <font>
             <Font name="Arial Black" size="45.0" />
          </font>
       </Label>
       <TableView fx:id="tableClients" layoutX="343.0" layoutY="152.0" prefHeight="400.0" prefWidth="900.0">
         <columns>
-          <TableColumn fx:id="columnNombre" prefWidth="135.0" text="Nombre" />
-          <TableColumn fx:id="columnApellido" prefWidth="135.0" text="Apellido" />
-            <TableColumn fx:id="columnTelefono" prefWidth="115.0" text="telefono" />
-            <TableColumn fx:id="columnDireccion" prefWidth="155.0" text="direcion " />
-            <TableColumn fx:id="columnDui" prefWidth="120.0" text="DUI" />
-            <TableColumn fx:id="columnCorreo" prefWidth="135.0" text="Correo" />
-            <TableColumn fx:id="columnEstado" prefWidth="100.0" text="Estado" />
+          <TableColumn fx:id="columnNombre" prefWidth="113.5999755859375" text="Nombre" />
+          <TableColumn fx:id="columnApellido" prefWidth="129.59994506835938" text="Apellido" />
+            <TableColumn fx:id="columnTelefono" prefWidth="121.5999755859375" text="Telefono" />
+            <TableColumn fx:id="columnCelular" prefWidth="117.5999755859375" text="Celular" />
+            <TableColumn fx:id="columnDireccion" prefWidth="119.2000732421875" text="Direcion " />
+            <TableColumn fx:id="columnDui" prefWidth="112.800048828125" text="DUI" />
+            <TableColumn fx:id="columnCorreo" prefWidth="99.9998779296875" text="Correo" />
+            <TableColumn fx:id="columnEstado" prefWidth="82.39990234375" text="Estado" />
         </columns>
       </TableView>
       <Button fx:id="but_eliminar" layoutX="410.0" layoutY="584.0" mnemonicParsing="false" onAction="#but_eliminar" prefHeight="67.0" prefWidth="176.0" text="ELIMINAR">
