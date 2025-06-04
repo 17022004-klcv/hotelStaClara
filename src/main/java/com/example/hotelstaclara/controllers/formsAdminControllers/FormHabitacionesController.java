@@ -80,6 +80,9 @@ public class FormHabitacionesController {
 
 
         if (OpAddEdit.equals("add")) {
+            if (!validaciones.validarHabitacionSeleccionada(txt_numHabitaacion.getText())) {
+          return;
+            }
             addHabitacion();
         } else if (OpAddEdit.equals("edit")) {
             editarHabitacion();
@@ -116,8 +119,7 @@ public class FormHabitacionesController {
                 && validaciones.validarCombo(comb_tipoHabitacion, "Tipo de Habitación")
                 && validaciones.validarCapacidad(txt_capacidad)
                 && validaciones.validarPrecio(txt_monto)
-                && validaciones.validarCombo(comb_estado, "Estado")
-                && validaciones.validarHabitacionSeleccionada(txt_numHabitaacion.getText());
+                && validaciones.validarCombo(comb_estado, "Estado");
     }
 
     @FXML

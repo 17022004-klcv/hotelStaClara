@@ -35,7 +35,7 @@ public class ReservacionesDAO {
                 try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
                     if (generatedKeys.next()) {
                         int idGenerado = generatedKeys.getInt(1);
-                        mesajesAlert.mostarAlertWARNING("Reservación ingresada corectamente.");                        return idGenerado;
+                        return idGenerado;
                     }
                 }
             }
