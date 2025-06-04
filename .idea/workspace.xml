@@ -9,19 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-
-    <list default="true" id="a44bdff9-8517-448d-807a-b783690deef8" name="Changes" comment="re-design: interfaces para el recepcionista">
+    <list default="true" id="a44bdff9-8517-448d-807a-b783690deef8" name="Changes" comment="feat: agregar y actualizar cliente en recepcionista">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/AdminController/AdminClientesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/AdminController/AdminClientesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/formsAdminControllers/formAddClienteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/formsAdminControllers/formAddClienteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/UserControllers/USERclientes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/UserControllers/USERclientes.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/formsAdminControllers/formPagoReservacionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/formsAdminControllers/formPagoReservacionController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/database/clienteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/database/clienteDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/database/connection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/database/connection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/hotelstaclara/views/Admin/AdminClientes.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/hotelstaclara/views/Admin/AdminClientes.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/hotelstaclara/views/User/USERclientes.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/hotelstaclara/views/User/USERclientes.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/hotelstaclara/views/formsAdminViews/formAddCliente.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/hotelstaclara/views/formsAdminViews/formAddCliente.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/hotelstaclara/views/formsAdminViews/formPagoMembresia.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/hotelstaclara/views/formsAdminViews/formPagoMembresia.fxml" afterDir="false" />
-
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/hotelstaclara/views/formsAdminViews/formPagoReservacion.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/hotelstaclara/views/formsAdminViews/formPagoReservacion.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -40,7 +33,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Develop" />
+        <entry key="$PROJECT_DIR$" value="feat-crud-cliente-admin" />
       </map>
     </option>
   </component>
@@ -59,34 +52,27 @@
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
-  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
   <component name="ProjectId" id="2uQffSFJgBsTqL4aFl21fE3Osly" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.HelloApplication.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "com.codeium.enabled": "true",
-
-    "git-widget-placeholder": "feat-crud-cliente-admin",
+    "git-widget-placeholder": "feat/user__cliente",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/karlacarranza/Documents/cashlimit",
     "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.43333334",
     "settings.editor.selected.configurable": "preferences.pluginManager"
-
   }
 }]]></component>
   <component name="RunManager">
@@ -173,7 +159,6 @@
       <option name="presentableId" value="LOCAL-00008" />
       <option name="project" value="LOCAL" />
       <updated>1745030264610</updated>
-
     </task>
     <task id="LOCAL-00009" summary="Feat: model empleado creado">
       <option name="closed" value="true" />
@@ -199,8 +184,31 @@
       <option name="project" value="LOCAL" />
       <updated>1745030970002</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
-
+    <task id="LOCAL-00012" summary="feat:crud de clientes">
+      <option name="closed" value="true" />
+      <created>1749003099037</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1749003099037</updated>
+    </task>
+    <task id="LOCAL-00013" summary="fix: problemas en el modelo contacto">
+      <option name="closed" value="true" />
+      <created>1749010545658</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1749010545658</updated>
+    </task>
+    <task id="LOCAL-00014" summary="feat: agregar y actualizar cliente en recepcionista">
+      <option name="closed" value="true" />
+      <created>1749012646541</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1749012646541</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -239,15 +247,15 @@
     <MESSAGE value="Feat: model empleado creado" />
     <MESSAGE value="Feat: model membresia creado" />
     <MESSAGE value="Feat: model cliente creado" />
-
     <MESSAGE value="fix-design: ancho de paneles actualizado" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix-design: ancho de paneles actualizado" />
-
+    <MESSAGE value="feat:crud de clientes" />
+    <MESSAGE value="fix: problemas en el modelo contacto" />
+    <MESSAGE value="feat: agregar y actualizar cliente en recepcionista" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: agregar y actualizar cliente en recepcionista" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/AdminController/AdminClientesController.java</url>
           <line>119</line>
@@ -264,7 +272,6 @@
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
-
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>

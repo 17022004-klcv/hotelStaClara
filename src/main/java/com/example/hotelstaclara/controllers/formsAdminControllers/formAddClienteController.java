@@ -89,7 +89,7 @@ public class formAddClienteController {
         }
     }
 
-    public void limpiar_campos(){
+    public void limpiar_campos() {
         txt_tel.setText("");
         txt_cel.setText("");
         txt_direccion.setText("");

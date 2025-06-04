@@ -194,5 +194,54 @@ public class clienteDAO {
         }
     }
 
+    public ObservableList<Map> buscarCliente(String busqueda) throws SQLException {
+        ObservableList<Map> lista = FXCollections.observableArrayList();
+
+        // Consulta base
+        String sql = "SELECT c.nombre_cliente, c.apellido_cliente, ct.telefono_1, " +
+                "ct.telefono_2, ct.direccion, c.DUI_cliente, e.email, c.estado_cliente " +
+                "FROM cliente c " +
+                "INNER JOIN contacto ct ON c.id_contacto = ct.id_contacto " +
+                "INNER JOIN email e ON e.id_email = c.id_cliente"; // Filtro para clientes activos
+
+        // Modificamos la consulta si hay texto de búsqueda
+        if (busqueda != null && !busqueda.trim().isEmpty()) {
+            sql += " AND (c.nombre_cliente LIKE ? OR c.apellido_cliente LIKE ? OR " +
+                    "CONCAT(c.nombre_cliente, ' ', c.apellido_cliente) LIKE ?)";
+        }
+
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            // Si hay texto de búsqueda, establecemos los parámetros
+            if (busqueda != null && !busqueda.trim().isEmpty()) {
+                String parametroBusqueda = "%" + busqueda.trim() + "%";
+                ps.setString(1, parametroBusqueda);
+                ps.setString(2, parametroBusqueda);
+                ps.setString(3, parametroBusqueda);
+            }
+
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    Map<String, Object> cliente = new HashMap<>();
+                    cliente.put("c.nombre_cliente", rs.getString("c.nombre_cliente"));
+                    cliente.put("c.apellido_cliente", rs.getString("c.apellido_cliente"));
+                    cliente.put("ct.telefono_1", rs.getString("ct.telefono_1"));
+                    cliente.put("ct.telefono_2", rs.getString("ct.telefono_2"));
+                    cliente.put("ct.direccion", rs.getString("ct.direccion"));
+                    cliente.put("c.DUI_cliente", rs.getString("c.DUI_cliente"));
+                    cliente.put("e.email", rs.getString("e.email"));
+                    cliente.put("c.estado_cliente", rs.getString("c.estado_cliente"));
+                    lista.add(cliente);
+                }
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al buscar clientes: " + e.getMessage());
+            throw e;
+        }
+
+        return lista;
+    }
 
 }
