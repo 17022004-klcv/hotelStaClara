@@ -1,5 +1,6 @@
 package com.example.hotelstaclara.database;
 
+import com.example.hotelstaclara.model.IdEmpleado;
 import com.example.hotelstaclara.model.login;
 import javafx.beans.Observable;
 import javafx.collections.FXCollections;
@@ -49,9 +50,12 @@ public class loginDAO {
     }
 
     public String verificarCredenciales(String nombreUsuario, String contrasena) {
+        IdEmpleado idEmpleado = new IdEmpleado();
         String sql = """
-               SELECT c.nombre_cargo
-                	FROM login l
+               SELECT 
+                    e.id_empleado,
+                    c.nombre_cargo
+               FROM login l
                JOIN empleado e ON l.id_empleado = e.id_empleado
                JOIN cargo c ON e.id_cargo = c.id_cargo
                WHERE l.usuario = ? AND l.contraseña = ?;
@@ -64,6 +68,7 @@ public class loginDAO {
 
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
+                    IdEmpleado.setIdEmpleado(rs.getInt("id_empleado"));
                     return rs.getString("nombre_cargo");
                 }
             }
@@ -73,6 +78,7 @@ public class loginDAO {
         }
         return null;
     }
+
 
 }
 

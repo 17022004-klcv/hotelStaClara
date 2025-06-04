@@ -4,6 +4,7 @@ module com.example.hotelstaclara {
     requires java.sql;
     requires java.desktop;
 
+    opens com.example.hotelstaclara.model to javafx.base;
 
     opens com.example.hotelstaclara to javafx.fxml;
     opens com.example.hotelstaclara.controllers.formsAdminControllers to javafx.fxml;

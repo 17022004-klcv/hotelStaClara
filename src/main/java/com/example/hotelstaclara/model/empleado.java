@@ -9,12 +9,10 @@ public class empleado {
     private int id_contacto;
     private int id_cargo;
     private int estado_empleado;
-
     public empleado() {
     }
 
-    public empleado(int id_empleado, String nombre_empleado, String apellido_empleado, String DUI_empleado, int id_contacto, int id_cargo, int estado_empleado) {
-        this.id_empleado = id_empleado;
+    public empleado(String nombre_empleado, String apellido_empleado, String DUI_empleado, int id_contacto, int id_cargo, int estado_empleado) {
         this.nombre_empleado = nombre_empleado;
         this.apellido_empleado = apellido_empleado;
         this.DUI_empleado = DUI_empleado;

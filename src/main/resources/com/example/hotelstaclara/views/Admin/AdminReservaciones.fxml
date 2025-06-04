@@ -148,15 +148,15 @@
             <Font name="Arial Black" size="45.0" />
          </font>
       </Label>
-      <TableView layoutX="343.0" layoutY="152.0" prefHeight="400.0" prefWidth="900.0">
+      <TableView fx:id="tabla_reservacion" layoutX="343.0" layoutY="152.0" prefHeight="400.0" prefWidth="900.0">
         <columns>
-          <TableColumn prefWidth="60.000030517578125" text="ID" />
-          <TableColumn prefWidth="150.39999389648438" text="Fecha Reserva" />
-            <TableColumn prefWidth="129.60003662109375" text="Fecha Ingreso" />
-            <TableColumn prefWidth="114.4000244140625" text="Fecha Retiro" />
-            <TableColumn prefWidth="150.39990234375" text="Cliente" />
-            <TableColumn prefWidth="153.5999755859375" text="Empleado" />
-            <TableColumn prefWidth="158.4000244140625" text="Habitacion" />
+          <TableColumn fx:id="colum_id" prefWidth="60.000030517578125" text="ID" />
+          <TableColumn fx:id="colum_fechaReserva" prefWidth="150.39999389648438" text="Fecha Reserva" />
+            <TableColumn fx:id="colum_fechaingreso" prefWidth="129.60003662109375" text="Fecha Ingreso" />
+            <TableColumn fx:id="colum_fechaRetiro" prefWidth="114.4000244140625" text="Fecha Retiro" />
+            <TableColumn fx:id="colum_cliente" prefWidth="150.39990234375" text="Cliente" />
+            <TableColumn fx:id="colum_empleado" prefWidth="153.5999755859375" text="Empleado" />
+            <TableColumn fx:id="colum_habitacion" prefWidth="158.4000244140625" text="Habitacion" />
         </columns>
       </TableView>
       <Button fx:id="but_eliminar" layoutX="410.0" layoutY="584.0" mnemonicParsing="false" onAction="#but_eliminar" prefHeight="67.0" prefWidth="176.0" text="ELIMINAR">

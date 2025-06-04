@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotelstaclara.controllers.UserControllers.USERhabitaciones">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotelstaclara.controllers.UserControllers.USERhabitaciones">
    <children>
       <ImageView fitHeight="723.0" fitWidth="1280.0" layoutX="10.0" layoutY="8.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
@@ -108,13 +108,13 @@
                   <Font name="Arial" size="45.0" />
                </font>
             </Label>
-            <TableView layoutX="8.0" layoutY="163.0" prefHeight="330.0" prefWidth="964.0" style="-fx-background-radius: 20;">
+            <TableView fx:id="tabla_habitaciones" layoutX="8.0" layoutY="163.0" prefHeight="330.0" prefWidth="964.0" style="-fx-background-radius: 20;">
                <columns>
-                  <TableColumn prefWidth="129.0" text="Numero" />
-                  <TableColumn prefWidth="183.0" text="Tipo" />
-                  <TableColumn prefWidth="240.0" text="Capacidad" />
-                  <TableColumn prefWidth="192.0" text="Precio" />
-                  <TableColumn prefWidth="218.0" text="Estado" />
+                  <TableColumn fx:id="colum_numeroHabiacion" prefWidth="129.0" text="Numero" />
+                  <TableColumn fx:id="colum_tipoHabitacion" prefWidth="183.0" text="Tipo" />
+                  <TableColumn fx:id="colum_cantidadHabitacion" prefWidth="240.0" text="Capacidad" />
+                  <TableColumn fx:id="colum_precioHabitacion" prefWidth="192.0" text="Precio" />
+                  <TableColumn fx:id="colum_estadoHabitacion" prefWidth="218.0" text="Estado" />
                </columns>
             </TableView>
             <Button fx:id="but_editar" layoutX="380.0" layoutY="512.0" mnemonicParsing="false" onAction="#but_editar" prefHeight="67.0" prefWidth="176.0" style="-fx-background-color: #9ACBD0; -fx-background-radius: 20;" text="EDITAR" textFill="WHITE">
