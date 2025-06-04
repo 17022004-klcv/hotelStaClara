@@ -103,7 +103,7 @@
             </VBox>
          </children>
       </Pane>
-      <Pane layoutX="375.0" layoutY="70.0" prefHeight="623.0" prefWidth="981.0" styleClass="munu" stylesheets="@../../styles/UserStyles/formsStyle.css" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0">
+      <Pane layoutX="298.0" layoutY="50.0" prefHeight="623.0" prefWidth="981.0" styleClass="munu" stylesheets="@../../styles/UserStyles/formsStyle.css" AnchorPane.bottomAnchor="50.799999999999955" AnchorPane.rightAnchor="0.40000000000009095" AnchorPane.topAnchor="50.0">
          <children>
             <Label layoutX="312.0" layoutY="25.0" text="Reservaciones">
                <font>
@@ -121,7 +121,7 @@
                   <TableColumn fx:id="colum_habitacion" prefWidth="107.0" text="Habitacion" />
                </columns>
             </TableView>
-            <Button fx:id="but_editar" layoutX="378.0" layoutY="507.0" mnemonicParsing="false" onAction="#but_editar" prefHeight="67.0" prefWidth="163.0" style="-fx-background-color: #9ACBD0; -fx-background-radius: 20;" text="EDITAR" textFill="WHITE">
+            <Button fx:id="but_editar" layoutX="583.0" layoutY="513.0" mnemonicParsing="false" onAction="#but_editar" prefHeight="67.0" prefWidth="163.0" style="-fx-background-color: #9ACBD0; -fx-background-radius: 20;" text="EDITAR" textFill="WHITE">
                <padding>
                   <Insets bottom="25.0" left="60.0" right="50.0" top="25.0" />
                </padding>
@@ -129,7 +129,7 @@
                   <Font name="Arial Black" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="but_agregar" layoutX="585.0" layoutY="507.0" mnemonicParsing="false" onAction="#but_agregar" prefHeight="67.0" prefWidth="176.0" style="-fx-background-color: #5F8B4C; -fx-background-radius: 20;" text="AGREGAR" textFill="WHITE">
+            <Button fx:id="but_agregar" layoutX="782.0" layoutY="513.0" mnemonicParsing="false" onAction="#but_agregar" prefHeight="67.0" prefWidth="176.0" style="-fx-background-color: #5F8B4C; -fx-background-radius: 20;" text="AGREGAR" textFill="WHITE">
                <padding>
                   <Insets bottom="25.0" left="15.0" right="15.0" top="25.0" />
                </padding>
@@ -154,11 +154,6 @@
             <Button fx:id="bnt_Buscar" layoutX="746.0" layoutY="110.0" mnemonicParsing="false" onAction="#btn_Buscar" prefHeight="39.0" prefWidth="111.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 20;" text="Buscar">
                <font>
                   <Font name="Arial" size="15.0" />
-               </font>
-            </Button>
-            <Button fx:id="btn_Eliminar" layoutX="191.0" layoutY="507.0" mnemonicParsing="false" onAction="#btn_Eliminar" prefHeight="67.0" prefWidth="143.0" style="-fx-background-color: #F7374F; -fx-background-radius: 20;" text="ELIMINAR" textFill="WHITE">
-               <font>
-                  <Font name="Arial Black" size="12.0" />
                </font>
             </Button>
          </children>
