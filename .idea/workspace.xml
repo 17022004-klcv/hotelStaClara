@@ -9,18 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a44bdff9-8517-448d-807a-b783690deef8" name="Changes" comment="fix: problemas en el modelo contacto">
+    <list default="true" id="a44bdff9-8517-448d-807a-b783690deef8" name="Changes" comment="feat: agregar y actualizar cliente en recepcionista">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/HelloApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/UserControllers/USERclientes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/UserControllers/USERclientes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/formsAdminControllers/formAddClienteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/formsAdminControllers/formAddClienteController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/formsAdminControllers/formPagoReservacionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/formsAdminControllers/formPagoReservacionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/formsUserControlllers/FormAddClienteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/formsUserControlllers/FormAddClienteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/hotelstaclara/views/User/USERclientes.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/hotelstaclara/views/User/USERclientes.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/hotelstaclara/views/formsAdminViews/formAddCliente.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/hotelstaclara/views/formsAdminViews/formAddCliente.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/database/clienteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/database/clienteDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/hotelstaclara/views/formsAdminViews/formPagoMembresia.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/hotelstaclara/views/formsAdminViews/formPagoMembresia.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/hotelstaclara/views/formsAdminViews/formPagoReservacion.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/hotelstaclara/views/formsAdminViews/formPagoReservacion.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/hotelstaclara/views/formsUserViews/formAddCliente.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/hotelstaclara/views/formsUserViews/formAddCliente.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -205,7 +200,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749010545658</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="feat: agregar y actualizar cliente en recepcionista">
+      <option name="closed" value="true" />
+      <created>1749012646541</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1749012646541</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -247,7 +250,8 @@
     <MESSAGE value="fix-design: ancho de paneles actualizado" />
     <MESSAGE value="feat:crud de clientes" />
     <MESSAGE value="fix: problemas en el modelo contacto" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: problemas en el modelo contacto" />
+    <MESSAGE value="feat: agregar y actualizar cliente en recepcionista" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: agregar y actualizar cliente en recepcionista" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

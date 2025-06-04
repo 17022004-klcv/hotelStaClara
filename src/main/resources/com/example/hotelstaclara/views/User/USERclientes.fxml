@@ -137,7 +137,7 @@
                         <Image url="@../../img/lupa.png" />
                      </image>
                   </ImageView>
-                  <TextField fx:id="txt_Buscador" layoutX="67.0" onAction="#txt_Buscar" prefHeight="38.0" prefWidth="635.0" style="-fx-background-radius: 20;" />
+                  <TextField fx:id="txt_Buscador" layoutX="67.0" onAction="#txt_Buscar" prefHeight="38.0" prefWidth="612.0" promptText="Nombre: Cliente" style="-fx-background-color: white;" />
                </children>
             </Pane>
             <Button fx:id="bnt_Buscar" layoutX="746.0" layoutY="110.0" mnemonicParsing="false" onAction="#btn_Buscar" prefHeight="39.0" prefWidth="111.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 20;" text="Buscar">

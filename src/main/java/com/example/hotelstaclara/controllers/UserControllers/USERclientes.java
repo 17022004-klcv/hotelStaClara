@@ -79,8 +79,23 @@ public class USERclientes {
 
     Rutas ruta = new Rutas();
     @FXML
-    void btn_Buscar(ActionEvent event) {
+    void btn_Buscar(ActionEvent event) throws SQLException {
 
+        String nombre = txt_Buscador.getText();
+
+        clienteDAO client = new clienteDAO();
+        ObservableList<Map> clientes = client.buscarCliente(nombre);
+
+        tableClients.setItems(clientes);
+
+        // Opcional: Mostrar mensaje si no hay resultados
+        if (clientes.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Búsqueda");
+            alert.setHeaderText(null);
+            alert.setContentText("No se encontraron clientes con ese criterio de búsqueda.");
+            alert.showAndWait();
+        }
     }
 
     @FXML
