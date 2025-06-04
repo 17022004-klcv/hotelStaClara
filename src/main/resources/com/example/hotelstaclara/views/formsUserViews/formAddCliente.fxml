@@ -28,7 +28,7 @@
       <Text fill="WHITE" layoutX="53.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DUI" />
       <TextField fx:id="txt_apellidos" layoutX="186.0" layoutY="148.0" onAction="#txt_apellidos" prefHeight="46.0" prefWidth="230.0" promptText="Chavez Recinos" style="-fx-background-radius: 25px;" />
       <TextField fx:id="txt_dui" layoutX="186.0" layoutY="204.0" onAction="#txt_dui" prefHeight="46.0" prefWidth="230.0" promptText="00000000-0" style="-fx-background-radius: 25px;" />
-      <TextField fx:id="txt_email" editable="false" layoutX="186.0" layoutY="259.0" onAction="#txt_email" prefHeight="46.0" prefWidth="230.0" promptText="example@gmail.com" style="-fx-background-radius: 25px;" />
+      <TextField fx:id="txt_email" layoutX="186.0" layoutY="259.0" onAction="#txt_email" prefHeight="46.0" prefWidth="230.0" promptText="example@gmail.com" style="-fx-background-radius: 25px;" />
       <TextField fx:id="txt_nombres" layoutX="186.0" layoutY="94.0" onAction="#txt_nombres" prefHeight="46.0" prefWidth="230.0" promptText="Brian Josue" style="-fx-background-radius: 25px;" />
       <Button fx:id="bt_agregar" layoutX="164.0" layoutY="518.0" mnemonicParsing="false" onAction="#br_agregar" prefHeight="54.0" prefWidth="121.0" text="Agregar" />
       <Text fill="WHITE" layoutX="50.0" layoutY="404.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Celular" />
