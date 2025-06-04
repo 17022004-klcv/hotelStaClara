@@ -1,14 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="hotel-StaClara:jar2" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a44bdff9-8517-448d-807a-b783690deef8" name="Changes" comment="se actualiza el estado de la habitación, en admin y recepcionista">
+
+    <list default="true" id="a44bdff9-8517-448d-807a-b783690deef8" name="Changes" comment="re-design: interfaces para el recepcionista">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/formsAdminControllers/formReservacionesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/formsAdminControllers/formReservacionesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/formsUserControlllers/FormReservacionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/formsUserControlllers/FormReservacionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/database/HabiracionDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/database/HabiracionDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/AdminController/AdminClientesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/AdminController/AdminClientesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/formsAdminControllers/formAddClienteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/formsAdminControllers/formAddClienteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/formsAdminControllers/formPagoReservacionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/formsAdminControllers/formPagoReservacionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/database/clienteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/database/clienteDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/database/connection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/database/connection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/hotelstaclara/views/Admin/AdminClientes.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/hotelstaclara/views/Admin/AdminClientes.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/hotelstaclara/views/User/USERclientes.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/hotelstaclara/views/User/USERclientes.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/hotelstaclara/views/formsAdminViews/formAddCliente.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/hotelstaclara/views/formsAdminViews/formAddCliente.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/hotelstaclara/views/formsAdminViews/formPagoMembresia.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/hotelstaclara/views/formsAdminViews/formPagoMembresia.fxml" afterDir="false" />
+
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/hotelstaclara/views/formsAdminViews/formPagoReservacion.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/hotelstaclara/views/formsAdminViews/formPagoReservacion.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +43,6 @@
         <entry key="$PROJECT_DIR$" value="Develop" />
       </map>
     </option>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -40,15 +53,11 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/17022004-klcv/hotelStaClara.git&quot;,
-    &quot;accountId&quot;: &quot;4cd81f03-605c-428d-bceb-0b6e9628a215&quot;
+    &quot;accountId&quot;: &quot;64c7aa1b-4851-4560-89ad-1f90c32d43f2&quot;
   }
 }</component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
-      </MavenGeneralSettings>
-    </option>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
@@ -58,23 +67,28 @@
 }</component>
   <component name="ProjectId" id="2uQffSFJgBsTqL4aFl21fE3Osly" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;fix-sulconar-errores-RH&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/karlacarranza/Documents/cashlimit&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.43333334&quot;
+
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.HelloApplication.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "com.codeium.enabled": "true",
+
+    "git-widget-placeholder": "feat-crud-cliente-admin",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/karlacarranza/Documents/cashlimit",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.43333334",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
+
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
@@ -88,7 +102,6 @@
       </method>
     </configuration>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="a44bdff9-8517-448d-807a-b783690deef8" name="Changes" comment="" />
@@ -160,6 +173,7 @@
       <option name="presentableId" value="LOCAL-00008" />
       <option name="project" value="LOCAL" />
       <updated>1745030264610</updated>
+
     </task>
     <task id="LOCAL-00009" summary="Feat: model empleado creado">
       <option name="closed" value="true" />
@@ -185,15 +199,8 @@
       <option name="project" value="LOCAL" />
       <updated>1745030970002</updated>
     </task>
-    <task id="LOCAL-00012" summary="se actualiza el estado de la habitación, en admin y recepcionista">
-      <option name="closed" value="true" />
-      <created>1748326892035</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1748326892035</updated>
-    </task>
-    <option name="localTasksCounter" value="13" />
+    <option name="localTasksCounter" value="12" />
+
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -232,7 +239,35 @@
     <MESSAGE value="Feat: model empleado creado" />
     <MESSAGE value="Feat: model membresia creado" />
     <MESSAGE value="Feat: model cliente creado" />
-    <MESSAGE value="se actualiza el estado de la habitación, en admin y recepcionista" />
-    <option name="LAST_COMMIT_MESSAGE" value="se actualiza el estado de la habitación, en admin y recepcionista" />
+
+    <MESSAGE value="fix-design: ancho de paneles actualizado" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix-design: ancho de paneles actualizado" />
+
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/AdminController/AdminClientesController.java</url>
+          <line>119</line>
+          <properties class="com.example.hotelstaclara.controllers.AdminController.AdminClientesController" method="but_editar">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/hotelstaclara/controllers/AdminController/AdminClientesController.java</url>
+          <line>98</line>
+          <properties class="com.example.hotelstaclara.controllers.AdminController.AdminClientesController" method="but_agragar">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
