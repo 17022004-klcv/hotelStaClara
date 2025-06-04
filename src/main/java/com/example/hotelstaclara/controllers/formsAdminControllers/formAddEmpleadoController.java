@@ -4,19 +4,13 @@ import com.example.hotelstaclara.Alert.Alert;
 import com.example.hotelstaclara.Recursos.MesajesAlert;
 import com.example.hotelstaclara.Recursos.Rutas;
 import com.example.hotelstaclara.controllers.AdminController.AdminEmpleadosController;
-import com.example.hotelstaclara.database.ContactoDAO;
-import com.example.hotelstaclara.database.connection;
-import com.example.hotelstaclara.database.emailDAO;
-import com.example.hotelstaclara.database.empleadoDAO;
+import com.example.hotelstaclara.database.*;
 import com.example.hotelstaclara.model.contacto;
 import com.example.hotelstaclara.model.empleado;
 import com.example.hotelstaclara.validations.validaciones;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
@@ -56,6 +50,12 @@ public class formAddEmpleadoController {
     private ToggleGroup rdoEstado;
 
     @FXML
+    private PasswordField txtContra;
+
+    @FXML
+    private TextField txtUsuaio;
+
+    @FXML
     private TextField txt_apellidos;
 
     @FXML
@@ -89,6 +89,7 @@ public class formAddEmpleadoController {
             lblTitular.setText("Agregar Empleado");
             bt_agregar.setText("Agregar Empleado");
         }else{
+            txt_dui.setEditable(false);
             lblTitular.setText("Editar Empleado");
             bt_agregar.setText("Finalizar edicion");
             Rellenar();
@@ -113,19 +114,22 @@ public class formAddEmpleadoController {
                 validaciones.validarTelefono(txt_tel) &&
                 validaciones.validarDUI(txt_dui) &&
                 validaciones.validarDireccion(txt_direccion) &&
-                validaciones.validarCargoSeleccionado(rdoCargo)) {
+                validaciones.validarCargoSeleccionado(rdoCargo)&&
+                validaciones.credenciales(txtUsuaio, txtContra)){
+
             setear_empleado();
         }
     }
 
     public void setear_empleado() throws SQLException {
-        //Creamos los respectivos objetos para cada insersion de datos, siguiento este orden, porque sino explota
-        ContactoDAO insertar_contact = new ContactoDAO(); // Primero
-        empleadoDAO insertar_Empleado = new empleadoDAO(); // Segundo
-        emailDAO insertar_email = new emailDAO();       // Tercero
+        ContactoDAO insertar_contact = new ContactoDAO(); // 1
+        empleadoDAO insertar_Empleado = new empleadoDAO(); // 2
+        emailDAO insertar_email = new emailDAO(); // 3
+        loginDAO insertarcredencial = new loginDAO(); // 4
 
         Connection con = connection.getConnection();
-        //Colocamos el valor de los textfiel a variables para hacerlo mas legible
+
+        // Captura datos desde la interfaz
         nombre = txt_nombres.getText();
         apellido = txt_apellidos.getText();
         dui = txt_dui.getText();
@@ -133,50 +137,48 @@ public class formAddEmpleadoController {
         telefono = txt_tel.getText();
         direccion = txt_direccion.getText();
 
-        if(rdoCargo.getSelectedToggle() == btnAdministrador){
+        // Cargos
+        if (rdoCargo.getSelectedToggle() == btnAdministrador) {
             cargo = 1;
-        }else if(rdoCargo.getSelectedToggle() == btnRecepcionista) {
+        } else if (rdoCargo.getSelectedToggle() == btnRecepcionista) {
             cargo = 2;
         }
 
-        if(rdoEstado.getSelectedToggle() == btnInActivo){
-            estado = 0;
-        }else{
-            estado = 1;
-        }
-
-        //Obtenemos el ultimo id registrado, segund el orden en que los ingresamos
-        // Esto para que tengan congruencia que el contacto ingresado, se coloca en el insert de cliente, y para email, se necesita el id cliente
-        // se le coloca +1 porque sino, estaria agarrando el ultimo registrado antes que nosotros
+        // Estado
+        estado = (rdoEstado.getSelectedToggle() == btnInActivo) ? 0 : 1;
 
         try {
             con.setAutoCommit(false); // Inicia la transacción
 
-            //Insertamos los datos en contacto
+            // 1. Insertar contacto
             contacto contacto = new contacto(telefono, direccion);
             insertar_contact.INSERT(contacto);
-            ultimo_contacto = insertar_contact.Obtener_ultimo_contacto();
+            int idContacto = insertar_contact.Obtener_ultimo_contacto();
 
-            //Insertamos los datos en cliente
-            empleado empleado=new empleado(nombre,apellido,dui, ultimo_contacto,cargo,estado);
+            // 2. Insertar empleado
+            empleado empleado = new empleado(nombre, apellido, dui, idContacto, cargo, estado);
             insertar_Empleado.insertarEmpleado(empleado);
-            ultimo_empleado = emailDAO.ObtenerUltimoid_empleado();
+            int idEmpleado = emailDAO.ObtenerUltimoid_empleado();
 
-            //Insertamos el correo del cliente
-            insertar_email.Insert_Email_Empleado(correo,ultimo_empleado);
+            // 3. Insertar email
+            insertar_email.Insert_Email_Empleado(correo, idEmpleado);
 
-            //Limpiamos las casillas
+            // 4. Insertar login
+            insertarcredencial.insertarCredenciales(idEmpleado, txtUsuaio.getText(), txtContra.getText());
+
+            con.commit();
             Limpiar();
+
         } catch (SQLException e) {
-            con.rollback(); // Revierte los cambios si ocurre un error
+            con.rollback(); //revierte los cambios si algo falla
+            alert.showErrorAlert("Error", null, "Error al registrar el empleado: " + e.getMessage());
             throw new SQLException("Error al registrar el empleado", e);
+
         } finally {
-            con.setAutoCommit(true); // Restaura el estado de la conexión
+            con.setAutoCommit(true); // 🔓 Restaurar estado
         }
-
-        AdminEmpleadosController adminempleado= new AdminEmpleadosController();
-
     }
+
 
     //Metodo para rellenar los campos segun la informacionde la base de datos, guiandonos por el correo el cual es unico para cada usuario
     public void Rellenar(){
@@ -193,6 +195,9 @@ public class formAddEmpleadoController {
         txt_email.setText(datosEmpleado.get("email").toString());
         txt_tel.setText(datosEmpleado.get("telefono_1").toString());
         txt_direccion.setText(datosEmpleado.get("direccion").toString());
+        txtUsuaio.setText(datosEmpleado.get("usuario").toString());
+        txtContra.setText(datosEmpleado.get("contraseña").toString());
+
         // Seleccionar el RadioButton de cargo según id_cargo
         int idCargo = Integer.parseInt(datosEmpleado.get("id_cargo").toString());
         if (idCargo == 1) {
@@ -245,12 +250,14 @@ public class formAddEmpleadoController {
         ContactoDAO contactodao = new ContactoDAO();
         empleadoDAO empleadodao = new empleadoDAO();
         emailDAO emaildao = new emailDAO();
+        loginDAO logindao=new loginDAO();
 
         //Actualizamos nuestro cliente
         try {
             contactodao.UPDATE_CONTACTO(telefono, direccion, id_contacto);
             empleadodao.UPDATE_Empleado(empleado, id_empleado);
             emaildao.UPDATE_Email(correo, id_email);
+            logindao.actualizarCredenciales(id_empleado,txtUsuaio.toString(),txtContra.toString());
 
             alert.showInfoAlert("Exito", null, "El contacto se Actualizo correctamente");
         } catch (SQLException e) {

@@ -1,5 +1,6 @@
 package com.example.hotelstaclara.database;
 
+import com.example.hotelstaclara.Alert.Alert;
 import com.example.hotelstaclara.model.IdEmpleado;
 import com.example.hotelstaclara.model.login;
 import javafx.beans.Observable;
@@ -11,10 +12,7 @@ import javafx.collections.ObservableMap;
 
 import javax.swing.*;
 import javax.xml.transform.Result;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.*;
 
 import static com.example.hotelstaclara.database.connection.getConnection;
@@ -79,6 +77,56 @@ public class loginDAO {
         return null;
     }
 
+    public void insertarCredenciales(int idEmpleado, String usuario, String contraseña) {
+        String sql = """
+        INSERT INTO login (id_empleado, usuario, contraseña)
+        VALUES (?, ?, ?)
+    """;
+
+        try (Connection con = connection.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setInt(1, idEmpleado);
+            ps.setString(2, usuario);
+            ps.setString(3, contraseña); // Aquí podrías cifrar con BCrypt si decides usarlo
+
+            ps.executeUpdate();
+
+        } catch (SQLIntegrityConstraintViolationException e) {
+            Alert.showErrorAlert("Duplicado", null, "El usuario ya existe o el empleado ya tiene login.");
+        } catch (SQLException e) {
+
+        }
+    }
+
+    public void actualizarCredenciales(int idEmpleado, String nuevoUsuario, String nuevaContraseña) {
+        String sql = """
+        UPDATE login
+        SET usuario = ?, contraseña = ?
+        WHERE id_empleado = ?
+    """;
+
+        try (Connection con = connection.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setString(1, nuevoUsuario);
+            ps.setString(2, nuevaContraseña); // Puedes cifrar aquí también si decides usar BCrypt
+            ps.setInt(3, idEmpleado);
+
+            int filas = ps.executeUpdate();
+
+            if (filas > 0) {
+                Alert.showInfoAlert("Éxito", null, "Credenciales actualizadas correctamente.");
+            } else {
+                Alert.showErrorAlert("No encontrado", null, "No se encontró login para este empleado.");
+            }
+
+        } catch (SQLIntegrityConstraintViolationException e) {
+            Alert.showErrorAlert("Usuario duplicado", null, "Ese nombre de usuario ya está en uso.");
+        } catch (SQLException e) {
+
+        }
+    }
 
 }
 

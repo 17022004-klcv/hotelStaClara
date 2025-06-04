@@ -24,6 +24,15 @@ public class validaciones {
         return true;
     }
 
+    public static boolean credenciales(TextField user, TextField pass) {
+        //Valida simplemente que no esten vacios
+        if (user.getText().isEmpty() || pass.getText().isEmpty()) {
+            Alert.showWarningAlert("Campos vacíos", null, "Por favor ingrese el usuario y contraseña.");
+            return false;
+        }
+        return true;
+    }
+
     public static boolean validarCorreo(TextField correo) {
         String emailPattern = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$";
         // Lo valida de la siguiente forma user@Domimio.(net, com) etc
