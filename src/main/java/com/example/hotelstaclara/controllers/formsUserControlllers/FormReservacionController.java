@@ -78,7 +78,6 @@ public class FormReservacionController {
         // eventos para actualizar en tiempo real
         tex_habitacion();
         tex_cliente();
-        validarAceptar();
     }
 
     @FXML
@@ -92,6 +91,11 @@ public class FormReservacionController {
         String habitacion = tex_habitacion.getText();
         String cliente = tex_cliente.getText().trim();
 
+        if (cliente.equals("")) {
+            mesajesAlert.mostarAlertError("Los datos dela reservacion");
+            return;
+        }
+
         // optener la fechas
         LocalDate fechaIni = pick_fechaInicio.getValue();
         java.sql.Date fecha_inicio = java.sql.Date.valueOf(fechaIni);
@@ -103,6 +107,9 @@ public class FormReservacionController {
        int id_cliente = reservacionesDAO.buscarUsuario(cliente),
            id_habitacion = habiracionDAO.buscarHabitacion(habitacion);
 
+        if (valdarDias() == 0) {
+            return;
+        };
 
 
         // optener la fecha actual
@@ -116,12 +123,32 @@ public class FormReservacionController {
             limpiarCampos();
             habiracionDAO.editarEstadoHabitacion(id_habitacion, "Ocupada");
             ruta.cerrarVentana(but_Aceptar);
-            ruta.pasarRutasRecepcionista("USERreservaciones", but_Aceptar);
         }else {
             // editar la reservacion
             reservacionesDAO.actualizarEstadoReservacion(new Reservaciones(IdReservacion, fecha_actual, fecha_inicio, fecha_salida, id_cliente, idEmpleado.getIdEmpleado(),id_habitacion, Estado_reservaciones.activa));
             opcionPago(id_habitacion, id_cliente, IdReservacion, "Edit");
             ruta.cerrarVentana(but_Aceptar);
+        }
+    }
+
+    private int valdarDias() {
+        MesajesAlert mesajesAlert = new MesajesAlert();
+
+        LocalDate fechaInicio = pick_fechaInicio.getValue();
+        LocalDate fechaFin = pick_fechaSalida.getValue();
+
+        if (fechaInicio != null && fechaFin != null) { // <- CORREGIDO: pick_fechaSalida -> fechaFin
+            long dias = ChronoUnit.DAYS.between(fechaInicio, fechaFin) + 1;
+
+            if (dias > 0) {
+                return (int) dias;
+            } else {
+                mesajesAlert.mostarAlertError("La fecha de salida debe ser posterior a la fecha de inicio.");
+                return 0;
+            }
+        } else {
+            mesajesAlert.mostarAlertError("Selecciona ambas fechas.");
+            return 0;
         }
     }
 
@@ -244,8 +271,7 @@ public class FormReservacionController {
                 if (habitacionNum.isEmpty()) {
                     label_tipo.setText("Desconocido");
                     label_precioHabitacion.setText("0.00");
-                    habitacionValida = false;
-                    validarAceptar();
+
                     return;
                 }
 
@@ -255,8 +281,7 @@ public class FormReservacionController {
                     new MesajesAlert().mostarAlertError("La habitación no se encuentra registrada.");
                     label_tipo.setText("Desconocido");
                     label_precioHabitacion.setText("0.00");
-                    habitacionValida = false;
-                    validarAceptar();
+
                     return;
                 }
 
@@ -268,13 +293,11 @@ public class FormReservacionController {
 
                     label_tipo.setText(tipoHabitacion);
                     label_precioHabitacion.setText(String.valueOf(precio));
-                    habitacionValida = true;
-                    validarAceptar();
+
                     calcularPrecio();
                 } else {
                     new MesajesAlert().mostarAlertError("La habitación no se encuentra disponible.");
-                    habitacionValida = false;
-                    validarAceptar();
+
                 }
             }
         });
@@ -289,8 +312,7 @@ public class FormReservacionController {
 
                 if (cliente.isEmpty()) {
                     label_descuento.setText("0.0");
-                    clienteValido = false;
-                    validarAceptar();
+
                     return;
                 }
 
@@ -299,8 +321,7 @@ public class FormReservacionController {
                 if (idCliente == -1) {
                     label_descuento.setText("0.0");
                     new MesajesAlert().mostarAlertError("El cliente no se encuentra registrado");
-                    clienteValido = false;
-                    validarAceptar();
+
                     calcularPrecio();
                     return;
                 }
@@ -308,20 +329,14 @@ public class FormReservacionController {
                 double descuento = reservacionesDAO.tearDescuento(idCliente);
                 label_descuento.setText(descuento == -1 ? "0.0" : String.valueOf(descuento));
 
-                clienteValido = true;
-                validarAceptar();
+
                 calcularPrecio();
             }
         });
     }
 
 
-    private boolean clienteValido = false;
-    private boolean habitacionValida = false;
 
-    private void validarAceptar() {
-        but_Aceptar.setDisable(!(clienteValido && habitacionValida));
-    }
 
     public void traerDatosUpdate() {
         String habitacionNum = tex_habitacion.getText().trim();

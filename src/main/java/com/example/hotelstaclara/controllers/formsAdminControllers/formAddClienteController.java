@@ -5,13 +5,13 @@ import com.example.hotelstaclara.database.clienteDAO;
 import com.example.hotelstaclara.model.cliente;
 import com.example.hotelstaclara.model.contacto;
 import com.example.hotelstaclara.model.email;
+import com.example.hotelstaclara.validations.validaciones;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-
 import javax.swing.*;
 
 public class formAddClienteController {
@@ -47,10 +47,16 @@ public class formAddClienteController {
 
     @FXML
     void br_agregar(ActionEvent event) {
+        if (!validar_campos()) {
+            JOptionPane.showMessageDialog(null, "Por favor complete todos los campos correctamente");
+            return;
+        }
+
         contacto contacCliente = new contacto();
         cliente client = new cliente();
         email mail = new email();
 
+        // Seteo de valores (esto está bien)
         contacCliente.setTelefono_1(txt_tel.getText());
         contacCliente.setTelefono_2(txt_cel.getText());
         contacCliente.setDireccion(txt_direccion.getText());
@@ -65,30 +71,50 @@ public class formAddClienteController {
 
         clienteDAO cliente = new clienteDAO();
 
-        if (bt_agregar.getText().equals("Editar")) {
-            try {
+        try {
+            if (bt_agregar.getText().equals("Editar")) {
                 cliente.actualizarCliente(contacCliente, client, mail);
-                limpiar_campos();
-                ruta.cerrarVentana(bt_agregar);
-                if (onSuccessCallback != null) {
-                    onSuccessCallback.run();
-                }
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error " + e);
-            }
-        } else {
-            try {
+            } else {
                 cliente.insertarCliente(contacCliente, client, mail);
-                limpiar_campos();
-                if (onSuccessCallback != null) {
-                    onSuccessCallback.run();
-                }
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error " + e);
             }
+
+            limpiar_campos();
+            ruta.cerrarVentana(bt_agregar);
+
+            if (onSuccessCallback != null) {
+                onSuccessCallback.run();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace(); // Para depuración
         }
     }
 
+    public boolean validar_campos() {
+        // Validación plana sin anidamiento excesivo
+        boolean valido = true;
+
+        if (!validaciones.validarNombreApellido(txt_nombres, txt_apellidos)) {
+            valido = false;
+        }
+        if (!validaciones.validarDUI(txt_dui)) {
+            valido = false;
+        }
+        if (!validaciones.validarCorreo(txt_email)) {
+            valido = false;
+        }
+        if (!validaciones.validarTelefono(txt_tel)) {
+            valido = false;
+        }
+        if (!validaciones.validarTelefono(txt_cel)) {
+            valido = false;
+        }
+        if (!validaciones.validarDireccion(txt_direccion)) {
+            valido = false;
+        }
+
+        return valido;
+    }
     public void limpiar_campos() {
         txt_tel.setText("");
         txt_cel.setText("");

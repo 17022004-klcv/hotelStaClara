@@ -9,6 +9,11 @@ public class contacto {
     public contacto() {
     }
 
+    public contacto(String telefono_1, String direccion) {
+        this.telefono_1 = telefono_1;
+        this.direccion = direccion;
+    }
+
     public contacto(int id_contacto, String telefono_1, String telefono_2, String direccion) {
         this.id_contacto = id_contacto;
         this.telefono_1 = telefono_1;
@@ -16,16 +21,6 @@ public class contacto {
         this.direccion = direccion;
     }
 
-    public contacto(int id_contacto, String telefono_1, String direccion) {
-        this.id_contacto = id_contacto;
-        this.telefono_1 = telefono_1;
-        this.direccion = direccion;
-        this.telefono_2 = null;  // o "" según lo que prefieras
-    }
-    public contacto(String telefono_1, String direccion) {
-        this.telefono_1 = telefono_1;
-        this.direccion = direccion;
-    }
     public String getTelefono_2() {
         return telefono_2;
     }

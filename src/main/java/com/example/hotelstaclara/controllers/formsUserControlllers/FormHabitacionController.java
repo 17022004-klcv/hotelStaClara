@@ -1,5 +1,6 @@
 package com.example.hotelstaclara.controllers.formsUserControlllers;
 
+import com.example.hotelstaclara.Alert.Alert;
 import com.example.hotelstaclara.Recursos.Rutas;
 import com.example.hotelstaclara.controllers.UserControllers.USERhabitaciones;
 import com.example.hotelstaclara.database.HabiracionDAO;
@@ -9,7 +10,6 @@ import com.example.hotelstaclara.validations.validaciones;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -78,6 +78,21 @@ public class FormHabitacionController {
         int capacidad = Integer.parseInt(txt_capacidad.getText());
         double precio = Double.parseDouble(txt_monto.getText());
         Estado_habitacion estado = comb_estado.getValue();
+
+        if (capacidad < 1 || capacidad > 10) {
+            Alert.showWarningAlert("Capacidad Inválida", null, "La capacidad debe ser mayor a 0 y menor a 11.");
+            return;
+        }
+
+        // sesaviliter todos los campos
+        txt_numHabitaacion.setDisable(true);
+        txt_numHabitaacion.setEditable(false);
+        comb_tipoHabitacion.setDisable(true);
+        txt_capacidad.setEditable(false);
+        txt_monto.setEditable(false);
+        comb_estado.setDisable(true);
+
+
 
         HabiracionDAO habitacionesDAO = new HabiracionDAO();
         habitacionesDAO.actualizarHabitacion(new habitacion(habitacion.getId_habitacion(), numeroHabitacion, tipo, capacidad, precio, estado));

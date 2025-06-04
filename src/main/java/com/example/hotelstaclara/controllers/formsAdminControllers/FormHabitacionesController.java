@@ -1,5 +1,6 @@
 package com.example.hotelstaclara.controllers.formsAdminControllers;
 
+import com.example.hotelstaclara.Alert.Alert;
 import com.example.hotelstaclara.Recursos.Rutas;
 import com.example.hotelstaclara.controllers.AdminController.AdminHabitacionesController;
 import com.example.hotelstaclara.database.HabiracionDAO;
@@ -71,8 +72,17 @@ public class FormHabitacionesController {
         if (!validarCamposFormulario()) {
             return;
         }
+        int capacidad = Integer.parseInt(txt_capacidad.getText());
+        if (capacidad < 1 || capacidad > 10) {
+            Alert.showWarningAlert("Capacidad Inválida", null, "La capacidad debe ser mayor a 0 y menor a 11.");
+            return;
+        }
+
 
         if (OpAddEdit.equals("add")) {
+            if (!validaciones.validarHabitacionSeleccionada(txt_numHabitaacion.getText())) {
+          return;
+            }
             addHabitacion();
         } else if (OpAddEdit.equals("edit")) {
             editarHabitacion();
@@ -111,7 +121,6 @@ public class FormHabitacionesController {
                 && validaciones.validarPrecio(txt_monto)
                 && validaciones.validarCombo(comb_estado, "Estado");
     }
-
 
     @FXML
     void imgBack(MouseEvent event) {
