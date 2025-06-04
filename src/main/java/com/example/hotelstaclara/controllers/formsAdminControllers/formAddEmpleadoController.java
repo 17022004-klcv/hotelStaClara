@@ -153,7 +153,7 @@ public class formAddEmpleadoController {
             con.setAutoCommit(false); // Inicia la transacción
 
             //Insertamos los datos en contacto
-            contacto contacto =new contacto(telefono,direccion);
+            contacto contacto = new contacto(telefono, direccion);
             insertar_contact.INSERT(contacto);
             ultimo_contacto = insertar_contact.Obtener_ultimo_contacto();
 
