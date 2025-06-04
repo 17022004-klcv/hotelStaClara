@@ -35,8 +35,6 @@ public class PagoDAO {
             stmt.setInt(6, id_cliente);
 
             stmt.executeUpdate();
-            mesajesAlert.mostarAlertWARNING("El pago se insertó correctamente.");
-
         } catch (SQLException e) {
             mesajesAlert.mostarAlertError("El pago no se pudo ingresar: " + e.getMessage());
         }

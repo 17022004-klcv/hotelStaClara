@@ -104,8 +104,7 @@ public class FormHabitacionController {
                 && validaciones.validarCombo(comb_tipoHabitacion, "Tipo de Habitación")
                 && validaciones.validarCapacidad(txt_capacidad)
                 && validaciones.validarPrecio(txt_monto)
-                && validaciones.validarCombo(comb_estado, "Estado")
-                && validaciones.validarHabitacionSeleccionada(txt_numHabitaacion.getText());
+                && validaciones.validarCombo(comb_estado, "Estado");
     }
 
     @FXML
